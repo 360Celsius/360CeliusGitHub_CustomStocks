@@ -57,6 +57,7 @@ public class MainActivity extends BaseActivity {
                                 transaction.addToBackStack(null);
                                 break;
                         }
+                        transaction.commit();
                         return true;
                     }
                 });
