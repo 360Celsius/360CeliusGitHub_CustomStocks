@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#D81B60</color>
+
+    <color name="splash_activity_bg">#4CAF50</color>
+
+    <color name="blue_pressed">#007AFF</color>
+    <color name="gray_unpressed">#929292</color>
+    <color name="search_field_stroke_color">#808080</color>
+
+    <color name="fragment_bg">#FFFFFF</color>
+
+    <color name="symbol_name_color">#000000</color>
+    <color name="symbol_tyoe_color">#808080</color>
+
+
+
+</resources>

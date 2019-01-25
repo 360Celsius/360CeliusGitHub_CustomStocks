@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="red">
+        <item>#f8f8ff</item>
+        <item>#fefefa</item>
+        <item>#fffafa</item>
+        <item>#aaaaaa</item>
+    </string-array>
+
+    <string-array name="path">
+        <item>com.github.glomadrian.grav.generator.animation.PathAnimator</item>
+        <item>com.github.glomadrian.grav.generator.animation.BallSizeAnimator</item>
+    </string-array>
+
+
+</resources>
