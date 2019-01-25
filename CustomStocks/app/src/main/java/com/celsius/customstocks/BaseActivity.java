@@ -1,5 +1,6 @@
 package com.celsius.customstocks;
 
+import android.content.IntentFilter;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.Window;
@@ -7,6 +8,8 @@ import android.view.WindowManager;
 import com.celsius.customstocks.dbhelper.DBHelper;
 import com.celsius.customstocks.iterfaces.DbHelperInterface;
 import com.celsius.customstocks.iterfaces.UtilsInterface;
+import com.celsius.customstocks.recivers.ServiceBroadCastReciver;
+import com.celsius.customstocks.utils.ReciverServiceConsts;
 import com.celsius.customstocks.utils.Utils;
 
 import androidx.annotation.Nullable;
@@ -17,6 +20,8 @@ public class BaseActivity extends AppCompatActivity implements DbHelperInterface
 
     public static DBHelper helper = null;
     public static Utils utils = null;
+    private ServiceBroadCastReciver receiver = null;
+
 
 
     @Override
@@ -41,6 +46,21 @@ public class BaseActivity extends AppCompatActivity implements DbHelperInterface
         // In any activity just pass the context and use the singleton method
         helper = DBHelper.getInstance(getApplicationContext());
         utils = Utils.getInstance();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        IntentFilter filter = new IntentFilter(ReciverServiceConsts.GET_QOUTES_DATA);
+        receiver =  ServiceBroadCastReciver.getInstance();
+        registerReceiver(receiver, filter);
+    }
+
+    @Override
+    protected void onStop() {
+        unregisterReceiver(receiver);
+        super.onStop();
     }
 
     @Override

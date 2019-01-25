@@ -27,6 +27,9 @@
         <service android:name=".services.PullDataFromIEXService"
             android:enabled="true"/>
 
+        <receiver android:name=".recivers.ServiceBroadCastReciver"/>
+
+
         <provider
             android:authorities="${applicationId}.provider"
             android:enabled="true"

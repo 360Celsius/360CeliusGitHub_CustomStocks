@@ -42,8 +42,6 @@ public class SearchFragment extends BaseFragment {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_search, container, false);
         view = binding.getRoot();
 
-
-
         swipeRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.swipeRefreshLayout);
         recyclerView = (RecyclerView) view.findViewById(R.id.recycler_view);
 

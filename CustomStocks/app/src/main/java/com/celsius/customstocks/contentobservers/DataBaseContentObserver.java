@@ -8,6 +8,7 @@ import android.util.Log;
 
 import com.celsius.customstocks.databinding.FragmentSearchBinding;
 import com.celsius.customstocks.datamodels.SymbolName;
+import com.celsius.customstocks.dbhelper.DBContract;
 import com.celsius.customstocks.fragments.SearchFragment;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -52,10 +53,12 @@ public class DataBaseContentObserver extends ContentObserver {
         // depending on the handler you might be on the UI
         // thread, so be cautious!
 
-        Log.e("test",String.valueOf(uri));
-        SymbolName data = new SymbolName();
-        data.setSymbolName(String.valueOf(uri));
-        //here data must be an instance of the class MarsDataProvider
-        binding.setSymbol(data);
+        if(uri.toString().contains(String.valueOf(DBContract.AllSymbols.CONTENT_URI))){
+            SymbolName data = new SymbolName();
+            data.setSymbolName(String.valueOf(uri));
+            //here data must be an instance of the class MarsDataProvider
+            binding.setSymbol(data);
+        }
+
     }
 }

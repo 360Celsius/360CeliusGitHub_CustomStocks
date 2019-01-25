@@ -8,6 +8,7 @@ import com.celsius.customstocks.datamodels.Symbol;
 import com.celsius.customstocks.dbhelper.DBHelper;
 import com.celsius.customstocks.network.NetworkHTTPRequests;
 import com.celsius.customstocks.parsers.JsonParser;
+import com.celsius.customstocks.utils.ReciverServiceConsts;
 
 import java.util.ArrayList;
 
@@ -43,9 +44,15 @@ public class PullDataFromIEXService extends IntentService {
     @Override
     protected void onHandleIntent(@Nullable Intent intent) {
 
-        switch (intent.getStringExtra(PullDataFromIEXServiceConsts.DATA_TYPE_KEY)) {
-            case PullDataFromIEXServiceConsts.GET_ALL_SYMBOLS:
+        switch (intent.getStringExtra(ReciverServiceConsts.DATA_TYPE_KEY)) {
+            case ReciverServiceConsts.GET_ALL_SYMBOLS:
                 ArrayList<Symbol> symbolsList = jsonParser.getAllSymbolsParsed(networkHTTPRequests.getSymbolsFromIEX());
+
+                Intent broadcastIntent = new Intent();
+                broadcastIntent.setAction(GET_QOUTES_DATA);
+                broadcastIntent.putExtra(ReciverServiceConsts.DATA_TYPE_KEY, ReciverServiceConsts.LOAD_MAIN_ACTIVITY);
+                sendBroadcast(broadcastIntent);
+
                 helper.bulkInsertAllSymbolsToSymbolsDataTable(symbolsList);
                 break;
         }
