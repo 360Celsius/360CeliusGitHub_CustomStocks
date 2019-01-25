@@ -15,6 +15,7 @@
     <color name="symbol_name_color">#000000</color>
     <color name="symbol_tyoe_color">#808080</color>
 
+    <color name="loading_message_bg">#FFFACD</color>
 
 
 </resources>
