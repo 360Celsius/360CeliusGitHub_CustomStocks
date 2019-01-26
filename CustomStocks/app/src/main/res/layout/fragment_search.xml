@@ -2,7 +2,7 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
     <data>
         <variable
-            name="symbol"
+            name="symbolPresenter"
             type="com.celsius.customstocks.datamodels.SymbolName" />
     </data>
 
@@ -54,7 +54,7 @@
             android:padding="6dp"
             android:layout_alignParentBottom="true"
             android:background="@color/loading_message_bg"
-            android:text="@{symbol.symbolName}"/>
+            android:text="@{symbolPresenter.symbolName}"/>
 
     </RelativeLayout>
 </layout>

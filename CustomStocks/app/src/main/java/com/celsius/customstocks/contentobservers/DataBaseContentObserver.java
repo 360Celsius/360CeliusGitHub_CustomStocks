@@ -57,7 +57,7 @@ public class DataBaseContentObserver extends ContentObserver {
             SymbolName data = new SymbolName();
             data.setSymbolName(String.valueOf(uri));
             //here data must be an instance of the class MarsDataProvider
-            binding.setSymbol(data);
+            binding.setSymbolPresenter(data);
         }
 
     }
