@@ -5,16 +5,19 @@ import com.celsius.customstocks.BR;
 import androidx.databinding.BaseObservable;
 import androidx.databinding.Bindable;
 
-public class SymbolName extends BaseObservable {
+public class LoadingWindownSymbol extends BaseObservable {
 
     private String symbolName;
+    private boolean isToShowWindow = false;
 
-    public SymbolName(){
-
+    @Bindable
+    public boolean getIsToShowWindow() {
+        return isToShowWindow;
     }
 
-    public SymbolName(String symbolName) {
-        this.symbolName = symbolName;
+    public void setIsToShowWindow(boolean isToShowWindow) {
+        this.isToShowWindow = isToShowWindow;
+        notifyPropertyChanged(BR.isToShowWindow);
     }
 
     @Bindable

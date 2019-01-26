@@ -7,7 +7,6 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import com.celsius.customstocks.datamodels.Symbol;
-import com.celsius.customstocks.datamodels.SymbolName;
 
 import java.util.ArrayList;
 

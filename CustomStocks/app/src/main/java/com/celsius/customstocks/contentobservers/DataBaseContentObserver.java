@@ -1,14 +1,10 @@
 package com.celsius.customstocks.contentobservers;
 
 import android.app.Activity;
-import android.content.Context;
 import android.database.ContentObserver;
 import android.net.Uri;
 import android.os.Handler;
-import android.util.Log;
 
-import com.celsius.customstocks.databinding.FragmentSearchBinding;
-import com.celsius.customstocks.datamodels.SymbolName;
 import com.celsius.customstocks.dbhelper.DBContract;
 import com.celsius.customstocks.fragments.SearchFragment;
 
@@ -42,7 +38,7 @@ public class DataBaseContentObserver extends ContentObserver {
         // thread, so be cautious!updateRecyclerView
 
         if(uri.toString().contains(String.valueOf(DBContract.AllSymbols.CONTENT_URI))){
-            ((SearchFragment) ((AppCompatActivity) activity).getSupportFragmentManager().findFragmentByTag(SearchFragment.TAG)).updateUpdateProsessLine();
+            ((SearchFragment) ((AppCompatActivity) activity).getSupportFragmentManager().findFragmentByTag(SearchFragment.TAG)).updateUpdateProsessLine(true);
         }
 
     }

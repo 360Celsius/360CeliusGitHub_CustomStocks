@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
     <data>
+
+        <import type="android.view.View"/>
+        <import type="android.text.TextUtils"/>
+
         <variable
-            name="symbolPresenter"
-            type="com.celsius.customstocks.datamodels.SymbolName" />
+        
+            name="loadingWindownSymbol"
+            type="com.celsius.customstocks.datamodels.LoadingWindownSymbol" />
     </data>
 
 
@@ -56,7 +61,8 @@
             android:paddingTop="6dp"
             android:layout_alignParentBottom="true"
             android:background="@color/loading_message_bg"
-            android:text="@{symbolPresenter.symbolName}"/>
+            android:visibility="@{loadingWindownSymbol.isToShowWindow ?  View.VISIBLE : View.GONE }"
+            android:text="@{loadingWindownSymbol.symbolName}"/>
 
     </RelativeLayout>
 </layout>

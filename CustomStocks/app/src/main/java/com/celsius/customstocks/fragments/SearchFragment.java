@@ -11,13 +11,12 @@ import android.view.ViewGroup;
 import com.celsius.customstocks.R;
 import com.celsius.customstocks.contentobservers.DataBaseContentObserver;
 import com.celsius.customstocks.databinding.FragmentSearchBinding;
-import com.celsius.customstocks.datamodels.SymbolName;
+import com.celsius.customstocks.datamodels.LoadingWindownSymbol;
 import com.celsius.customstocks.dbhelper.DBContract;
 import com.celsius.customstocks.recyclerviewadapter.AllSymbolsRecyclerViewAdapter;
 
 import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
-import androidx.databinding.ViewDataBinding;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
@@ -56,6 +55,8 @@ public class SearchFragment extends BaseFragment {
         dataBaseContentObserver =  new DataBaseContentObserver(new Handler(),getActivity());
         getActivity().getContentResolver().registerContentObserver(DBContract.AllSymbols.CONTENT_URI, true,dataBaseContentObserver);
 
+        updateUpdateProsessLine(false);
+
         return view;
     }
 
@@ -66,11 +67,12 @@ public class SearchFragment extends BaseFragment {
     }
 
 
-    public void updateUpdateProsessLine(){
-        SymbolName data = new SymbolName();
+    public void updateUpdateProsessLine(boolean isToShow){
+        LoadingWindownSymbol data = new LoadingWindownSymbol();
         data.setSymbolName(String.valueOf("Building Data "+mCallback.getDataBasehelper().getLatesetInsertedSymbo().getSymbol()));
+        data.setIsToShowWindow(isToShow);
         //here data must be an instance of the class MarsDataProvider
-        binding.setSymbolPresenter(data);
+        binding.setLoadingWindownSymbol(data);
     }
 
 }
