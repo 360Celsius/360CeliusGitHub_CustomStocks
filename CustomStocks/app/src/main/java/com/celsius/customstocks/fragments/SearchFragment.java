@@ -53,7 +53,7 @@ public class SearchFragment extends BaseFragment {
         swipeRefreshLayout.setRefreshing(false);
         swipeRefreshLayout.setEnabled(false);
 
-        dataBaseContentObserver =  new DataBaseContentObserver(new Handler(),getContext(),binding);
+        dataBaseContentObserver =  new DataBaseContentObserver(new Handler(),getActivity());
         getActivity().getContentResolver().registerContentObserver(DBContract.AllSymbols.CONTENT_URI, true,dataBaseContentObserver);
 
         return view;
@@ -65,5 +65,12 @@ public class SearchFragment extends BaseFragment {
         getActivity().getContentResolver().unregisterContentObserver(dataBaseContentObserver);
     }
 
+
+    public void updateUpdateProsessLine(){
+        SymbolName data = new SymbolName();
+        data.setSymbolName(String.valueOf("Building Data "+mCallback.getDataBasehelper().getLatesetInsertedSymbo().getSymbol()));
+        //here data must be an instance of the class MarsDataProvider
+        binding.setSymbolPresenter(data);
+    }
 
 }

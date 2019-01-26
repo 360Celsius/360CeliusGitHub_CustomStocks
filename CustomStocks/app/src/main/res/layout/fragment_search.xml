@@ -51,7 +51,9 @@
             android:id="@+id/loading_window"
             android:layout_width="match_parent"
             android:layout_height="32dp"
-            android:padding="6dp"
+            android:paddingLeft="16dp"
+            android:paddingBottom="6dp"
+            android:paddingTop="6dp"
             android:layout_alignParentBottom="true"
             android:background="@color/loading_message_bg"
             android:text="@{symbolPresenter.symbolName}"/>

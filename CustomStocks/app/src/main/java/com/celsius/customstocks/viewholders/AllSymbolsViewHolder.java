@@ -1,13 +1,5 @@
 package com.celsius.customstocks.viewholders;
 
-
-
-
-import android.view.View;
-import android.widget.TextView;
-
-import com.celsius.customstocks.R;
-
 import androidx.annotation.NonNull;
 import androidx.databinding.ViewDataBinding;
 import androidx.recyclerview.widget.RecyclerView;

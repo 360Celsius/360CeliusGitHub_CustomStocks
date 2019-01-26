@@ -1,6 +1,7 @@
 package com.celsius.customstocks.datamodels;
 
 import com.celsius.customstocks.BR;
+import com.celsius.customstocks.utils.Utils;
 
 import androidx.databinding.BaseObservable;
 import androidx.databinding.Bindable;
@@ -71,7 +72,7 @@ public class Symbol extends BaseObservable {
     }
 
     public void setType(String type) {
-        this.type = type;
+        this.type = Utils.getInstance().convertShortTypeToLongType(type);
         notifyPropertyChanged(BR.type);
     }
 

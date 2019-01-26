@@ -49,5 +49,7 @@ public class DBContract {
             "SELECT  * FROM " + AllSymbols.TABLE_NAME + " WHERE "+ AllSymbols._ID;
 
 
+    public static final String SQL_SELECT_LAST_INSERTED_ROW =
+            "SELECT * FROM "+ AllSymbols.TABLE_NAME+" ORDER BY "+AllSymbols._ID+ " DESC LIMIT 1";
     //============ ============ ==============
 }
