@@ -33,6 +33,8 @@ public class SearchFragment extends BaseFragment {
     private FragmentSearchBinding binding;
     private View view;
 
+    private LoadingWindownSymbol data;
+
     @Nullable
 
     @Override
@@ -55,6 +57,10 @@ public class SearchFragment extends BaseFragment {
         dataBaseContentObserver =  new DataBaseContentObserver(new Handler(),getActivity());
         getActivity().getContentResolver().registerContentObserver(DBContract.AllSymbols.CONTENT_URI, true,dataBaseContentObserver);
 
+        data = new LoadingWindownSymbol();
+        //here data must be an instance of the class MarsDataProvider
+        binding.setLoadingWindownSymbol(data);
+
         updateUpdateProsessLine(false);
 
         return view;
@@ -68,11 +74,8 @@ public class SearchFragment extends BaseFragment {
 
 
     public void updateUpdateProsessLine(boolean isToShow){
-        LoadingWindownSymbol data = new LoadingWindownSymbol();
         data.setSymbolName(String.valueOf("Building Data "+mCallback.getDataBasehelper().getLatesetInsertedSymbo().getSymbol()));
         data.setIsToShowWindow(isToShow);
-        //here data must be an instance of the class MarsDataProvider
-        binding.setLoadingWindownSymbol(data);
     }
 
 }
