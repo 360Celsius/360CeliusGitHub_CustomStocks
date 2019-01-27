@@ -31,6 +31,8 @@ public class ServiceBroadCastReciver extends BroadcastReceiver {
         if (intent.getStringExtra(ReciverServiceConsts.DATA_TYPE_KEY).equalsIgnoreCase(ReciverServiceConsts.LOAD_MAIN_ACTIVITY)) {
             Intent intentone = new Intent(context.getApplicationContext(), MainActivity.class);
             context.startActivity(intentone);
+        }else if(intent.getStringExtra(ReciverServiceConsts.DATA_TYPE_KEY).equalsIgnoreCase(ReciverServiceConsts.RELOAD_SEARCH_FRAGMNET_ALL_SYMBOLS_ADDED)){
+
         }
     }
 }
