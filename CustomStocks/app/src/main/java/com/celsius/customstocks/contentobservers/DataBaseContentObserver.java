@@ -7,20 +7,26 @@ import android.os.Handler;
 
 import com.celsius.customstocks.dbhelper.DBContract;
 import com.celsius.customstocks.fragments.SearchFragment;
+import com.celsius.customstocks.network.NetworkHTTPConnection;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 public class DataBaseContentObserver extends ContentObserver {
 
     private Activity activity;
+    private static DataBaseContentObserver _instance;
 
-    /**
-     * Creates a content observer.
-     *
-     * @param handler The handler to run {@link #onChange} on, or null if none.
-     * @param binding
-     */
-    public DataBaseContentObserver(Handler handler, Activity activity) {
+
+    public static DataBaseContentObserver getInstance(Handler handler, Activity activity)
+    {
+        if (_instance == null)
+        {
+            _instance = new DataBaseContentObserver(handler, activity);
+        }
+        return _instance;
+    }
+
+    private DataBaseContentObserver(Handler handler, Activity activity) {
         super(handler);
         this.activity = activity;
     }
