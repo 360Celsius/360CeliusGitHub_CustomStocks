@@ -3,6 +3,7 @@ package com.celsius.customstocks.recivers;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 
 import com.celsius.customstocks.MainActivity;
 import com.celsius.customstocks.utils.ReciverServiceConsts;
@@ -32,7 +33,7 @@ public class ServiceBroadCastReciver extends BroadcastReceiver {
             Intent intentone = new Intent(context.getApplicationContext(), MainActivity.class);
             context.startActivity(intentone);
         }else if(intent.getStringExtra(ReciverServiceConsts.DATA_TYPE_KEY).equalsIgnoreCase(ReciverServiceConsts.RELOAD_SEARCH_FRAGMNET_ALL_SYMBOLS_ADDED)){
-
+                Log.e("test","I am here");
         }
     }
 }
