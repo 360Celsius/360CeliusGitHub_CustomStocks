@@ -54,7 +54,7 @@ public class SearchFragment extends BaseFragment {
         swipeRefreshLayout.setRefreshing(false);
         swipeRefreshLayout.setEnabled(false);
 
-        dataBaseContentObserver =  new DataBaseContentObserver(new Handler(),getActivity());
+        dataBaseContentObserver =  DataBaseContentObserver.getInstance(new Handler(),getActivity());
         getActivity().getContentResolver().registerContentObserver(DBContract.AllSymbols.CONTENT_URI, true,dataBaseContentObserver);
 
         data = new LoadingWindownSymbol();
