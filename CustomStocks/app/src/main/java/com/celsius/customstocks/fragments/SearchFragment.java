@@ -78,4 +78,13 @@ public class SearchFragment extends BaseFragment {
         data.setIsToShowWindow(isToShow);
     }
 
+    public void updateSearchFragmetRecyclerView(boolean isToShowUpdateLine){
+        recyclerViewAdapter = new AllSymbolsRecyclerViewAdapter(mCallback.getDataBasehelper().getAllSymbols(),utils.getUtils(),getContext());
+
+        recyclerView.setAdapter(recyclerViewAdapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+
+        data.setIsToShowWindow(isToShowUpdateLine);
+    }
+
 }
