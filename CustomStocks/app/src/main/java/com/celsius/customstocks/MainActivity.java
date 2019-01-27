@@ -4,6 +4,7 @@ package com.celsius.customstocks;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.FrameLayout;
+
 import com.celsius.customstocks.fragments.MarketsFragment;
 import com.celsius.customstocks.fragments.MoreFragment;
 import com.celsius.customstocks.fragments.NewsFragment;
@@ -12,8 +13,8 @@ import com.celsius.customstocks.fragments.StocksFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.lifecycle.Observer;
 
 
 public class MainActivity extends BaseActivity {
