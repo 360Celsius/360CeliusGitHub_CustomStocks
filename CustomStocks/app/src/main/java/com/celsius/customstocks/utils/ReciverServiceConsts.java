@@ -10,5 +10,5 @@ public class ReciverServiceConsts {
     public static final String LOAD_MAIN_ACTIVITY = "LOAD_MAIN_ACTIVITY";
 
 
-
+    public static final String RELOAD_SEARCH_FRAGMNET_ALL_SYMBOLS_ADDED = "RELOAD_SEARCH_FRAGMNET_ALL_SYMBOLS_ADDED";
 }
