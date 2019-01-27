@@ -44,16 +44,21 @@ public class PullDataFromIEXService extends IntentService {
     @Override
     protected void onHandleIntent(@Nullable Intent intent) {
 
+        Intent broadcastIntent = new Intent();
         switch (intent.getStringExtra(ReciverServiceConsts.DATA_TYPE_KEY)) {
             case ReciverServiceConsts.GET_ALL_SYMBOLS:
                 ArrayList<Symbol> symbolsList = jsonParser.getAllSymbolsParsed(networkHTTPRequests.getSymbolsFromIEX());
 
-                Intent broadcastIntent = new Intent();
+
                 broadcastIntent.setAction(GET_QOUTES_DATA);
                 broadcastIntent.putExtra(ReciverServiceConsts.DATA_TYPE_KEY, ReciverServiceConsts.LOAD_MAIN_ACTIVITY);
                 sendBroadcast(broadcastIntent);
 
                 helper.bulkInsertAllSymbolsToSymbolsDataTable(symbolsList);
+
+                broadcastIntent.setAction(GET_QOUTES_DATA);
+                broadcastIntent.putExtra(ReciverServiceConsts.DATA_TYPE_KEY, ReciverServiceConsts.RELOAD_SEARCH_FRAGMNET_ALL_SYMBOLS_ADDED);
+                sendBroadcast(broadcastIntent);
                 break;
         }
     }
