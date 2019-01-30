@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import com.celsius.customstocks.BR;
 import com.celsius.customstocks.R;
 import com.celsius.customstocks.datamodels.Symbol;
+import com.celsius.customstocks.iterfaces.ActionCallback;
 import com.celsius.customstocks.utils.Utils;
 import com.celsius.customstocks.viewholders.AllSymbolsViewHolder;
 
@@ -24,10 +25,15 @@ public class AllSymbolsRecyclerViewAdapter extends RecyclerView.Adapter<AllSymbo
     private Context context;
     private Utils utils;
 
-    public AllSymbolsRecyclerViewAdapter(ArrayList<Symbol> list, Utils utils, Context context) {
+    private ActionCallback mActionCallback;
+
+
+    public AllSymbolsRecyclerViewAdapter(ArrayList<Symbol> list, Utils utils, Context context,ActionCallback actionCallback) {
         this.allSymbolsList = list;
         this.context = context;
         this.utils = utils;
+        this.mActionCallback = actionCallback;
+
     }
     @NonNull
     @Override
@@ -42,7 +48,7 @@ public class AllSymbolsRecyclerViewAdapter extends RecyclerView.Adapter<AllSymbo
 
         ViewDataBinding viewDataBinding = allSymbolsViewHolder.getViewDataBinding();
         viewDataBinding.setVariable(BR.symbol, allSymbolsList.get(position));
-
+        viewDataBinding.setVariable(BR.callback, mActionCallback);
     }
 
     @Override

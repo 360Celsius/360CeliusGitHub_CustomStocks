@@ -4,6 +4,7 @@ package com.celsius.customstocks.fragments;
 import android.os.Bundle;
 
 import android.os.Handler;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,7 +13,9 @@ import com.celsius.customstocks.R;
 import com.celsius.customstocks.contentobservers.DataBaseContentObserver;
 import com.celsius.customstocks.databinding.FragmentSearchBinding;
 import com.celsius.customstocks.datamodels.LoadingWindownSymbol;
+import com.celsius.customstocks.datamodels.Symbol;
 import com.celsius.customstocks.dbhelper.DBContract;
+import com.celsius.customstocks.iterfaces.ActionCallback;
 import com.celsius.customstocks.recyclerviewadapter.AllSymbolsRecyclerViewAdapter;
 
 import androidx.annotation.Nullable;
@@ -35,6 +38,8 @@ public class SearchFragment extends BaseFragment {
 
     private LoadingWindownSymbol data;
 
+    ActionCallback actionCallback;
+
     @Nullable
 
     @Override
@@ -46,7 +51,15 @@ public class SearchFragment extends BaseFragment {
         swipeRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.swipeRefreshLayout);
         recyclerView = (RecyclerView) view.findViewById(R.id.recycler_view);
 
-        recyclerViewAdapter = new AllSymbolsRecyclerViewAdapter(mCallback.getDataBasehelper().getAllSymbols(),utils.getUtils(),getContext());
+        actionCallback = new ActionCallback() {
+            @Override
+            public void onClick(Symbol symbol) {
+                Log.e("test",symbol.getSymbol());
+            }
+
+        };
+
+        recyclerViewAdapter = new AllSymbolsRecyclerViewAdapter(mCallback.getDataBasehelper().getAllSymbols(),utils.getUtils(),getContext(),actionCallback);
 
         recyclerView.setAdapter(recyclerViewAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -79,7 +92,7 @@ public class SearchFragment extends BaseFragment {
     }
 
     public void updateSearchFragmetRecyclerView(boolean isToShowUpdateLine){
-        recyclerViewAdapter = new AllSymbolsRecyclerViewAdapter(mCallback.getDataBasehelper().getAllSymbols(),utils.getUtils(),getContext());
+        recyclerViewAdapter = new AllSymbolsRecyclerViewAdapter(mCallback.getDataBasehelper().getAllSymbols(),utils.getUtils(),getContext(),actionCallback);
 
         recyclerView.setAdapter(recyclerViewAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
