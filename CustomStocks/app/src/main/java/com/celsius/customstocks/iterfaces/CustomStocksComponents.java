@@ -1,6 +1,7 @@
 package com.celsius.customstocks.iterfaces;
 
 import com.celsius.customstocks.BaseActivity;
+import com.celsius.customstocks.datamodels.Symbol;
 import com.celsius.customstocks.dbhelper.Provider;
 import com.celsius.customstocks.fragments.BaseFragment;
 import com.celsius.customstocks.modules.ContextModule;
@@ -18,5 +19,6 @@ public interface CustomStocksComponents {
     void inject(Provider presenter);
     void inject(PullDataFromIEXService presenter);
     void inject(BaseFragment presenter);
+    void inject(Symbol presenter);
 
 }

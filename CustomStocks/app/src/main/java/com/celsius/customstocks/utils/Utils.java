@@ -1,40 +1,33 @@
 package com.celsius.customstocks.utils;
 
+import javax.inject.Inject;
+import javax.inject.Singleton;
+
+@Singleton
 public class Utils {
-    private static Utils _instance;
 
-    public static Utils getInstance()
-    {
-        if (_instance == null)
-        {
-            _instance = new Utils();
-        }
-        return _instance;
-    }
-
+    @Inject
     public Utils() {
-
     }
-
 
     public String convertShortTypeToLongType(String shortType){
-        switch (shortType){
-            case "ad":
-                return "ADR";
-            case "ce":
-                return "Closed end fund";
-            case "si":
-                return "Secondary Issue";
-            case "lp":
-                return "Limited Partnerships";
-            case "cs":
-                return "Common Stock";
-            case "et":
-                return "ETF";
-            case "re":
-                return "REIT";
-            default:
-                return "N/A";
+
+        if(shortType.contains("ad") || shortType.contains("ADR")){
+            return "ADR";
+        }else if (shortType.contains("ce") || shortType.contains("Closed end fund")){
+            return "Closed end fund";
+        }else if (shortType.contains("si") || shortType.contains("Secondary Issue")){
+            return "Secondary Issue";
+        }else if (shortType.contains("lp") || shortType.contains("Limited Partnerships")){
+            return "Limited Partnerships";
+        }else if (shortType.contains("cs") || shortType.contains("Common Stock")){
+            return "Common Stock";
+        }else if (shortType.contains("et") || shortType.contains("ETF")){
+            return "ETF";
+        }else if (shortType.contains("re") || shortType.contains("REIT")){
+            return "REIT";
+        }else {
+            return "N/A";
         }
     }
 }

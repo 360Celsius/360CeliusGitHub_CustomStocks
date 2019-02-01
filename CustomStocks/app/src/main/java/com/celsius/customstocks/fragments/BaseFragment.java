@@ -4,7 +4,7 @@ import android.app.Activity;
 
 import com.celsius.customstocks.application.CustomStockApplication;
 import com.celsius.customstocks.dbhelper.DBHelper;
-import com.celsius.customstocks.iterfaces.UtilsInterface;
+import com.celsius.customstocks.utils.Utils;
 
 import javax.inject.Inject;
 
@@ -13,7 +13,9 @@ import androidx.fragment.app.Fragment;
 
 public class BaseFragment extends Fragment {
 
-    public UtilsInterface utils = null;
+    @Inject
+    public Utils utils;
+
     @Inject
     public DBHelper helper;
 
@@ -23,8 +25,6 @@ public class BaseFragment extends Fragment {
         super.onAttach(activity);
 
         CustomStockApplication.getMyComponent().inject(this);
-
-        utils = (UtilsInterface) activity;
 
     }
 

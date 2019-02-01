@@ -7,7 +7,6 @@ import android.view.Window;
 import android.view.WindowManager;
 import com.celsius.customstocks.application.CustomStockApplication;
 import com.celsius.customstocks.dbhelper.DBHelper;
-import com.celsius.customstocks.iterfaces.UtilsInterface;
 import com.celsius.customstocks.recivers.ServiceBroadCastReciver;
 import com.celsius.customstocks.utils.ReciverServiceConsts;
 import com.celsius.customstocks.utils.Utils;
@@ -18,12 +17,14 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
-public class BaseActivity extends AppCompatActivity implements  UtilsInterface {
+public class BaseActivity extends AppCompatActivity {
 
     @Inject
     DBHelper helper;
 
-    public static Utils utils = null;
+    @Inject
+    Utils utils;
+
     private ServiceBroadCastReciver receiver = null;
 
 
@@ -48,7 +49,6 @@ public class BaseActivity extends AppCompatActivity implements  UtilsInterface {
 
 
         CustomStockApplication.getMyComponent().inject(this);
-        utils = Utils.getInstance();
     }
 
     @Override
@@ -66,9 +66,5 @@ public class BaseActivity extends AppCompatActivity implements  UtilsInterface {
         super.onStop();
     }
 
-    @Override
-    public Utils getUtils() {
-        return utils;
-    }
 
 }

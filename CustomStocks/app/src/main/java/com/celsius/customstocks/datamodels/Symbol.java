@@ -1,7 +1,10 @@
 package com.celsius.customstocks.datamodels;
 
 import com.celsius.customstocks.BR;
+import com.celsius.customstocks.application.CustomStockApplication;
 import com.celsius.customstocks.utils.Utils;
+
+import javax.inject.Inject;
 
 import androidx.databinding.BaseObservable;
 import androidx.databinding.Bindable;
@@ -15,6 +18,13 @@ public class Symbol extends BaseObservable {
     private String type;
     private String iexId;
     private String isInPortfolio;
+
+    @Inject
+    Utils utils;
+
+    public Symbol() {
+        CustomStockApplication.getMyComponent().inject(this);
+    }
 
     @Bindable
     public String getIsInPortfolio() {
@@ -72,7 +82,7 @@ public class Symbol extends BaseObservable {
     }
 
     public void setType(String type) {
-        this.type = Utils.getInstance().convertShortTypeToLongType(type);
+        this.type = utils.convertShortTypeToLongType(type);
         notifyPropertyChanged(BR.type);
     }
 
