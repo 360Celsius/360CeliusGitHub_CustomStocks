@@ -5,6 +5,8 @@ import android.os.Build;
 import android.os.Bundle;
 import android.view.Window;
 import android.view.WindowManager;
+
+import com.celsius.customstocks.application.CustomStockApplication;
 import com.celsius.customstocks.dbhelper.DBHelper;
 import com.celsius.customstocks.iterfaces.DbHelperInterface;
 import com.celsius.customstocks.iterfaces.UtilsInterface;
@@ -12,13 +14,16 @@ import com.celsius.customstocks.recivers.ServiceBroadCastReciver;
 import com.celsius.customstocks.utils.ReciverServiceConsts;
 import com.celsius.customstocks.utils.Utils;
 
+import javax.inject.Inject;
+
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
 public class BaseActivity extends AppCompatActivity implements DbHelperInterface, UtilsInterface {
 
-    public static DBHelper helper = null;
+    @Inject DBHelper helper;
+
     public static Utils utils = null;
     private ServiceBroadCastReciver receiver = null;
 
@@ -44,7 +49,8 @@ public class BaseActivity extends AppCompatActivity implements DbHelperInterface
 
 
         // In any activity just pass the context and use the singleton method
-        helper = DBHelper.getInstance(getApplicationContext());
+        //TODO helper = DBHelper.getInstance(getApplicationContext());
+        CustomStockApplication.getMyComponent().inject(this);
         utils = Utils.getInstance();
     }
 

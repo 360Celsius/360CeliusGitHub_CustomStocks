@@ -10,28 +10,20 @@ import com.celsius.customstocks.datamodels.Symbol;
 
 import java.util.ArrayList;
 
+import javax.inject.Inject;
+import javax.inject.Named;
+import javax.inject.Singleton;
+
+@Singleton
 public class DBHelper extends SQLiteOpenHelper {
 
-    private static DBHelper sInstance;
     // Database Info
     private static final String DATABASE_NAME = "CustomStocksDatabase";
     private static final int DATABASE_VERSION = 2;
     private Context context;
 
-    public static synchronized DBHelper getInstance(Context context) {
-        // Use the application context, which will ensure that you
-        // don't accidentally leak an Activity's context.
-        if (sInstance == null) {
-            sInstance = new DBHelper(context.getApplicationContext());
-        }
-        return sInstance;
-    }
-
-    /**
-     * Constructor should be private to prevent direct instantiation.
-     * Make a call to the static method "getInstance()" instead.
-     */
-    private DBHelper(Context context) {
+    @Inject
+    public DBHelper(@Named("ApplicationContext") Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
         this.context = context;
     }

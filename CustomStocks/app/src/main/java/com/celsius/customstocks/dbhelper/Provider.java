@@ -8,12 +8,17 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 
+import com.celsius.customstocks.application.CustomStockApplication;
+import com.celsius.customstocks.iterfaces.DbHelperInterface;
+
+import javax.inject.Inject;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 public class Provider extends ContentProvider {
 
-    public static DBHelper helper = null;
+    @Inject DBHelper helper;
 
     private static final int ALL_SYMBOLS = 1;
 
@@ -26,7 +31,8 @@ public class Provider extends ContentProvider {
 
     @Override
     public boolean onCreate() {
-        helper  = DBHelper.getInstance(getContext());
+        //TODO helper  = DBHelper.getInstance(getContext());
+        //CustomStockApplication.getMyComponent().inject(this);
         return true;
     }
 
