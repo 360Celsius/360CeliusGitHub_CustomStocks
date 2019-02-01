@@ -15,7 +15,7 @@ import com.celsius.customstocks.databinding.FragmentSearchBinding;
 import com.celsius.customstocks.datamodels.LoadingWindownSymbol;
 import com.celsius.customstocks.datamodels.Symbol;
 import com.celsius.customstocks.dbhelper.DBContract;
-import com.celsius.customstocks.iterfaces.ActionCallback;
+import com.celsius.customstocks.iterfaces.ActionCallbackInterface;
 import com.celsius.customstocks.recyclerviewadapter.AllSymbolsRecyclerViewAdapter;
 
 import androidx.annotation.Nullable;
@@ -38,7 +38,7 @@ public class SearchFragment extends BaseFragment {
 
     private LoadingWindownSymbol data;
 
-    ActionCallback actionCallback;
+    ActionCallbackInterface actionCallbackInterface;
 
     @Nullable
 
@@ -51,7 +51,7 @@ public class SearchFragment extends BaseFragment {
         swipeRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.swipeRefreshLayout);
         recyclerView = (RecyclerView) view.findViewById(R.id.recycler_view);
 
-        actionCallback = new ActionCallback() {
+        actionCallbackInterface = new ActionCallbackInterface() {
             @Override
             public void onClick(Symbol symbol) {
                 Log.e("test",symbol.getSymbol());
@@ -59,7 +59,7 @@ public class SearchFragment extends BaseFragment {
 
         };
 
-        recyclerViewAdapter = new AllSymbolsRecyclerViewAdapter(mCallback.getDataBasehelper().getAllSymbols(),utils.getUtils(),getContext(),actionCallback);
+        recyclerViewAdapter = new AllSymbolsRecyclerViewAdapter(helper.getAllSymbols(),utils.getUtils(),getContext(), actionCallbackInterface);
 
         recyclerView.setAdapter(recyclerViewAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -87,12 +87,12 @@ public class SearchFragment extends BaseFragment {
 
 
     public void updateUpdateProsessLine(boolean isToShow){
-        data.setSymbolName(String.valueOf("Building Data "+mCallback.getDataBasehelper().getLatesetInsertedSymbo().getSymbol()));
+        data.setSymbolName(String.valueOf("Building Data "+helper.getLatesetInsertedSymbo().getSymbol()));
         data.setIsToShowWindow(isToShow);
     }
 
     public void updateSearchFragmetRecyclerView(boolean isToShowUpdateLine){
-        recyclerViewAdapter = new AllSymbolsRecyclerViewAdapter(mCallback.getDataBasehelper().getAllSymbols(),utils.getUtils(),getContext(),actionCallback);
+        recyclerViewAdapter = new AllSymbolsRecyclerViewAdapter(helper.getAllSymbols(),utils.getUtils(),getContext(), actionCallbackInterface);
 
         recyclerView.setAdapter(recyclerViewAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));

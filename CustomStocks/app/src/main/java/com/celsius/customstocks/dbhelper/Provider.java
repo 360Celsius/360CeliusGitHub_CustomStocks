@@ -9,7 +9,6 @@ import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 
 import com.celsius.customstocks.application.CustomStockApplication;
-import com.celsius.customstocks.iterfaces.DbHelperInterface;
 
 import javax.inject.Inject;
 

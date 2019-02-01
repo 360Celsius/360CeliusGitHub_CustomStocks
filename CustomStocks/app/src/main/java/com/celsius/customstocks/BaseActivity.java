@@ -7,7 +7,6 @@ import android.view.Window;
 import android.view.WindowManager;
 import com.celsius.customstocks.application.CustomStockApplication;
 import com.celsius.customstocks.dbhelper.DBHelper;
-import com.celsius.customstocks.iterfaces.DbHelperInterface;
 import com.celsius.customstocks.iterfaces.UtilsInterface;
 import com.celsius.customstocks.recivers.ServiceBroadCastReciver;
 import com.celsius.customstocks.utils.ReciverServiceConsts;
@@ -19,7 +18,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
-public class BaseActivity extends AppCompatActivity implements DbHelperInterface, UtilsInterface {
+public class BaseActivity extends AppCompatActivity implements  UtilsInterface {
 
     @Inject
     DBHelper helper;
@@ -65,11 +64,6 @@ public class BaseActivity extends AppCompatActivity implements DbHelperInterface
     protected void onStop() {
         unregisterReceiver(receiver);
         super.onStop();
-    }
-
-    @Override
-    public DBHelper getDataBasehelper() {
-        return helper;
     }
 
     @Override

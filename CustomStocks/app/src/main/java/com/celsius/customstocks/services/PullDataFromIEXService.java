@@ -3,11 +3,9 @@ package com.celsius.customstocks.services;
 import android.app.IntentService;
 import android.content.Intent;
 
-import com.celsius.customstocks.BaseActivity;
 import com.celsius.customstocks.application.CustomStockApplication;
 import com.celsius.customstocks.datamodels.Symbol;
 import com.celsius.customstocks.dbhelper.DBHelper;
-import com.celsius.customstocks.iterfaces.DbHelperInterface;
 import com.celsius.customstocks.network.NetworkHTTPRequests;
 import com.celsius.customstocks.parsers.JsonParser;
 import com.celsius.customstocks.utils.ReciverServiceConsts;
