@@ -8,26 +8,17 @@ import java.net.MalformedURLException;
 import java.net.ProtocolException;
 import java.net.URL;
 
+import javax.inject.Inject;
+import javax.inject.Singleton;
+
+@Singleton
 public class NetworkHTTPConnection {
     static final int TIMEOUT_SOCKET = 160000;
     static final int TIMEOUT_CONNECTION = 100000;
 
-    private static NetworkHTTPConnection _instance;
+    @Inject
+    public NetworkHTTPConnection() {}
 
-
-    private NetworkHTTPConnection()
-    {
-
-    }
-
-    public static NetworkHTTPConnection getInstance()
-    {
-        if (_instance == null)
-        {
-            _instance = new NetworkHTTPConnection();
-        }
-        return _instance;
-    }
 
     public static String getHttp(String apiAction){
 

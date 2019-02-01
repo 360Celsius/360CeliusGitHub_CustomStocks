@@ -5,20 +5,14 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 import java.util.ArrayList;
 
+import javax.inject.Inject;
+import javax.inject.Singleton;
+
+@Singleton
 public class JsonParser {
 
-    private static JsonParser _instance;
-
-    public static JsonParser getInstance() {
-        if (_instance == null) {
-            _instance = new JsonParser();
-        }
-        return _instance;
-    }
-
-    public JsonParser() {
-
-    }
+    @Inject
+    public JsonParser() {}
 
     public ArrayList<Symbol> getAllSymbolsParsed(String getSymbolsFromIEXResponce) {
         JSONArray reader = null;

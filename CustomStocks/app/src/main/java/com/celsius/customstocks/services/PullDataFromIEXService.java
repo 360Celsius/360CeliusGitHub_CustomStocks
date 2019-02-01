@@ -19,13 +19,13 @@ import androidx.annotation.Nullable;
 
 public class PullDataFromIEXService extends IntentService {
 
-    private static NetworkHTTPRequests networkHTTPRequests = null;
+    @Inject NetworkHTTPRequests networkHTTPRequests;
     public static final String GET_QOUTES_DATA = "GET_DATA";
 
 
     @Inject DBHelper helper;
 
-    private JsonParser jsonParser = null;
+    @Inject JsonParser jsonParser = null;
 
     public PullDataFromIEXService() {
         super("PullDataFromIEXService");
@@ -38,11 +38,7 @@ public class PullDataFromIEXService extends IntentService {
     @Override
     public void onCreate() {
         super.onCreate();
-        networkHTTPRequests = NetworkHTTPRequests.getInstance();
-
         CustomStockApplication.getMyComponent().inject(this);
-
-        jsonParser = JsonParser.getInstance();
     }
 
     @Override

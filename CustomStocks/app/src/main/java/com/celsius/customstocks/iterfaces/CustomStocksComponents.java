@@ -6,6 +6,7 @@ import com.celsius.customstocks.dbhelper.Provider;
 import com.celsius.customstocks.fragments.BaseFragment;
 import com.celsius.customstocks.modules.ContextModule;
 import com.celsius.customstocks.modules.DatabaseModule;
+import com.celsius.customstocks.network.NetworkHTTPRequests;
 import com.celsius.customstocks.services.PullDataFromIEXService;
 
 import javax.inject.Singleton;
@@ -20,5 +21,7 @@ public interface CustomStocksComponents {
     void inject(PullDataFromIEXService presenter);
     void inject(BaseFragment presenter);
     void inject(Symbol presenter);
+    void inject(NetworkHTTPRequests presenter);
+
 
 }

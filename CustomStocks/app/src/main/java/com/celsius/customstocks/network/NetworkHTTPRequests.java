@@ -1,27 +1,22 @@
 package com.celsius.customstocks.network;
 
+import com.celsius.customstocks.application.CustomStockApplication;
+
+import javax.inject.Inject;
+import javax.inject.Singleton;
+
+@Singleton
 public class NetworkHTTPRequests {
 
-    private static NetworkHTTPConnection networkHTTPConnection;
-    private static NetworkHttpAPIurlConst networkHttpAPIurlConst;
+    @Inject
+    NetworkHTTPConnection networkHTTPConnection;
 
+    @Inject
+    NetworkHttpAPIurlConst networkHttpAPIurlConst;
 
-    private static NetworkHTTPRequests _instance;
-
-
-
-    public static NetworkHTTPRequests getInstance()
-    {
-        if (_instance == null)
-        {
-            _instance = new NetworkHTTPRequests();
-        }
-        return _instance;
-    }
-
+    @Inject
     public NetworkHTTPRequests() {
-        this.networkHTTPConnection = NetworkHTTPConnection.getInstance();
-        this.networkHttpAPIurlConst = NetworkHttpAPIurlConst.getInstance();
+        CustomStockApplication.getMyComponent().inject(this);
     }
 
 

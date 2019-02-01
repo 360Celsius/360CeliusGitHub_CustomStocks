@@ -1,5 +1,9 @@
 package com.celsius.customstocks.network;
 
+import javax.inject.Inject;
+import javax.inject.Singleton;
+
+@Singleton
 public class NetworkHttpAPIurlConst {
 
     private static String BASIC_API_URL = "https://api.iextrading.com/1.0";
@@ -9,23 +13,8 @@ public class NetworkHttpAPIurlConst {
     //https://api.iextrading.com/1.0/stock/aapl/price
     ///https://api.iextrading.com/1.0/stock/aapl/news
 
-
-    private static NetworkHttpAPIurlConst _instance;
-
-
-    private NetworkHttpAPIurlConst()
-    {
-
-    }
-
-    public static NetworkHttpAPIurlConst getInstance()
-    {
-        if (_instance == null)
-        {
-            _instance = new NetworkHttpAPIurlConst();
-        }
-        return _instance;
-    }
+    @Inject
+    public NetworkHttpAPIurlConst() {}
 
     public String getLogoBySymbolURL(String symbol){
         return BASIC_API_URL+"/stock/"+symbol+"/logo";
