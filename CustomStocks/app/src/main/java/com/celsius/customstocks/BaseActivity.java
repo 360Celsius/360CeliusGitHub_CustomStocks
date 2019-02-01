@@ -5,7 +5,6 @@ import android.os.Build;
 import android.os.Bundle;
 import android.view.Window;
 import android.view.WindowManager;
-
 import com.celsius.customstocks.application.CustomStockApplication;
 import com.celsius.customstocks.dbhelper.DBHelper;
 import com.celsius.customstocks.iterfaces.DbHelperInterface;
@@ -22,7 +21,8 @@ import androidx.core.content.ContextCompat;
 
 public class BaseActivity extends AppCompatActivity implements DbHelperInterface, UtilsInterface {
 
-    @Inject DBHelper helper;
+    @Inject
+    DBHelper helper;
 
     public static Utils utils = null;
     private ServiceBroadCastReciver receiver = null;
