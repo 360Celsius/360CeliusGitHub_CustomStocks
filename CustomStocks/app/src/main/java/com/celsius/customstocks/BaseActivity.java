@@ -48,8 +48,6 @@ public class BaseActivity extends AppCompatActivity implements DbHelperInterface
         }
 
 
-        // In any activity just pass the context and use the singleton method
-        //TODO helper = DBHelper.getInstance(getApplicationContext());
         CustomStockApplication.getMyComponent().inject(this);
         utils = Utils.getInstance();
     }

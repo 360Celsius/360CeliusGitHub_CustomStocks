@@ -4,6 +4,7 @@ import android.app.IntentService;
 import android.content.Intent;
 
 import com.celsius.customstocks.BaseActivity;
+import com.celsius.customstocks.application.CustomStockApplication;
 import com.celsius.customstocks.datamodels.Symbol;
 import com.celsius.customstocks.dbhelper.DBHelper;
 import com.celsius.customstocks.iterfaces.DbHelperInterface;
@@ -13,6 +14,8 @@ import com.celsius.customstocks.utils.ReciverServiceConsts;
 
 import java.util.ArrayList;
 
+import javax.inject.Inject;
+
 import androidx.annotation.Nullable;
 
 
@@ -20,10 +23,11 @@ public class PullDataFromIEXService extends IntentService {
 
     private static NetworkHTTPRequests networkHTTPRequests = null;
     public static final String GET_QOUTES_DATA = "GET_DATA";
-    private DBHelper helper = null;
-    private JsonParser jsonParser = null;
 
-    public DbHelperInterface mCallback = null;
+
+    @Inject DBHelper helper;
+
+    private JsonParser jsonParser = null;
 
     public PullDataFromIEXService() {
         super("PullDataFromIEXService");
@@ -38,8 +42,7 @@ public class PullDataFromIEXService extends IntentService {
         super.onCreate();
         networkHTTPRequests = NetworkHTTPRequests.getInstance();
 
-        mCallback = (DbHelperInterface) getApplicationContext();
-        helper = mCallback.getDataBasehelper();
+        CustomStockApplication.getMyComponent().inject(this);
 
         jsonParser = JsonParser.getInstance();
     }

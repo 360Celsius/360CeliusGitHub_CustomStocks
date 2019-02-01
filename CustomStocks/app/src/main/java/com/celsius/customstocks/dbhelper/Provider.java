@@ -31,8 +31,6 @@ public class Provider extends ContentProvider {
 
     @Override
     public boolean onCreate() {
-        //TODO helper  = DBHelper.getInstance(getContext());
-        //CustomStockApplication.getMyComponent().inject(this);
         return true;
     }
 
@@ -51,6 +49,9 @@ public class Provider extends ContentProvider {
     @Nullable
     @Override
     public Uri insert(@NonNull Uri uri, @Nullable ContentValues values) {
+
+        CustomStockApplication.getMyComponent().inject(this);
+
         SQLiteDatabase db = helper.getWritableDatabase();
         String nullColumnHack = null;
         long id = db.insert(getTableName(uri), nullColumnHack, values);

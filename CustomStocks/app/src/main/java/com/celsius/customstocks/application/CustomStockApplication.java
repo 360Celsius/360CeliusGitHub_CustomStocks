@@ -21,6 +21,7 @@ public class CustomStockApplication extends Application {
 
         component = DaggerCustomStocksComponents.builder()
                 .contextModule(new ContextModule(getApplicationContext()))
+                .databaseModule(new DatabaseModule(new DBHelper(getApplicationContext())))
                 .build();
     }
 
