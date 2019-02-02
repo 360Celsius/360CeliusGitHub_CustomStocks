@@ -16,11 +16,12 @@ import javax.inject.Inject;
 
 import androidx.annotation.Nullable;
 
+import static com.celsius.customstocks.utils.ReciverServiceConsts.GET_QOUTES_DATA;
+
 
 public class PullDataFromIEXService extends IntentService {
 
     @Inject NetworkHTTPRequests networkHTTPRequests;
-    public static final String GET_QOUTES_DATA = "GET_DATA";
 
 
     @Inject DBHelper helper;

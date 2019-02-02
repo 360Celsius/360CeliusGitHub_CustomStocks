@@ -32,6 +32,10 @@ public class ServiceBroadCastReciver extends BroadcastReceiver {
                 ((SearchFragment) ((AppCompatActivity) context).getSupportFragmentManager().findFragmentByTag(SearchFragment.TAG)).updateSearchFragmetRecyclerView(false);
 
 
+        }else if( intent.getStringExtra(ReciverServiceConsts.DATA_TYPE_KEY).equalsIgnoreCase(ReciverServiceConsts.UPDATE_BULDING_DATA_ROW_ON_SEARCH_FRAGMENT) ){
+            if( ((AppCompatActivity) context).getSupportFragmentManager().findFragmentByTag(SearchFragment.TAG) !=null )
+                ((SearchFragment) ((AppCompatActivity) context).getSupportFragmentManager().findFragmentByTag(SearchFragment.TAG)).updateUpdateProsessLine(true);
+
         }
     }
 }

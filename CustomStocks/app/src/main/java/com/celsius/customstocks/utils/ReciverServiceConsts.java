@@ -11,4 +11,7 @@ public class ReciverServiceConsts {
 
 
     public static final String RELOAD_SEARCH_FRAGMNET_ALL_SYMBOLS_ADDED = "RELOAD_SEARCH_FRAGMNET_ALL_SYMBOLS_ADDED";
+
+    public static final String UPDATE_BULDING_DATA_ROW_ON_SEARCH_FRAGMENT = "UPDATE_BULDING_DATA_ROW_ON_SEARCH_FRAGMENT";
+
 }

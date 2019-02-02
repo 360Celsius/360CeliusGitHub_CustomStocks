@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.celsius.customstocks.R;
+import com.celsius.customstocks.application.CustomStockApplication;
 import com.celsius.customstocks.contentobservers.DataBaseContentObserver;
 import com.celsius.customstocks.databinding.FragmentSearchBinding;
 import com.celsius.customstocks.datamodels.LoadingWindownSymbol;
@@ -17,6 +18,8 @@ import com.celsius.customstocks.datamodels.Symbol;
 import com.celsius.customstocks.dbhelper.DBContract;
 import com.celsius.customstocks.iterfaces.ActionCallbackInterface;
 import com.celsius.customstocks.recyclerviewadapter.AllSymbolsRecyclerViewAdapter;
+
+import javax.inject.Inject;
 
 import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
@@ -32,7 +35,9 @@ public class SearchFragment extends BaseFragment {
     private RecyclerView recyclerView;
     private AllSymbolsRecyclerViewAdapter recyclerViewAdapter;
 
-    private DataBaseContentObserver dataBaseContentObserver;
+    @Inject
+    DataBaseContentObserver dataBaseContentObserver;
+
     private FragmentSearchBinding binding;
     private View view;
 
@@ -41,9 +46,11 @@ public class SearchFragment extends BaseFragment {
     ActionCallbackInterface actionCallbackInterface;
 
     @Nullable
-
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
+
+
+        CustomStockApplication.getMyComponent().inject(this);
 
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_search, container, false);
         view = binding.getRoot();
@@ -67,7 +74,6 @@ public class SearchFragment extends BaseFragment {
         swipeRefreshLayout.setRefreshing(false);
         swipeRefreshLayout.setEnabled(false);
 
-        dataBaseContentObserver =  DataBaseContentObserver.getInstance(new Handler(),getActivity());
         getActivity().getContentResolver().registerContentObserver(DBContract.AllSymbols.CONTENT_URI, true,dataBaseContentObserver);
 
         data = new LoadingWindownSymbol();
