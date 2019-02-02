@@ -25,7 +25,8 @@ public class BaseActivity extends AppCompatActivity {
     @Inject
     Utils utils;
 
-    private ServiceBroadCastReciver receiver = null;
+    @Inject
+    ServiceBroadCastReciver receiver;
 
 
 
@@ -56,7 +57,6 @@ public class BaseActivity extends AppCompatActivity {
         super.onResume();
 
         IntentFilter filter = new IntentFilter(ReciverServiceConsts.GET_QOUTES_DATA);
-        receiver =  ServiceBroadCastReciver.getInstance();
         registerReceiver(receiver, filter);
     }
 

@@ -9,26 +9,18 @@ import com.celsius.customstocks.MainActivity;
 import com.celsius.customstocks.fragments.SearchFragment;
 import com.celsius.customstocks.utils.ReciverServiceConsts;
 
+import javax.inject.Inject;
+import javax.inject.Singleton;
+
 import androidx.appcompat.app.AppCompatActivity;
 
+@Singleton
 public class ServiceBroadCastReciver extends BroadcastReceiver {
 
 
-    private static ServiceBroadCastReciver _instance;
+    @Inject
+    public ServiceBroadCastReciver() {}
 
-
-    private ServiceBroadCastReciver() {
-
-    }
-
-    public static ServiceBroadCastReciver getInstance()
-    {
-        if (_instance == null)
-        {
-            _instance = new ServiceBroadCastReciver();
-        }
-        return _instance;
-    }
 
     @Override
     public void onReceive(Context context, Intent intent) {
