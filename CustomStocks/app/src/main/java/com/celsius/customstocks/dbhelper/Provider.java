@@ -20,11 +20,14 @@ public class Provider extends ContentProvider {
     @Inject DBHelper helper;
 
     private static final int ALL_SYMBOLS = 1;
+    private static final int MARKETS = 2;
+
 
     private static final UriMatcher mMatcher = new UriMatcher(UriMatcher.NO_MATCH);
 
     static {
         mMatcher.addURI(DBContract.AUTHORITY, DBContract.AllSymbols.URI_SUFFIX, ALL_SYMBOLS);
+        mMatcher.addURI(DBContract.AUTHORITY, DBContract.Markets.URI_SUFFIX, MARKETS);
     }
 
 
@@ -81,6 +84,9 @@ public class Provider extends ContentProvider {
             case ALL_SYMBOLS:
                 tableName = DBContract.AllSymbols.TABLE_NAME;
                 break;
+            case MARKETS:
+                tableName = DBContract.Markets.TABLE_NAME;
+                break;
 
         }
 
@@ -93,6 +99,9 @@ public class Provider extends ContentProvider {
         switch (mMatcher.match(uri)) {
             case ALL_SYMBOLS:
                 contentUriName = DBContract.AllSymbols.CONTENT_URI;
+                break;
+            case MARKETS:
+                contentUriName = DBContract.Markets.CONTENT_URI;
                 break;
 
         }

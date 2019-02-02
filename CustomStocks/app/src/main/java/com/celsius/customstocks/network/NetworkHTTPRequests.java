@@ -26,4 +26,11 @@ public class NetworkHTTPRequests {
         responce = networkHTTPConnection.getHttp(url);
         return responce;
    }
+
+    public String getMarketsFromIEX(){
+        String responce = null;
+        String url = networkHttpAPIurlConst.getMarketsListURL();
+        responce = networkHTTPConnection.getHttp(url);
+        return responce;
+    }
 }

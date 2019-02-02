@@ -23,6 +23,10 @@ public class NetworkHttpAPIurlConst {
         return BASIC_API_URL+"/ref-data/symbols";
     }
 
+    public String getMarketsListURL(){
+        return BASIC_API_URL+"/market";
+    }
+
     public String getNewsBySymbolURL(String symbol){
         return BASIC_API_URL+"/stock/"+symbol+"/news";
     }

@@ -4,6 +4,7 @@ import android.app.IntentService;
 import android.content.Intent;
 
 import com.celsius.customstocks.application.CustomStockApplication;
+import com.celsius.customstocks.datamodels.Market;
 import com.celsius.customstocks.datamodels.Symbol;
 import com.celsius.customstocks.dbhelper.DBHelper;
 import com.celsius.customstocks.network.NetworkHTTPRequests;
@@ -60,6 +61,16 @@ public class PullDataFromIEXService extends IntentService {
                 broadcastIntent.setAction(GET_QOUTES_DATA);
                 broadcastIntent.putExtra(ReciverServiceConsts.DATA_TYPE_KEY, ReciverServiceConsts.RELOAD_SEARCH_FRAGMNET_ALL_SYMBOLS_ADDED);
                 sendBroadcast(broadcastIntent);
+                break;
+
+            case ReciverServiceConsts.GET_MARKERTS_DATA:
+
+                ArrayList<Market> marketssList = jsonParser.getMarketsParsed(networkHTTPRequests.getMarketsFromIEX());
+
+                helper.bulkInsertMarketsToMarketsDataTable(marketssList);
+
+                //TODO
+
                 break;
         }
     }

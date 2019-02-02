@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import com.celsius.customstocks.datamodels.Market;
 import com.celsius.customstocks.datamodels.Symbol;
 
 import java.util.ArrayList;
@@ -31,12 +32,16 @@ public class DBHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
+
         db.execSQL(DBContract.SQL_CREATE_All_SYMBOLS_TABLE);
+        db.execSQL(DBContract.SQL_CREATE_MARKETS_TABLE);
+
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL(DBContract.SQL_DELETE_All_SYMBOLS_TABLE);
+        db.execSQL(DBContract.SQL_DELETE_MARKETS_TABLE);
 
     }
 
@@ -196,4 +201,48 @@ public class DBHelper extends SQLiteOpenHelper {
             return symbol;
         }
     }
+
+
+    //=================  Markets =================
+
+    public void bulkInsertMarketsToMarketsDataTable(ArrayList<Market> marketssListParsed) {
+        deletMarketsTAble();
+        try {
+            ContentValues[] contentsArr = new ContentValues[marketssListParsed.size()];
+
+            for (int i = 0; i < marketssListParsed.size(); i++) {
+                ContentValues values = new ContentValues();
+                values.put(DBContract.Markets.COLUMN_NAME_MIC, marketssListParsed.get(i).getMic());
+                values.put(DBContract.Markets.COLUMN_NAME_TAPE_ID, marketssListParsed.get(i).getTapeId());
+                values.put(DBContract.Markets.COLUMN_NAME_VOLUME_NAME, marketssListParsed.get(i).getVenueName());
+                values.put(DBContract.Markets.COLUMN_NAME_VOLUME, marketssListParsed.get(i).getVolume());
+                values.put(DBContract.Markets.COLUMN_NAME_TAPE_A, marketssListParsed.get(i).getTapeA());
+                values.put(DBContract.Markets.COLUMN_NAME_TAPE_B, marketssListParsed.get(i).getTapeB());
+                values.put(DBContract.Markets.COLUMN_NAME_TAPE_C, marketssListParsed.get(i).getTapeC());
+                values.put(DBContract.Markets.COLUMN_NAME_IMARKET_PERCENTY, marketssListParsed.get(i).getMarketPercent());
+                values.put(DBContract.Markets.COLUMN_NAME_LAST_UPDATED, marketssListParsed.get(i).getLastUpdated());
+
+                contentsArr[i] = values;
+
+            }
+            context.getContentResolver().bulkInsert(DBContract.Markets.CONTENT_URI, contentsArr);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void deletMarketsTAble() {
+        SQLiteDatabase db = getWritableDatabase();
+        db.beginTransaction();
+        try {
+            db.delete(DBContract.Markets.TABLE_NAME, null, null);
+            db.setTransactionSuccessful();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            db.endTransaction();
+        }
+    }
+
 }

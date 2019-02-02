@@ -52,4 +52,46 @@ public class DBContract {
     public static final String SQL_SELECT_LAST_INSERTED_ROW =
             "SELECT * FROM "+ AllSymbols.TABLE_NAME+" ORDER BY "+AllSymbols._ID+ " DESC LIMIT 1";
     //============ ============ ==============
+
+    //=================  Markets =================
+    public static class Markets implements BaseColumns {
+        public static final String URI_SUFFIX = "markets";
+        public static final Uri CONTENT_URI = Uri.parse(String.format(Locale.US,CONTENT_BASE, URI_SUFFIX));
+
+        public static final String TABLE_NAME = "markets";
+
+        public static final String COLUMN_NAME_MIC = "mic";
+        public static final String COLUMN_NAME_TAPE_ID = "tapeId";
+        public static final String COLUMN_NAME_VOLUME_NAME = "venueName";
+        public static final String COLUMN_NAME_VOLUME = "volume";
+        public static final String COLUMN_NAME_TAPE_A = "tapeA";
+        public static final String COLUMN_NAME_TAPE_B = "tapeB";
+        public static final String COLUMN_NAME_TAPE_C = "tapeC";
+        public static final String COLUMN_NAME_IMARKET_PERCENTY = "marketPercent";
+        public static final String COLUMN_NAME_LAST_UPDATED = "lastUpdated";
+
+    }
+
+    public static final String SQL_CREATE_MARKETS_TABLE =
+            "CREATE TABLE " + Markets.TABLE_NAME + " (" +
+                    Markets._ID + " INTEGER PRIMARY KEY," +
+                    Markets.COLUMN_NAME_MIC + " TEXT," +
+                    Markets.COLUMN_NAME_TAPE_ID + " TEXT," +
+                    Markets.COLUMN_NAME_VOLUME_NAME + " TEXT," +
+                    Markets.COLUMN_NAME_VOLUME + " TEXT," +
+                    Markets.COLUMN_NAME_TAPE_A + " TEXT," +
+                    Markets.COLUMN_NAME_TAPE_B + " TEXT," +
+                    Markets.COLUMN_NAME_TAPE_C + " TEXT," +
+                    Markets.COLUMN_NAME_IMARKET_PERCENTY + " TEXT," +
+                    Markets.COLUMN_NAME_LAST_UPDATED + " TEXT)";
+
+    public static final String SQL_DELETE_MARKETS_TABLE =
+            "DROP TABLE IF EXISTS " + Markets.TABLE_NAME;
+
+    public static final String SQL_SELECT_MARKETS_TABLE =
+            "SELECT  * FROM " + Markets.TABLE_NAME + " WHERE "+ Markets._ID;
+
+    //============ ============ ==============
+
+
 }

@@ -1,5 +1,6 @@
 package com.celsius.customstocks.parsers;
 
+import com.celsius.customstocks.datamodels.Market;
 import com.celsius.customstocks.datamodels.Symbol;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -38,6 +39,36 @@ public class JsonParser {
 
         }
         return symbolArrayList;
+    }
+
+    public ArrayList<Market> getMarketsParsed(String getMarketsFromIEXResponce) {
+        JSONArray reader = null;
+        ArrayList<Market> marketsArrayList = new ArrayList<>();
+
+        try {
+            reader = new JSONArray(getMarketsFromIEXResponce);
+            for (int i = 0; i < reader.length(); i++) {
+                JSONObject jsonObject = reader.getJSONObject(i);
+                Market market = new Market();
+
+                market.setMic(String.valueOf(jsonObject.get("mic")));
+                market.setTapeId(String.valueOf(jsonObject.get("tapeId")));
+                market.setVolume(String.valueOf(jsonObject.get("venueName")));
+                market.setVolume(String.valueOf(jsonObject.get("volume")));
+                market.setTapeA(String.valueOf(jsonObject.get("tapeA")));
+                market.setTapeB(String.valueOf(jsonObject.get("tapeB")));
+                market.setTapeC(String.valueOf(jsonObject.get("tapeC")));
+                market.setMarketPercent(String.valueOf(jsonObject.get("marketPercent")));
+                market.setLastUpdated(String.valueOf(jsonObject.get("lastUpdated")));
+
+
+                marketsArrayList.add(market);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+
+        }
+        return marketsArrayList;
     }
 
 }
