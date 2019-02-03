@@ -1,5 +1,8 @@
 package com.celsius.customstocks.utils;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
@@ -29,5 +32,14 @@ public class Utils {
         }else {
             return "N/A";
         }
+    }
+
+    public String milisecondsTGoDate(String dateInMiliseconds){
+
+
+        Date date = new Date();
+        date.setTime(Long.valueOf(dateInMiliseconds));
+        String formattedDate=new SimpleDateFormat("MMM d, yyyy").format(date);
+        return formattedDate;
     }
 }

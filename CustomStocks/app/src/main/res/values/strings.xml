@@ -20,4 +20,7 @@
 
     <string name="search_field_hint">Search for Symbol</string>
 
+    <string name="volume_header">Volume</string>
+
+
 </resources>

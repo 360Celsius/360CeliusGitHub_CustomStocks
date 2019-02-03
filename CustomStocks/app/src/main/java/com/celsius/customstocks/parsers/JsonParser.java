@@ -53,7 +53,7 @@ public class JsonParser {
 
                 market.setMic(String.valueOf(jsonObject.get("mic")));
                 market.setTapeId(String.valueOf(jsonObject.get("tapeId")));
-                market.setVolume(String.valueOf(jsonObject.get("venueName")));
+                market.setVenueName(String.valueOf(jsonObject.get("venueName")));
                 market.setVolume(String.valueOf(jsonObject.get("volume")));
                 market.setTapeA(String.valueOf(jsonObject.get("tapeA")));
                 market.setTapeB(String.valueOf(jsonObject.get("tapeB")));

@@ -18,4 +18,6 @@
     <color name="loading_message_bg">#FFFACD</color>
 
 
+    <color name="symbol_volune_name_color">#808080</color>
+
 </resources>

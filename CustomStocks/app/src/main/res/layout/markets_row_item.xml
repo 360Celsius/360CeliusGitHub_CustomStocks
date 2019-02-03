@@ -12,7 +12,7 @@
 
         <TextView
             android:id="@+id/mic"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:ellipsize="end"
             android:maxLines="1"
             android:layout_height="wrap_content"
@@ -24,6 +24,75 @@
             android:layout_marginTop="6dp"
             android:textColor="@color/symbol_name_color"
             android:text="@{market.mic}"/>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="24dp"
+            android:layout_marginTop="6dp"
+            android:layout_marginBottom="12dp"
+            android:textColor="@color/symbol_tyoe_color"
+            android:layout_below="@+id/mic"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/volume_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:textColor="@color/symbol_tyoe_color"
+                android:text="@{market.venueName}"
+                android:textSize="12dp"/>
+
+            <View
+                android:id="@+id/market_date_seperator"
+                android:layout_width="1dp"
+                android:layout_height="12dp"
+                android:layout_marginLeft="6dp"
+                android:background="@color/search_field_stroke_color"/>
+
+            <TextView
+                android:id="@+id/market_last_update"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:layout_marginLeft="6dp"
+                android:textColor="@color/symbol_tyoe_color"
+                android:text="@{market.lastUpdated}"
+                android:textSize="12dp"/>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/volunu_title"
+            android:layout_width="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:layout_height="wrap_content"
+            android:textSize="16dp"
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="12dp"
+            android:layout_marginTop="6dp"
+            android:layout_marginBottom="6dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:textColor="@color/symbol_name_color"
+            android:text="@{market.volume}"/>
+
+
+        <View
+            android:id="@+id/buttom_seperator"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="12dp"
+            android:background="@color/search_field_stroke_color"/>
 
 
     </RelativeLayout>

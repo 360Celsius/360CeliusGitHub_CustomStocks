@@ -1,6 +1,10 @@
 package com.celsius.customstocks.datamodels;
 
 import com.celsius.customstocks.BR;
+import com.celsius.customstocks.application.CustomStockApplication;
+import com.celsius.customstocks.utils.Utils;
+
+import javax.inject.Inject;
 
 import androidx.databinding.BaseObservable;
 import androidx.databinding.Bindable;
@@ -16,6 +20,13 @@ public class Market extends BaseObservable {
     private String tapeC;
     private String marketPercent;
     private String lastUpdated;
+
+    @Inject
+    Utils utils;
+
+    public Market() {
+        CustomStockApplication.getMyComponent().inject(this);
+    }
 
     @Bindable
     public String getMic() {
@@ -111,7 +122,7 @@ public class Market extends BaseObservable {
     }
 
     public void setLastUpdated(String lastUpdated) {
-        this.lastUpdated = lastUpdated;
+        this.lastUpdated = utils.convertShortTypeToLongType(lastUpdated);
         notifyPropertyChanged(BR.lastUpdated);
 
     }
