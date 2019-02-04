@@ -1,7 +1,9 @@
 package com.celsius.customstocks.utils;
 
+import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
@@ -44,5 +46,17 @@ public class Utils {
         }catch (NumberFormatException e){
             return "N/A";
         }
+    }
+
+    public String valueDecorator(String value){
+        Double number = Double.valueOf(value);//1500D;
+
+        // Format currency for Canada locale in Canada locale,
+        // the decimal point symbol is a comma and currency
+        // symbol is $.
+        NumberFormat format = NumberFormat.getCurrencyInstance(Locale.US);
+        String currency = format.format(number);
+
+        return currency;
     }
 }
