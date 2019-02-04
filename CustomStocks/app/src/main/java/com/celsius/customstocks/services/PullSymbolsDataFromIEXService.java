@@ -20,7 +20,7 @@ import androidx.annotation.Nullable;
 import static com.celsius.customstocks.utils.ReciverServiceConsts.GET_QOUTES_DATA;
 
 
-public class PullDataFromIEXService extends IntentService {
+public class PullSymbolsDataFromIEXService extends IntentService {
 
     @Inject NetworkHTTPRequests networkHTTPRequests;
 
@@ -29,11 +29,11 @@ public class PullDataFromIEXService extends IntentService {
 
     @Inject JsonParser jsonParser = null;
 
-    public PullDataFromIEXService() {
-        super("PullDataFromIEXService");
+    public PullSymbolsDataFromIEXService() {
+        super("PullSymbolsDataFromIEXService");
     }
 
-    public PullDataFromIEXService(String name) {
+    public PullSymbolsDataFromIEXService(String name) {
         super(name);
     }
 
@@ -63,15 +63,6 @@ public class PullDataFromIEXService extends IntentService {
                 sendBroadcast(broadcastIntent);
                 break;
 
-            case ReciverServiceConsts.GET_MARKERTS_DATA:
-
-                ArrayList<Market> marketssList = jsonParser.getMarketsParsed(networkHTTPRequests.getMarketsFromIEX());
-
-                helper.bulkInsertMarketsToMarketsDataTable(marketssList);
-
-                //TODO
-
-                break;
         }
     }
 }

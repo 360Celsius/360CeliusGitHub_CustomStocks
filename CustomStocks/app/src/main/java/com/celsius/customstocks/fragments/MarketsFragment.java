@@ -8,10 +8,10 @@ import android.view.ViewGroup;
 
 import com.celsius.customstocks.R;
 import com.celsius.customstocks.databinding.FragmentMarketsBinding;
-import com.celsius.customstocks.databinding.FragmentSearchBinding;
 import com.celsius.customstocks.recyclerviewadapter.AllSymbolsRecyclerViewAdapter;
 import com.celsius.customstocks.recyclerviewadapter.MarketsRecyclerViewAdapter;
-import com.celsius.customstocks.services.PullDataFromIEXService;
+import com.celsius.customstocks.services.PullMarketsDataFromIEXService;
+import com.celsius.customstocks.services.PullSymbolsDataFromIEXService;
 import com.celsius.customstocks.utils.ReciverServiceConsts;
 
 import androidx.annotation.Nullable;
@@ -44,7 +44,7 @@ public class MarketsFragment extends BaseFragment {
 
         recyclerView = (RecyclerView) view.findViewById(R.id.recycler_view);
 
-        Intent intent = new Intent(getActivity(), PullDataFromIEXService.class);
+        Intent intent = new Intent(getActivity(), PullMarketsDataFromIEXService.class);
         intent.putExtra(ReciverServiceConsts.DATA_TYPE_KEY, ReciverServiceConsts.GET_MARKERTS_DATA);
         getActivity().startService(intent);
 
@@ -56,5 +56,12 @@ public class MarketsFragment extends BaseFragment {
 
 
         return view;
+    }
+
+    public void updateMarketsFragmetRecyclerView(){
+        recyclerViewAdapter = new MarketsRecyclerViewAdapter(helper.getMarkets(),utils,getContext());
+        recyclerView.setAdapter(recyclerViewAdapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+
     }
 }

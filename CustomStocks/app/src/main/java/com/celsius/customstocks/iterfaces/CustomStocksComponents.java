@@ -10,7 +10,8 @@ import com.celsius.customstocks.modules.ContextModule;
 import com.celsius.customstocks.modules.DBContentObserverModule;
 import com.celsius.customstocks.modules.DatabaseModule;
 import com.celsius.customstocks.network.NetworkHTTPRequests;
-import com.celsius.customstocks.services.PullDataFromIEXService;
+import com.celsius.customstocks.services.PullMarketsDataFromIEXService;
+import com.celsius.customstocks.services.PullSymbolsDataFromIEXService;
 
 import javax.inject.Singleton;
 
@@ -21,7 +22,8 @@ import dagger.Component;
 public interface CustomStocksComponents {
     void inject(BaseActivity presenter);
     void inject(Provider presenter);
-    void inject(PullDataFromIEXService presenter);
+    void inject(PullSymbolsDataFromIEXService presenter);
+    void inject(PullMarketsDataFromIEXService presenter);
     void inject(BaseFragment presenter);
     void inject(Symbol presenter);
     void inject(Market presenter);

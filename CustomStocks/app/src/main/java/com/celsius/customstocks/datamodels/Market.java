@@ -122,7 +122,7 @@ public class Market extends BaseObservable {
     }
 
     public void setLastUpdated(String lastUpdated) {
-        this.lastUpdated = utils.convertShortTypeToLongType(lastUpdated);
+        this.lastUpdated = utils.milisecondsTGoDate(lastUpdated);
         notifyPropertyChanged(BR.lastUpdated);
 
     }

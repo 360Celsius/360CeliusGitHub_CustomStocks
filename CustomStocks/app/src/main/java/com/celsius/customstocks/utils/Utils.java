@@ -36,10 +36,13 @@ public class Utils {
 
     public String milisecondsTGoDate(String dateInMiliseconds){
 
-
-        Date date = new Date();
-        date.setTime(Long.valueOf(dateInMiliseconds));
-        String formattedDate=new SimpleDateFormat("MMM d, yyyy").format(date);
-        return formattedDate;
+        try {
+            Date date = new Date();
+            date.setTime(Long.valueOf(dateInMiliseconds));
+            String formattedDate = new SimpleDateFormat("MMM d, yyyy").format(date);
+            return formattedDate;
+        }catch (NumberFormatException e){
+            return "N/A";
+        }
     }
 }

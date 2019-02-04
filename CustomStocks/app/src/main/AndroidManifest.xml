@@ -25,7 +25,10 @@
 
         <activity android:name=".MainActivity" android:screenOrientation="portrait" ></activity>
 
-        <service android:name=".services.PullDataFromIEXService"
+        <service android:name=".services.PullSymbolsDataFromIEXService"
+            android:enabled="true"/>
+
+        <service android:name=".services.PullMarketsDataFromIEXService"
             android:enabled="true"/>
 
         <receiver android:name=".recivers.ServiceBroadCastReciver"/>
