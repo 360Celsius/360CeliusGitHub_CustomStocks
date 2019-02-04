@@ -67,7 +67,7 @@ public class Market extends BaseObservable {
     }
 
     public void setVolume(String volume) {
-        this.volume = utils.valueDecorator(volume);
+        this.volume = volume;
         notifyPropertyChanged(BR.volume);
 
     }

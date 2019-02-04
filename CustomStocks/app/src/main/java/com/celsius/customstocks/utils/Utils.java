@@ -47,16 +47,4 @@ public class Utils {
             return "N/A";
         }
     }
-
-    public String valueDecorator(String value){
-        Double number = Double.valueOf(value);//1500D;
-
-        // Format currency for Canada locale in Canada locale,
-        // the decimal point symbol is a comma and currency
-        // symbol is $.
-        NumberFormat format = NumberFormat.getCurrencyInstance(Locale.US);
-        String currency = format.format(number);
-
-        return currency;
-    }
 }
