@@ -66,6 +66,7 @@
                 android:textColor="@color/symbol_tyoe_color"
                 android:text="@{market.lastUpdated}"
                 android:textSize="12dp"/>
+
         </LinearLayout>
 
         <TextView
@@ -84,6 +85,19 @@
             android:textColor="@color/symbol_name_color"
             android:text="@{market.volume}"/>
 
+        <TextView
+            android:id="@+id/market_percent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:layout_marginLeft="6dp"
+            android:paddingRight="14dp"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/volunu_title"
+            android:textColor="@color/symbol_tyoe_color"
+            android:text="@{market.marketPercent}"
+            android:textSize="14dp"/>
 
         <View
             android:id="@+id/buttom_seperator"
