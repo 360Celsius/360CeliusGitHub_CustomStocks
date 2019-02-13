@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import com.celsius.customstocks.datamodels.Market;
 import com.celsius.customstocks.datamodels.Symbol;
@@ -14,6 +15,8 @@ import java.util.ArrayList;
 import javax.inject.Inject;
 import javax.inject.Named;
 import javax.inject.Singleton;
+
+import static com.celsius.customstocks.dbhelper.DBContract.AllSymbols.TABLE_NAME;
 
 @Singleton
 public class DBHelper extends SQLiteOpenHelper {
@@ -66,6 +69,7 @@ public class DBHelper extends SQLiteOpenHelper {
                 values.put(DBContract.AllSymbols.COLUMN_NAME_IS_ENABLED, allSymbolsParsed.get(i).getIsEnabled());
                 values.put(DBContract.AllSymbols.COLUMN_NAME_TYPE, allSymbolsParsed.get(i).getType());
                 values.put(DBContract.AllSymbols.COLUMN_NAME_IEX_ID, allSymbolsParsed.get(i).getIexId());
+                values.put(DBContract.AllSymbols.COLUMN_NAME_ROW_ID, String.valueOf(i+1));
                 values.put(DBContract.AllSymbols.COLUMN_NAME_IS_IN_PORTFOLIO, "0");
                 contentsArr[i] = values;
 
@@ -128,7 +132,7 @@ public class DBHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = getWritableDatabase();
         db.beginTransaction();
         try {
-            db.delete(DBContract.AllSymbols.TABLE_NAME, null, null);
+            db.delete(TABLE_NAME, null, null);
             db.setTransactionSuccessful();
         } catch (Exception e) {
             e.printStackTrace();
@@ -156,7 +160,12 @@ public class DBHelper extends SQLiteOpenHelper {
                     symbol.setName(cursor.getString(cursor.getColumnIndex(DBContract.AllSymbols.COLUMN_NAME_NAME)));
                     symbol.setSymbol(cursor.getString(cursor.getColumnIndex(DBContract.AllSymbols.COLUMN_NAME_SYMBOL)));
                     symbol.setType(cursor.getString(cursor.getColumnIndex(DBContract.AllSymbols.COLUMN_NAME_TYPE)));
-                    symbol.setIsInPortfolio(cursor.getString(cursor.getColumnIndex(DBContract.AllSymbols.COLUMN_NAME_IS_IN_PORTFOLIO)));
+                    if(cursor.getString(cursor.getColumnIndex(DBContract.AllSymbols.COLUMN_NAME_IS_IN_PORTFOLIO)).contains("1")){
+                        symbol.setIsInPortfolio(true);
+                    }else{
+                        symbol.setIsInPortfolio(false);
+                    }
+                    symbol.setId(cursor.getString(cursor.getColumnIndex(DBContract.AllSymbols.COLUMN_NAME_ROW_ID)));
 
                     allSymbolsList.add(symbol);
 
@@ -187,7 +196,12 @@ public class DBHelper extends SQLiteOpenHelper {
                 symbol.setName(cursor.getString(cursor.getColumnIndex(DBContract.AllSymbols.COLUMN_NAME_NAME)));
                 symbol.setSymbol(cursor.getString(cursor.getColumnIndex(DBContract.AllSymbols.COLUMN_NAME_SYMBOL)));
                 symbol.setType(cursor.getString(cursor.getColumnIndex(DBContract.AllSymbols.COLUMN_NAME_TYPE)));
-                symbol.setIsInPortfolio(cursor.getString(cursor.getColumnIndex(DBContract.AllSymbols.COLUMN_NAME_IS_IN_PORTFOLIO)));
+
+                if(cursor.getString(cursor.getColumnIndex(DBContract.AllSymbols.COLUMN_NAME_IS_IN_PORTFOLIO)).contains("1")){
+                    symbol.setIsInPortfolio(true);
+                }else{
+                    symbol.setIsInPortfolio(false);
+                }
 
             }
         } catch (Exception e) {
@@ -200,6 +214,35 @@ public class DBHelper extends SQLiteOpenHelper {
 
             return symbol;
         }
+    }
+
+    public void addSymbolToWatchList(Symbol symbol){
+        Log.e("Test","I am here -> "+symbol.getSymbol());
+
+        try {
+
+            SQLiteDatabase db = getWritableDatabase();
+
+            ContentValues values = new ContentValues();
+            values.put(DBContract.AllSymbols.COLUMN_NAME_SYMBOL, symbol.getSymbol());
+            values.put(DBContract.AllSymbols.COLUMN_NAME_NAME, symbol.getName());
+            values.put(DBContract.AllSymbols.COLUMN_NAME_DATE, symbol.getDate());
+            values.put(DBContract.AllSymbols.COLUMN_NAME_IS_ENABLED, symbol.getIsEnabled());
+            values.put(DBContract.AllSymbols.COLUMN_NAME_TYPE, symbol.getType());
+            values.put(DBContract.AllSymbols.COLUMN_NAME_IEX_ID, symbol.getIexId());
+            values.put(DBContract.AllSymbols.COLUMN_NAME_ROW_ID, symbol.getId());
+            if(symbol.getIsInPortfolio() == true)
+                values.put(DBContract.AllSymbols.COLUMN_NAME_IS_IN_PORTFOLIO, "0");
+            else
+                values.put(DBContract.AllSymbols.COLUMN_NAME_IS_IN_PORTFOLIO, "1");
+
+            db.update(TABLE_NAME, values, "_id="+symbol.getId(), null);
+        }catch (Exception e) {
+            e.printStackTrace();
+        }finally {
+
+        }
+
     }
 
 

@@ -17,7 +17,8 @@ public class Symbol extends BaseObservable {
     private String isEnabled;
     private String type;
     private String iexId;
-    private String isInPortfolio;
+    private boolean isInPortfolio;
+    private String id;
 
     @Inject
     Utils utils;
@@ -26,12 +27,25 @@ public class Symbol extends BaseObservable {
         CustomStockApplication.getMyComponent().inject(this);
     }
 
+
     @Bindable
-    public String getIsInPortfolio() {
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+        notifyPropertyChanged(BR.id);
+
+    }
+
+
+    @Bindable
+    public boolean getIsInPortfolio() {
         return isInPortfolio;
     }
 
-    public void setIsInPortfolio(String isInPortfolio) {
+    public void setIsInPortfolio(boolean isInPortfolio) {
         this.isInPortfolio = isInPortfolio;
         notifyPropertyChanged(BR.isInPortfolio);
     }

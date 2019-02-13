@@ -62,6 +62,8 @@ public class SearchFragment extends BaseFragment {
             @Override
             public void onClick(Symbol symbol) {
                 Log.e("test",symbol.getSymbol());
+                helper.addSymbolToWatchList(symbol);
+                updateSearchFragmetRecyclerView(false);
             }
 
         };

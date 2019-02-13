@@ -28,6 +28,8 @@ public class DBContract {
         public static final String COLUMN_NAME_TYPE = "type";
         public static final String COLUMN_NAME_IEX_ID = "iexId";
         public static final String COLUMN_NAME_IS_IN_PORTFOLIO = "isInPortfolio";
+        public static final String COLUMN_NAME_ROW_ID = "rowid";
+
 
     }
 
@@ -40,6 +42,7 @@ public class DBContract {
                     AllSymbols.COLUMN_NAME_IS_ENABLED + " TEXT," +
                     AllSymbols.COLUMN_NAME_TYPE + " TEXT," +
                     AllSymbols.COLUMN_NAME_IS_IN_PORTFOLIO + " TEXT," +
+                    AllSymbols.COLUMN_NAME_ROW_ID + " TEXT," +
                     AllSymbols.COLUMN_NAME_IEX_ID + " TEXT)";
 
     public static final String SQL_DELETE_All_SYMBOLS_TABLE =

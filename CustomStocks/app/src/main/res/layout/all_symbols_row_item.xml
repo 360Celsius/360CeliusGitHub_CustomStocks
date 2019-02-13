@@ -80,6 +80,7 @@
             android:layout_alignParentRight="true"
             android:layout_marginRight="6dp"
             android:onClick="@{() -> callback.onClick(symbol)}"
+            android:checked="@{symbol.isInPortfolio ? true : false}"
             android:button="@drawable/checkbox_selector" />
 
 
