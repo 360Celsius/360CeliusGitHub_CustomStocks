@@ -63,6 +63,10 @@ public class AllSymbolsRecyclerViewAdapter extends RecyclerView.Adapter<AllSymbo
 
     @Override
     public long getItemId(int position) {
-        return Long.valueOf(allSymbolsList.get(position).getId());
+        try {
+            return Long.valueOf(allSymbolsList.get(position).getId());
+        }catch (Exception e){
+            return position;
+        }
     }
 }

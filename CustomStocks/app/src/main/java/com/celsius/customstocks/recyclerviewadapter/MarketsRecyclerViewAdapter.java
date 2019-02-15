@@ -31,7 +31,7 @@ public class MarketsRecyclerViewAdapter extends RecyclerView.Adapter<MarketsView
         this.marketsList = marketsList;
         this.context = context;
         this.utils = utils;
-
+        setHasStableIds(true);
     }
     @NonNull
     @Override
@@ -56,5 +56,14 @@ public class MarketsRecyclerViewAdapter extends RecyclerView.Adapter<MarketsView
     @Override
     public void onAttachedToRecyclerView(RecyclerView recyclerView) {
         super.onAttachedToRecyclerView(recyclerView);
+    }
+
+    @Override
+    public long getItemId(int position) {
+        try {
+            return Long.valueOf(marketsList.get(position).getId());
+        }catch (Exception e){
+            return position;
+        }
     }
 }

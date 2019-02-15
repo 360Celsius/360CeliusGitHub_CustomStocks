@@ -264,6 +264,7 @@ public class DBHelper extends SQLiteOpenHelper {
                 values.put(DBContract.Markets.COLUMN_NAME_TAPE_C, marketssListParsed.get(i).getTapeC());
                 values.put(DBContract.Markets.COLUMN_NAME_IMARKET_PERCENTY, marketssListParsed.get(i).getMarketPercent());
                 values.put(DBContract.Markets.COLUMN_NAME_LAST_UPDATED, marketssListParsed.get(i).getLastUpdated());
+                values.put(DBContract.Markets.COLUMN_NAME_ROW_ID, String.valueOf(i+1));
 
                 contentsArr[i] = values;
 

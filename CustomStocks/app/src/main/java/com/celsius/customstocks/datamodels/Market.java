@@ -20,12 +20,25 @@ public class Market extends BaseObservable {
     private String tapeC;
     private String marketPercent;
     private String lastUpdated;
+    private String id;
+
 
     @Inject
     Utils utils;
 
     public Market() {
         CustomStockApplication.getMyComponent().inject(this);
+    }
+
+    @Bindable
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+        notifyPropertyChanged(BR.id);
+
     }
 
     @Bindable

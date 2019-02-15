@@ -72,6 +72,8 @@ public class DBContract {
         public static final String COLUMN_NAME_TAPE_C = "tapeC";
         public static final String COLUMN_NAME_IMARKET_PERCENTY = "marketPercent";
         public static final String COLUMN_NAME_LAST_UPDATED = "lastUpdated";
+        public static final String COLUMN_NAME_ROW_ID = "rowid";
+
 
     }
 
@@ -86,6 +88,7 @@ public class DBContract {
                     Markets.COLUMN_NAME_TAPE_B + " TEXT," +
                     Markets.COLUMN_NAME_TAPE_C + " TEXT," +
                     Markets.COLUMN_NAME_IMARKET_PERCENTY + " TEXT," +
+                    Markets.COLUMN_NAME_ROW_ID + " TEXT," +
                     Markets.COLUMN_NAME_LAST_UPDATED + " TEXT)";
 
     public static final String SQL_DELETE_MARKETS_TABLE =

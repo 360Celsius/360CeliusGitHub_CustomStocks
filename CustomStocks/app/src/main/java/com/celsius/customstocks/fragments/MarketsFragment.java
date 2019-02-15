@@ -49,7 +49,9 @@ public class MarketsFragment extends BaseFragment {
         getActivity().startService(intent);
 
 
-        updateMarketsFragmetRecyclerView();
+        recyclerViewAdapter = new MarketsRecyclerViewAdapter(helper.getMarkets(),utils,getContext());
+        recyclerView.setAdapter(recyclerViewAdapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
 
         return view;
@@ -57,8 +59,6 @@ public class MarketsFragment extends BaseFragment {
 
     public void updateMarketsFragmetRecyclerView(){
         recyclerViewAdapter = new MarketsRecyclerViewAdapter(helper.getMarkets(),utils,getContext());
-        recyclerView.setAdapter(recyclerViewAdapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-
+        recyclerView.swapAdapter(recyclerViewAdapter,false);
     }
 }

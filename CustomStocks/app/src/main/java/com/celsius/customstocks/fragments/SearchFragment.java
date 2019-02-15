@@ -96,6 +96,7 @@ public class SearchFragment extends BaseFragment {
 
 
     public void updateUpdateProsessLine(boolean isToShow){
+
         data.setSymbolName(String.valueOf("Building Data "+helper.getLatesetInsertedSymbo().getSymbol()));
         data.setIsToShowWindow(isToShow);
     }
