@@ -107,7 +107,10 @@ public class Market extends BaseObservable {
 
     @Bindable
     public String getMarketPercent() {
-        return marketPercent+" %";
+        if(marketPercent.contains("%"))
+            return marketPercent;
+        else
+            return marketPercent+" %";
     }
 
     public void setMarketPercent(String marketPercent) {

@@ -249,7 +249,7 @@ public class DBHelper extends SQLiteOpenHelper {
     //=================  Markets =================
 
     public void bulkInsertMarketsToMarketsDataTable(ArrayList<Market> marketssListParsed) {
-        //deletMarketsTAble();
+        deletMarketsTAble();
         try {
             ContentValues[] contentsArr = new ContentValues[marketssListParsed.size()];
 
