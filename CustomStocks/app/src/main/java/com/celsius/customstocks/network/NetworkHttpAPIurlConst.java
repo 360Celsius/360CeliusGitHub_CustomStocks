@@ -32,7 +32,7 @@ public class NetworkHttpAPIurlConst {
     }
 
     public String getPriceBySymbolYRL(String symbol){
-        return BASIC_API_URL+"/stock/"+symbol+"/price";
+        return BASIC_API_URL+"/stock/"+symbol+"/quote";
     }
 
 }

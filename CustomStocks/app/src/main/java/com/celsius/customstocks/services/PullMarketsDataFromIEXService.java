@@ -55,7 +55,6 @@ public class PullMarketsDataFromIEXService extends IntentService {
 
                 helper.bulkInsertMarketsToMarketsDataTable(marketssList);
 
-                //TODO
                 broadcastIntent.setAction(GET_QOUTES_DATA);
                 broadcastIntent.putExtra(ReciverServiceConsts.DATA_TYPE_KEY, ReciverServiceConsts.RELOAD_MARKETS_FRAGMNET);
                 sendBroadcast(broadcastIntent);

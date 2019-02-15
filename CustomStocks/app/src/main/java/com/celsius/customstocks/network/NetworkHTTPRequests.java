@@ -33,4 +33,11 @@ public class NetworkHTTPRequests {
         responce = networkHTTPConnection.getHttp(url);
         return responce;
     }
+
+    public String getStockPrice(String stock){
+        String responce = null;
+        String url = networkHttpAPIurlConst.getPriceBySymbolYRL(stock);
+        responce = networkHTTPConnection.getHttp(url);
+        return responce;
+    }
 }
