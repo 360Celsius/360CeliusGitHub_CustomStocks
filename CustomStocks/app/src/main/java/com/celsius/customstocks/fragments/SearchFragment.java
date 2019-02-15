@@ -102,8 +102,7 @@ public class SearchFragment extends BaseFragment {
     public void updateSearchFragmetRecyclerView(boolean isToShowUpdateLine){
         recyclerViewAdapter = new AllSymbolsRecyclerViewAdapter(helper.getAllSymbols(),utils,getContext(), actionCallbackInterface);
 
-        recyclerView.setAdapter(recyclerViewAdapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        recyclerView.swapAdapter(recyclerViewAdapter,false);
 
         data.setIsToShowWindow(isToShowUpdateLine);
     }
