@@ -33,7 +33,7 @@ public class AllSymbolsRecyclerViewAdapter extends RecyclerView.Adapter<AllSymbo
         this.context = context;
         this.utils = utils;
         this.mActionCallbackInterface = actionCallbackInterface;
-
+        setHasStableIds(true);
     }
     @NonNull
     @Override
