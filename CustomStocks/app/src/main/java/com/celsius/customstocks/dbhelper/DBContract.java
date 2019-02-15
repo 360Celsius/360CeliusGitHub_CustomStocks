@@ -51,6 +51,10 @@ public class DBContract {
     public static final String SQL_SELECT_All_SYMBOLS_TABLE =
             "SELECT  * FROM " + AllSymbols.TABLE_NAME + " WHERE "+ AllSymbols._ID;
 
+    public static final String SQL_SELECT_All_SELECTED_SYMBOLS_TABLE =
+            "SELECT  * FROM " + AllSymbols.TABLE_NAME + " WHERE "+ AllSymbols.COLUMN_NAME_IS_IN_PORTFOLIO + " = 1";
+
+
 
     public static final String SQL_SELECT_LAST_INSERTED_ROW =
             "SELECT * FROM "+ AllSymbols.TABLE_NAME+" ORDER BY "+AllSymbols._ID+ " DESC LIMIT 1";

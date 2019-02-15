@@ -141,7 +141,6 @@ public class DBHelper extends SQLiteOpenHelper {
         }
     }
 
-
     public ArrayList<Symbol> getAllSymbols() {
 
         ArrayList<Symbol> allSymbolsList = new ArrayList<>();
@@ -246,6 +245,46 @@ public class DBHelper extends SQLiteOpenHelper {
     }
 
 
+    public ArrayList<Symbol> getAllSelectedSymbols(){
+        ArrayList<Symbol> allSymbolsList = new ArrayList<>();
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(DBContract.SQL_SELECT_All_SELECTED_SYMBOLS_TABLE, null);
+
+        try {
+            if (cursor.moveToFirst()) {
+                do {
+
+                    Symbol symbol = new Symbol();
+                    symbol.setDate(cursor.getString(cursor.getColumnIndex(DBContract.AllSymbols.COLUMN_NAME_DATE)));
+                    symbol.setIexId(cursor.getString(cursor.getColumnIndex(DBContract.AllSymbols.COLUMN_NAME_IEX_ID)));
+                    symbol.setIsEnabled(cursor.getString(cursor.getColumnIndex(DBContract.AllSymbols.COLUMN_NAME_IS_ENABLED)));
+                    symbol.setName(cursor.getString(cursor.getColumnIndex(DBContract.AllSymbols.COLUMN_NAME_NAME)));
+                    symbol.setSymbol(cursor.getString(cursor.getColumnIndex(DBContract.AllSymbols.COLUMN_NAME_SYMBOL)));
+                    symbol.setType(cursor.getString(cursor.getColumnIndex(DBContract.AllSymbols.COLUMN_NAME_TYPE)));
+                    if(cursor.getString(cursor.getColumnIndex(DBContract.AllSymbols.COLUMN_NAME_IS_IN_PORTFOLIO)).contains("1")){
+                        symbol.setIsInPortfolio(true);
+                    }else{
+                        symbol.setIsInPortfolio(false);
+                    }
+                    symbol.setId(cursor.getString(cursor.getColumnIndex(DBContract.AllSymbols.COLUMN_NAME_ROW_ID)));
+
+                    allSymbolsList.add(symbol);
+
+                } while (cursor.moveToNext());
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        } finally {
+            if (cursor != null && !cursor.isClosed()) {
+                cursor.close();
+            }
+
+            return allSymbolsList;
+        }
+
+    }
     //=================  Markets =================
 
     public void bulkInsertMarketsToMarketsDataTable(ArrayList<Market> marketssListParsed) {

@@ -49,7 +49,7 @@ public class PullSrocksDataFromIEXService extends IntentService {
 
             case ReciverServiceConsts.GET_STOCKS_DATA:
 
-
+                helper.getAllSelectedSymbols();
 
                 break;
         }
