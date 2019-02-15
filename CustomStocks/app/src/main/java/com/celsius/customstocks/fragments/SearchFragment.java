@@ -25,6 +25,7 @@ import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.SimpleItemAnimator;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 
@@ -101,7 +102,6 @@ public class SearchFragment extends BaseFragment {
 
     public void updateSearchFragmetRecyclerView(boolean isToShowUpdateLine){
         recyclerViewAdapter = new AllSymbolsRecyclerViewAdapter(helper.getAllSymbols(),utils,getContext(), actionCallbackInterface);
-
         recyclerView.swapAdapter(recyclerViewAdapter,false);
 
         data.setIsToShowWindow(isToShowUpdateLine);
