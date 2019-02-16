@@ -58,7 +58,10 @@ public class PullStocksDataFromIEXService extends IntentService {
                     listOfSelectedQuotes.add(jsonParser.getQuotesParsed(networkHTTPRequests.getStockPrice(selectedSymbolList.get(i).getSymbol())));
                 }
                 helper.bulkInserSelectedQuotestoQuotesDataTable(listOfSelectedQuotes);
-                //TODO
+
+                broadcastIntent.setAction(GET_QOUTES_DATA);
+                broadcastIntent.putExtra(ReciverServiceConsts.DATA_TYPE_KEY, ReciverServiceConsts.RELOAD_QUOTES_FRAGMNET);
+                sendBroadcast(broadcastIntent);
                 break;
         }
     }

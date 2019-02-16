@@ -220,7 +220,6 @@ public class DBHelper extends SQLiteOpenHelper {
     }
 
     public void addSymbolToWatchList(Symbol symbol){
-        Log.e("Test","I am here -> "+symbol.getSymbol());
 
         try {
 
@@ -443,6 +442,78 @@ public class DBHelper extends SQLiteOpenHelper {
             e.printStackTrace();
         } finally {
             db.endTransaction();
+        }
+    }
+
+
+    public ArrayList<Quote> getQuotes() {
+
+        ArrayList<Quote> quotesList = new ArrayList<>();
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(DBContract.SQL_SELECT_QUOTES_TABLE, null);
+
+        try {
+            if (cursor.moveToFirst()) {
+                do {
+
+                    Quote quote = new Quote();
+                    quote.setSymbol(cursor.getString(cursor.getColumnIndex(DBContract.Quotes.COLUMN_NAME_SYMBOL)));
+                    quote.setCompanyName(cursor.getString(cursor.getColumnIndex(DBContract.Quotes.COLUMN_NAME_COMPAJY_NAME)));
+                    quote.setPrimaryExchange(cursor.getString(cursor.getColumnIndex(DBContract.Quotes.COLUMN_NAME_PROMARY_EXCAHNGE)));
+                    quote.setSector(cursor.getString(cursor.getColumnIndex(DBContract.Quotes.COLUMN_NAME_SECTOR)));
+                    quote.setCalculationPrice(cursor.getString(cursor.getColumnIndex(DBContract.Quotes.COLUMN_NAME_CALCULATION_PRICE)));
+                    quote.setOpen(cursor.getString(cursor.getColumnIndex(DBContract.Quotes.COLUMN_NAME_OPEN)));
+                    quote.setOpenTime(cursor.getString(cursor.getColumnIndex(DBContract.Quotes.COLUMN_NAME_OPEN_TIME)));
+                    quote.setClose(cursor.getString(cursor.getColumnIndex(DBContract.Quotes.COLUMN_NAME_CLOSE)));
+                    quote.setCloseTime(cursor.getString(cursor.getColumnIndex(DBContract.Quotes.COLUMN_NAME_CLOSE_TIME)));
+                    quote.setHigh(cursor.getString(cursor.getColumnIndex(DBContract.Quotes.COLUMN_NAME_HIGH)));
+                    quote.setLow(cursor.getString(cursor.getColumnIndex(DBContract.Quotes.COLUMN_NAME_LOW)));
+                    quote.setLatestPrice(cursor.getString(cursor.getColumnIndex(DBContract.Quotes.COLUMN_NAME_LATEST_PRICE)));
+                    quote.setLatestSource(cursor.getString(cursor.getColumnIndex(DBContract.Quotes.COLUMN_NAME_LATEST_SOURCE)));
+                    quote.setLatestTime(cursor.getString(cursor.getColumnIndex(DBContract.Quotes.COLUMN_NAME_LATEST_TIME)));
+                    quote.setLatestUpdate(cursor.getString(cursor.getColumnIndex(DBContract.Quotes.COLUMN_NAME_LATEST_UPDATE)));
+                    quote.setLatestVolume(cursor.getString(cursor.getColumnIndex(DBContract.Quotes.COLUMN_NAME_LATEST_VOLUME)));
+                    quote.setIexRealtimePrice(cursor.getString(cursor.getColumnIndex(DBContract.Quotes.COLUMN_NAME_IEX_REALTIME_PRICE)));
+                    quote.setIexRealtimeSize(cursor.getString(cursor.getColumnIndex(DBContract.Quotes.COLUMN_NAME_IEX_REALTIME_SIZE)));
+                    quote.setIexLastUpdated(cursor.getString(cursor.getColumnIndex(DBContract.Quotes.COLUMN_NAME_IEX_LAST_UPDATE)));
+                    quote.setDelayedPrice(cursor.getString(cursor.getColumnIndex(DBContract.Quotes.COLUMN_NAME_DELAYED_PRICE)));
+                    quote.setDelayedPriceTime(cursor.getString(cursor.getColumnIndex(DBContract.Quotes.COLUMN_NAME_DELAYED_PRICE_TIME)));
+                    quote.setExtendedPrice(cursor.getString(cursor.getColumnIndex(DBContract.Quotes.COLUMN_NAME_EXTENDED_PRICE)));
+                    quote.setExtendedChange(cursor.getString(cursor.getColumnIndex(DBContract.Quotes.COLUMN_NAME_EXTENDED_SHNAGE)));
+                    quote.setExtendedChangePercent(cursor.getString(cursor.getColumnIndex(DBContract.Quotes.COLUMN_NAME_EXTENDED_CHANGE_PERCENT)));
+                    quote.setExtendedPriceTime(cursor.getString(cursor.getColumnIndex(DBContract.Quotes.COLUMN_NAME_EXTENDED_PRICE_TIME)));
+                    quote.setPreviousClose(cursor.getString(cursor.getColumnIndex(DBContract.Quotes.COLUMN_NAME_PREVIOUS_CLOSE)));
+                    quote.setChange(cursor.getString(cursor.getColumnIndex(DBContract.Quotes.COLUMN_NAME_CHNAGE)));
+                    quote.setChangePercent(cursor.getString(cursor.getColumnIndex(DBContract.Quotes.COLUMN_NAME_CHANGE_PERCENT)));
+                    quote.setIexMarketPercent(cursor.getString(cursor.getColumnIndex(DBContract.Quotes.COLUMN_NAME_IEX_MARKET_PERCENT)));
+                    quote.setIexVolume(cursor.getString(cursor.getColumnIndex(DBContract.Quotes.COLUMN_NAME_IEX_VOLUME)));
+                    quote.setAvgTotalVolume(cursor.getString(cursor.getColumnIndex(DBContract.Quotes.COLUMN_NAME_AVG_TOTAL_VOLUME)));
+                    quote.setIexBidPrice(cursor.getString(cursor.getColumnIndex(DBContract.Quotes.COLUMN_NAME_IEX_BID_PRICE)));
+                    quote.setIexBidSize(cursor.getString(cursor.getColumnIndex(DBContract.Quotes.COLUMN_NAME_IEX_BID_SIZE)));
+                    quote.setIexAskPrice(cursor.getString(cursor.getColumnIndex(DBContract.Quotes.COLUMN_NAME_IEX_ASK_PRICE)));
+                    quote.setIexAskSize(cursor.getString(cursor.getColumnIndex(DBContract.Quotes.COLUMN_NAME_IEX_ASK_SIZE)));
+                    quote.setMarketCap(cursor.getString(cursor.getColumnIndex(DBContract.Quotes.COLUMN_NAME_MARKET_CUP)));
+                    quote.setPeRatio(cursor.getString(cursor.getColumnIndex(DBContract.Quotes.COLUMN_NAME_PE_RATIO)));
+                    quote.setWeek52High(cursor.getString(cursor.getColumnIndex(DBContract.Quotes.COLUMN_NAME_WEEK_52_HIGH)));
+                    quote.setWeek52Low(cursor.getString(cursor.getColumnIndex(DBContract.Quotes.COLUMN_NAME_WEEK_52_LOW)));
+                    quote.setYtdChange(cursor.getString(cursor.getColumnIndex(DBContract.Quotes.COLUMN_NAME_YTD_CHANGE)));
+
+                    quote.setId(cursor.getString(cursor.getColumnIndex(DBContract.Quotes.COLUMN_NAME_ROW_ID)));
+
+                    quotesList.add(quote);
+
+                } while (cursor.moveToNext());
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        } finally {
+            if (cursor != null && !cursor.isClosed()) {
+                cursor.close();
+            }
+
+            return quotesList;
         }
     }
 }

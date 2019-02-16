@@ -7,8 +7,10 @@ import android.view.ViewGroup;
 import com.celsius.customstocks.BR;
 import com.celsius.customstocks.R;
 import com.celsius.customstocks.datamodels.Market;
+import com.celsius.customstocks.datamodels.Quote;
 import com.celsius.customstocks.utils.Utils;
 import com.celsius.customstocks.viewholders.MarketsViewHolder;
+import com.celsius.customstocks.viewholders.QuotesViewHolder;
 
 import java.util.ArrayList;
 
@@ -17,37 +19,37 @@ import androidx.databinding.DataBindingUtil;
 import androidx.databinding.ViewDataBinding;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class MarketsRecyclerViewAdapter extends RecyclerView.Adapter<MarketsViewHolder> {
+public class StocksRecyclerViewAdapter extends RecyclerView.Adapter<QuotesViewHolder> {
 
-    private ArrayList<Market> marketsList = new ArrayList<>();
+    private ArrayList<Quote> quoteList = new ArrayList<>();
     private Context context;
     private Utils utils;
 
 
-    public MarketsRecyclerViewAdapter(ArrayList<Market> marketsList, Utils utils, Context context) {
-        this.marketsList = marketsList;
+    public StocksRecyclerViewAdapter(ArrayList<Quote> quoteList, Utils utils, Context context) {
+        this.quoteList = quoteList;
         this.context = context;
         this.utils = utils;
         setHasStableIds(true);
     }
     @NonNull
     @Override
-    public MarketsViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
+    public QuotesViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
 
-        ViewDataBinding binding = DataBindingUtil.inflate(LayoutInflater.from(viewGroup.getContext()), R.layout.markets_row_item, viewGroup, false);
-        return new MarketsViewHolder(binding);
+        ViewDataBinding binding = DataBindingUtil.inflate(LayoutInflater.from(viewGroup.getContext()), R.layout.quote_row_item, viewGroup, false);
+        return new QuotesViewHolder(binding);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MarketsViewHolder marketsViewHolder, int position) {
-
+    public void onBindViewHolder(@NonNull QuotesViewHolder marketsViewHolder, int position) {
         ViewDataBinding viewDataBinding = marketsViewHolder.getViewDataBinding();
-        viewDataBinding.setVariable(BR.market, marketsList.get(position));
+        viewDataBinding.setVariable(BR.quote, quoteList.get(position));
     }
+
 
     @Override
     public int getItemCount() {
-        return marketsList.size();
+        return quoteList.size();
     }
 
     @Override
@@ -58,7 +60,7 @@ public class MarketsRecyclerViewAdapter extends RecyclerView.Adapter<MarketsView
     @Override
     public long getItemId(int position) {
         try {
-            return Long.valueOf(marketsList.get(position).getId());
+            return Long.valueOf(quoteList.get(position).getId());
         }catch (Exception e){
             return position;
         }

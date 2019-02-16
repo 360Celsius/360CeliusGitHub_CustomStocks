@@ -5,7 +5,7 @@
             type="com.celsius.customstocks.datamodels.Symbol"/>
 
         <variable name="callback"
-            type="com.celsius.customstocks.iterfaces.ActionCallbackInterface"/>
+            type="com.celsius.customstocks.iterfaces.AddRemoveStmbolCallbackInterface"/>
 
     </data>
 

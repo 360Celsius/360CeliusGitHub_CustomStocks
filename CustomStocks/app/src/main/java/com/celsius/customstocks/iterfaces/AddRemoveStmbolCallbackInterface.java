@@ -18,6 +18,6 @@ package com.celsius.customstocks.iterfaces;
 
 import com.celsius.customstocks.datamodels.Symbol;
 
-public interface ActionCallbackInterface {
+public interface AddRemoveStmbolCallbackInterface {
     void onClick(Symbol symbol);
 }

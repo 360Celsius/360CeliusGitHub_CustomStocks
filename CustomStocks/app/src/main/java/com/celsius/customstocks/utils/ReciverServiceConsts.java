@@ -18,6 +18,8 @@ public class ReciverServiceConsts {
 
     public static final String RELOAD_MARKETS_FRAGMNET = "RELOAD_MARKETS_FRAGMNET";
 
+    public static final String RELOAD_QUOTES_FRAGMNET = "RELOAD_QUOTES_FRAGMNET";
+
     public static final String GET_STOCKS_DATA = "GET_STOCKS_DATA";
 
     public static final String GET_NEWS_DATA = "GET_NEWS_DATA";

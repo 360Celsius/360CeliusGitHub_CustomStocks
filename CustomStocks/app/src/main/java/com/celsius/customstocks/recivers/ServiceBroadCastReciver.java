@@ -8,6 +8,7 @@ import android.util.Log;
 import com.celsius.customstocks.MainActivity;
 import com.celsius.customstocks.fragments.MarketsFragment;
 import com.celsius.customstocks.fragments.SearchFragment;
+import com.celsius.customstocks.fragments.StocksFragment;
 import com.celsius.customstocks.utils.ReciverServiceConsts;
 
 import javax.inject.Inject;
@@ -40,6 +41,10 @@ public class ServiceBroadCastReciver extends BroadcastReceiver {
         }else if( intent.getStringExtra(ReciverServiceConsts.DATA_TYPE_KEY).equalsIgnoreCase(ReciverServiceConsts.RELOAD_MARKETS_FRAGMNET) ){
             if( ((AppCompatActivity) context).getSupportFragmentManager().findFragmentByTag(MarketsFragment.TAG) !=null )
                 ((MarketsFragment) ((AppCompatActivity) context).getSupportFragmentManager().findFragmentByTag(MarketsFragment.TAG)).updateMarketsFragmetRecyclerView();
+
+        }else if( intent.getStringExtra(ReciverServiceConsts.DATA_TYPE_KEY).equalsIgnoreCase(ReciverServiceConsts.RELOAD_QUOTES_FRAGMNET) ){
+            if( ((AppCompatActivity) context).getSupportFragmentManager().findFragmentByTag(StocksFragment.TAG) !=null )
+                ((StocksFragment) ((AppCompatActivity) context).getSupportFragmentManager().findFragmentByTag(StocksFragment.TAG)).updateStocksFragmetRecyclerView();
         }
     }
 }
