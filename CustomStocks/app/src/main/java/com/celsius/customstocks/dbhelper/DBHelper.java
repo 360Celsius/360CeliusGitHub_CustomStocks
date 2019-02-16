@@ -8,6 +8,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
 import com.celsius.customstocks.datamodels.Market;
+import com.celsius.customstocks.datamodels.Quote;
 import com.celsius.customstocks.datamodels.Symbol;
 
 import java.util.ArrayList;
@@ -135,7 +136,7 @@ public class DBHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = getWritableDatabase();
         db.beginTransaction();
         try {
-            db.delete(TABLE_NAME, null, null);
+            db.delete(DBContract.AllSymbols.TABLE_NAME, null, null);
             db.setTransactionSuccessful();
         } catch (Exception e) {
             e.printStackTrace();
@@ -371,4 +372,77 @@ public class DBHelper extends SQLiteOpenHelper {
     }
 
     //=================  QUOTES =================
+
+    public void bulkInserSelectedQuotestoQuotesDataTable(ArrayList<Quote> allSelectedQuotesParsed) {
+        deleteQoutesTAble();
+        try {
+            ContentValues[] contentsArr = new ContentValues[allSelectedQuotesParsed.size()];
+
+            for (int i = 0; i < allSelectedQuotesParsed.size(); i++) {
+                ContentValues values = new ContentValues();
+                values.put(DBContract.Quotes.COLUMN_NAME_SYMBOL, allSelectedQuotesParsed.get(i).getSymbol());
+                values.put(DBContract.Quotes.COLUMN_NAME_COMPAJY_NAME, allSelectedQuotesParsed.get(i).getCompanyName());
+                values.put(DBContract.Quotes.COLUMN_NAME_PROMARY_EXCAHNGE, allSelectedQuotesParsed.get(i).getPrimaryExchange());
+                values.put(DBContract.Quotes.COLUMN_NAME_SECTOR, allSelectedQuotesParsed.get(i).getSector());
+                values.put(DBContract.Quotes.COLUMN_NAME_CALCULATION_PRICE, allSelectedQuotesParsed.get(i).getCalculationPrice());
+                values.put(DBContract.Quotes.COLUMN_NAME_OPEN, allSelectedQuotesParsed.get(i).getOpen());
+                values.put(DBContract.Quotes.COLUMN_NAME_OPEN_TIME, allSelectedQuotesParsed.get(i).getOpenTime());
+                values.put(DBContract.Quotes.COLUMN_NAME_CLOSE, allSelectedQuotesParsed.get(i).getClose());
+                values.put(DBContract.Quotes.COLUMN_NAME_CLOSE_TIME, allSelectedQuotesParsed.get(i).getCloseTime());
+                values.put(DBContract.Quotes.COLUMN_NAME_HIGH, allSelectedQuotesParsed.get(i).getHigh());
+                values.put(DBContract.Quotes.COLUMN_NAME_LOW, allSelectedQuotesParsed.get(i).getLow());
+                values.put(DBContract.Quotes.COLUMN_NAME_LATEST_PRICE, allSelectedQuotesParsed.get(i).getLatestPrice());
+                values.put(DBContract.Quotes.COLUMN_NAME_LATEST_SOURCE, allSelectedQuotesParsed.get(i).getLatestSource());
+                values.put(DBContract.Quotes.COLUMN_NAME_LATEST_TIME, allSelectedQuotesParsed.get(i).getLatestTime());
+                values.put(DBContract.Quotes.COLUMN_NAME_LATEST_UPDATE, allSelectedQuotesParsed.get(i).getLatestUpdate());
+                values.put(DBContract.Quotes.COLUMN_NAME_LATEST_VOLUME, allSelectedQuotesParsed.get(i).getLatestVolume());
+                values.put(DBContract.Quotes.COLUMN_NAME_IEX_REALTIME_PRICE, allSelectedQuotesParsed.get(i).getIexRealtimePrice());
+                values.put(DBContract.Quotes.COLUMN_NAME_IEX_REALTIME_SIZE, allSelectedQuotesParsed.get(i).getIexRealtimeSize());
+                values.put(DBContract.Quotes.COLUMN_NAME_IEX_LAST_UPDATE, allSelectedQuotesParsed.get(i).getIexLastUpdated());
+                values.put(DBContract.Quotes.COLUMN_NAME_DELAYED_PRICE, allSelectedQuotesParsed.get(i).getDelayedPrice());
+                values.put(DBContract.Quotes.COLUMN_NAME_DELAYED_PRICE_TIME, allSelectedQuotesParsed.get(i).getDelayedPriceTime());
+                values.put(DBContract.Quotes.COLUMN_NAME_EXTENDED_PRICE, allSelectedQuotesParsed.get(i).getExtendedPrice());
+                values.put(DBContract.Quotes.COLUMN_NAME_EXTENDED_SHNAGE, allSelectedQuotesParsed.get(i).getExtendedChange());
+                values.put(DBContract.Quotes.COLUMN_NAME_EXTENDED_CHANGE_PERCENT, allSelectedQuotesParsed.get(i).getExtendedChangePercent());
+                values.put(DBContract.Quotes.COLUMN_NAME_EXTENDED_PRICE_TIME, allSelectedQuotesParsed.get(i).getExtendedPriceTime());
+                values.put(DBContract.Quotes.COLUMN_NAME_PREVIOUS_CLOSE, allSelectedQuotesParsed.get(i).getPreviousClose());
+                values.put(DBContract.Quotes.COLUMN_NAME_CHNAGE, allSelectedQuotesParsed.get(i).getChange());
+                values.put(DBContract.Quotes.COLUMN_NAME_CHANGE_PERCENT, allSelectedQuotesParsed.get(i).getChangePercent());
+                values.put(DBContract.Quotes.COLUMN_NAME_IEX_MARKET_PERCENT, allSelectedQuotesParsed.get(i).getIexMarketPercent());
+                values.put(DBContract.Quotes.COLUMN_NAME_IEX_VOLUME, allSelectedQuotesParsed.get(i).getIexVolume());
+                values.put(DBContract.Quotes.COLUMN_NAME_AVG_TOTAL_VOLUME, allSelectedQuotesParsed.get(i).getAvgTotalVolume());
+                values.put(DBContract.Quotes.COLUMN_NAME_IEX_BID_PRICE, allSelectedQuotesParsed.get(i).getIexBidPrice());
+                values.put(DBContract.Quotes.COLUMN_NAME_IEX_BID_SIZE, allSelectedQuotesParsed.get(i).getIexBidSize());
+                values.put(DBContract.Quotes.COLUMN_NAME_IEX_ASK_PRICE, allSelectedQuotesParsed.get(i).getIexAskPrice());
+                values.put(DBContract.Quotes.COLUMN_NAME_IEX_ASK_SIZE, allSelectedQuotesParsed.get(i).getIexAskSize());
+                values.put(DBContract.Quotes.COLUMN_NAME_MARKET_CUP, allSelectedQuotesParsed.get(i).getMarketCap());
+                values.put(DBContract.Quotes.COLUMN_NAME_PE_RATIO, allSelectedQuotesParsed.get(i).getPeRatio());
+                values.put(DBContract.Quotes.COLUMN_NAME_WEEK_52_HIGH, allSelectedQuotesParsed.get(i).getWeek52High());
+                values.put(DBContract.Quotes.COLUMN_NAME_WEEK_52_LOW, allSelectedQuotesParsed.get(i).getWeek52Low());
+                values.put(DBContract.Quotes.COLUMN_NAME_YTD_CHANGE, allSelectedQuotesParsed.get(i).getYtdChange());
+
+
+                values.put(DBContract.Quotes.COLUMN_NAME_ROW_ID, String.valueOf(i+1));
+                contentsArr[i] = values;
+
+            }
+            context.getContentResolver().bulkInsert(DBContract.Quotes.CONTENT_URI, contentsArr);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void deleteQoutesTAble(){
+        SQLiteDatabase db = getWritableDatabase();
+        db.beginTransaction();
+        try {
+            db.delete(DBContract.Quotes.TABLE_NAME, null, null);
+            db.setTransactionSuccessful();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            db.endTransaction();
+        }
+    }
 }

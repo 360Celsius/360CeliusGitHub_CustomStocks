@@ -1,6 +1,7 @@
 package com.celsius.customstocks.parsers;
 
 import com.celsius.customstocks.datamodels.Market;
+import com.celsius.customstocks.datamodels.Quote;
 import com.celsius.customstocks.datamodels.Symbol;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -69,6 +70,59 @@ public class JsonParser {
 
         }
         return marketsArrayList;
+    }
+
+    public Quote getQuotesParsed(String getQuotesFromIEXResponce) {
+        JSONObject jsonObject = null;
+        Quote quote = new Quote();
+        try {
+            jsonObject = new JSONObject(getQuotesFromIEXResponce);
+            quote.setSymbol(String.valueOf(jsonObject.get("symbol") ));
+            quote.setCompanyName((String.valueOf(jsonObject.get("companyName"))));
+            quote.setPrimaryExchange((String.valueOf(jsonObject.get("primaryExchange"))));
+            quote.setSector((String.valueOf(jsonObject.get("sector"))));
+            quote.setCalculationPrice((String.valueOf( jsonObject.get("calculationPrice"))));
+            quote.setOpen((String.valueOf(jsonObject.get("open"))));
+            quote.setOpenTime((String.valueOf(jsonObject.get("openTime"))));
+            quote.setClose((String.valueOf(jsonObject.get("close"))));
+            quote.setCloseTime((String.valueOf(jsonObject.get("closeTime"))));
+            quote.setHigh((String.valueOf(jsonObject.get("high"))));
+            quote.setLow((String.valueOf(jsonObject.get("low"))));
+            quote.setLatestPrice((String.valueOf(jsonObject.get("latestPrice"))));
+            quote.setLatestSource((String.valueOf( jsonObject.get("latestSource"))));
+            quote.setLatestTime((String.valueOf(jsonObject.get("latestTime"))));
+            quote.setLatestUpdate((String.valueOf(jsonObject.get("latestUpdate"))));
+            quote.setLatestVolume((String.valueOf(jsonObject.get("latestVolume"))));
+            quote.setIexRealtimePrice((String.valueOf(jsonObject.get("iexRealtimePrice"))));
+            quote.setIexRealtimeSize((String.valueOf(jsonObject.get("iexRealtimeSize"))));
+            quote.setIexLastUpdated((String.valueOf(jsonObject.get("iexLastUpdated"))));
+            quote.setDelayedPrice((String.valueOf(jsonObject.get("delayedPrice"))));
+            quote.setDelayedPriceTime((String.valueOf(jsonObject.get("delayedPriceTime"))));
+            quote.setExtendedPrice((String.valueOf(jsonObject.get("extendedPrice"))));
+            quote.setExtendedChange((String.valueOf(jsonObject.get("extendedChange"))));
+            quote.setExtendedChangePercent((String.valueOf(jsonObject.get("extendedChangePercent"))));
+            quote.setExtendedPriceTime((String.valueOf(jsonObject.get("extendedPriceTime"))));
+            quote.setPreviousClose((String.valueOf(jsonObject.get("previousClose"))));
+            quote.setChange((String.valueOf(jsonObject.get("change"))));
+            quote.setChangePercent((String.valueOf(jsonObject.get("changePercent"))));
+            quote.setIexMarketPercent((String.valueOf(jsonObject.get("iexMarketPercent"))));
+            quote.setIexVolume((String.valueOf( jsonObject.get("iexVolume"))));
+            quote.setAvgTotalVolume((String.valueOf(jsonObject.get("avgTotalVolume"))));
+            quote.setIexBidPrice((String.valueOf(jsonObject.get("iexBidPrice"))));
+            quote.setIexBidSize((String.valueOf(jsonObject.get("iexBidSize"))));
+            quote.setIexAskPrice((String.valueOf(jsonObject.get("iexAskPrice"))));
+            quote.setIexAskSize((String.valueOf(jsonObject.get("iexAskSize"))));
+            quote.setMarketCap((String.valueOf(jsonObject.get("marketCap"))));
+            quote.setPeRatio((String.valueOf(jsonObject.get("peRatio"))));
+            quote.setWeek52High((String.valueOf(jsonObject.get("week52High"))));
+            quote.setWeek52Low((String.valueOf(jsonObject.get("week52Low"))));
+            quote.setYtdChange((String.valueOf(jsonObject.get("ytdChange"))));
+
+        } catch (Exception e) {
+            e.printStackTrace();
+
+        }
+        return quote;
     }
 
 }
