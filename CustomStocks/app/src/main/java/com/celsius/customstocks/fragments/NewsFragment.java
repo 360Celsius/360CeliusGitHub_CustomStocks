@@ -57,7 +57,7 @@ public class NewsFragment extends BaseFragment {
         return view;
     }
 
-    public void updateStocksFragmetRecyclerView(){
+    public void updateNewsFragmetRecyclerView(){
         recyclerViewAdapter = new NewsRecyclerViewAdapter(helper.getNews(),utils,getContext());
         recyclerView.swapAdapter(recyclerViewAdapter,false);
     }

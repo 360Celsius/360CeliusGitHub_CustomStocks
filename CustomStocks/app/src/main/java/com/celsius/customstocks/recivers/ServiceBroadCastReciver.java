@@ -3,10 +3,10 @@ package com.celsius.customstocks.recivers;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.util.Log;
 
 import com.celsius.customstocks.MainActivity;
 import com.celsius.customstocks.fragments.MarketsFragment;
+import com.celsius.customstocks.fragments.NewsFragment;
 import com.celsius.customstocks.fragments.SearchFragment;
 import com.celsius.customstocks.fragments.StocksFragment;
 import com.celsius.customstocks.utils.ReciverServiceConsts;
@@ -45,6 +45,10 @@ public class ServiceBroadCastReciver extends BroadcastReceiver {
         }else if( intent.getStringExtra(ReciverServiceConsts.DATA_TYPE_KEY).equalsIgnoreCase(ReciverServiceConsts.RELOAD_QUOTES_FRAGMNET) ){
             if( ((AppCompatActivity) context).getSupportFragmentManager().findFragmentByTag(StocksFragment.TAG) !=null )
                 ((StocksFragment) ((AppCompatActivity) context).getSupportFragmentManager().findFragmentByTag(StocksFragment.TAG)).updateStocksFragmetRecyclerView();
+
+        }else if( intent.getStringExtra(ReciverServiceConsts.DATA_TYPE_KEY).equalsIgnoreCase(ReciverServiceConsts.RELOAD_NEWS_FRAGMNET) ){
+            if( ((AppCompatActivity) context).getSupportFragmentManager().findFragmentByTag(NewsFragment.TAG) !=null )
+                ((NewsFragment) ((AppCompatActivity) context).getSupportFragmentManager().findFragmentByTag(NewsFragment.TAG)).updateNewsFragmetRecyclerView();
         }
     }
 }

@@ -17,6 +17,8 @@ import javax.inject.Inject;
 
 import androidx.annotation.Nullable;
 
+import static com.celsius.customstocks.utils.ReciverServiceConsts.GET_QOUTES_DATA;
+
 
 public class PullNewsDataFromIEXService extends IntentService {
 
@@ -60,6 +62,10 @@ public class PullNewsDataFromIEXService extends IntentService {
                 }
 
                 helper.bulkInsertNewsToNewsDataTable(listOfNewsFromSelectedQuotes);
+
+                broadcastIntent.setAction(GET_QOUTES_DATA);
+                broadcastIntent.putExtra(ReciverServiceConsts.DATA_TYPE_KEY, ReciverServiceConsts.RELOAD_NEWS_FRAGMNET);
+                sendBroadcast(broadcastIntent);
 
                 break;
         }
