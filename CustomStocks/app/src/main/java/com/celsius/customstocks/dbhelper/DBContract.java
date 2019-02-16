@@ -103,5 +103,144 @@ public class DBContract {
 
     //============ ============ ==============
 
+    //=================  Quotes =================
+    public static class Quotes implements BaseColumns {
+        public static final String URI_SUFFIX = "quotes";
+        public static final Uri CONTENT_URI = Uri.parse(String.format(Locale.US,CONTENT_BASE, URI_SUFFIX));
+
+        public static final String TABLE_NAME = "quotes";
+
+        public static final String COLUMN_NAME_SYMBOL = "symbol";
+        public static final String COLUMN_NAME_COMPAJY_NAME = "companyName";
+        public static final String COLUMN_NAME_PROMARY_EXCAHNGE = "primaryExchange";
+        public static final String COLUMN_NAME_SECTOR = "sector";
+        public static final String COLUMN_NAME_CALCULATION_PRICE = "calculationPrice";
+        public static final String COLUMN_NAME_OPEN = "open";
+        public static final String COLUMN_NAME_OPEN_TIME = "openTime";
+        public static final String COLUMN_NAME_CLOSE = "close";
+        public static final String COLUMN_NAME_CLOSE_TIME = "closeTime";
+        public static final String COLUMN_NAME_HIGH = "high";
+        public static final String COLUMN_NAME_LOW = "low";
+        public static final String COLUMN_NAME_LATEST_PRICE = "latestPrice";
+        public static final String COLUMN_NAME_LATEST_SOURCE = "latestSource";
+        public static final String COLUMN_NAME_LATEST_TIME = "latestTime";
+        public static final String COLUMN_NAME_LATEST_UPDATE = "latestUpdate";
+        public static final String COLUMN_NAME_LATEST_VOLUME = "latestVolume";
+        public static final String COLUMN_NAME_IEX_REALTIME_PRICE = "iexRealtimePrice";
+        public static final String COLUMN_NAME_IEX_REALTIME_SIZE = "iexRealtimeSize";
+        public static final String COLUMN_NAME_IEX_LAST_UPDATE = "iexLastUpdated";
+        public static final String COLUMN_NAME_DELAYED_PRICE = "delayedPrice";
+        public static final String COLUMN_NAME_DELAYED_PRICE_TIME = "delayedPriceTime";
+        public static final String COLUMN_NAME_EXTENDED_PRICE = "extendedPrice";
+        public static final String COLUMN_NAME_EXTENDED_SHNAGE = "extendedChange";
+        public static final String COLUMN_NAME_EXTENDED_CHANGE_PERCENT = "extendedChangePercent";
+        public static final String COLUMN_NAME_EXTENDED_PRICE_TIME = "extendedPriceTime";
+        public static final String COLUMN_NAME_PREVIOUS_CLOSE = "previousClose";
+        public static final String COLUMN_NAME_CHNAGE = "change";
+        public static final String COLUMN_NAME_CHANGE_PERCENT = "changePercent";
+        public static final String COLUMN_NAME_IEX_MARKET_PERCENT = "iexMarketPercent";
+        public static final String COLUMN_NAME_IEX_VOLUME = "iexVolume";
+        public static final String COLUMN_NAME_AVG_TOTAL_VOLUME = "avgTotalVolume";
+        public static final String COLUMN_NAME_IEX_BID_PRICE = "iexBidPrice";
+        public static final String COLUMN_NAME_IEX_BID_SIZE = "iexBidSize";
+        public static final String COLUMN_NAME_IEX_ASK_PRICE = "iexAskPrice";
+        public static final String COLUMN_NAME_IEX_ASK_SIZE= "iexAskSize";
+        public static final String COLUMN_NAME_MARKET_CUP = "marketCap";
+        public static final String COLUMN_NAME_PE_RATIO = "peRatio";
+        public static final String COLUMN_NAME_WEEK_52_HIGH = "week52High";
+        public static final String COLUMN_NAME_WEEK_52_LOW = "week52Low";
+        public static final String COLUMN_NAME_YTD_CHANGE = "ytdChange";
+        public static final String COLUMN_NAME_ROW_ID = "rowid";
+
+    }
+
+    public static final String SQL_CREATE_QUOTES_TABLE =
+            "CREATE TABLE " + Quotes.TABLE_NAME + " (" +
+                    Quotes._ID + " INTEGER PRIMARY KEY," +
+                    Quotes.COLUMN_NAME_SYMBOL + " TEXT," +
+                    Quotes.COLUMN_NAME_COMPAJY_NAME + " TEXT," +
+                    Quotes.COLUMN_NAME_PROMARY_EXCAHNGE + " TEXT," +
+                    Quotes.COLUMN_NAME_SECTOR + " TEXT," +
+                    Quotes.COLUMN_NAME_CALCULATION_PRICE + " TEXT," +
+                    Quotes.COLUMN_NAME_OPEN + " TEXT," +
+                    Quotes.COLUMN_NAME_OPEN_TIME + " TEXT," +
+                    Quotes.COLUMN_NAME_CLOSE + " TEXT," +
+                    Quotes.COLUMN_NAME_CLOSE_TIME + " TEXT," +
+                    Quotes.COLUMN_NAME_HIGH + " TEXT," +
+                    Quotes.COLUMN_NAME_LOW + " TEXT," +
+                    Quotes.COLUMN_NAME_LATEST_PRICE + " TEXT," +
+                    Quotes.COLUMN_NAME_LATEST_SOURCE + " TEXT," +
+                    Quotes.COLUMN_NAME_LATEST_TIME + " TEXT," +
+                    Quotes.COLUMN_NAME_LATEST_UPDATE + " TEXT," +
+                    Quotes.COLUMN_NAME_LATEST_VOLUME + " TEXT," +
+                    Quotes.COLUMN_NAME_IEX_REALTIME_PRICE + " TEXT," +
+                    Quotes.COLUMN_NAME_IEX_REALTIME_SIZE + " TEXT," +
+                    Quotes.COLUMN_NAME_IEX_LAST_UPDATE + " TEXT," +
+                    Quotes.COLUMN_NAME_DELAYED_PRICE + " TEXT," +
+                    Quotes.COLUMN_NAME_DELAYED_PRICE_TIME + " TEXT," +
+                    Quotes.COLUMN_NAME_EXTENDED_PRICE + " TEXT," +
+                    Quotes.COLUMN_NAME_EXTENDED_SHNAGE + " TEXT," +
+                    Quotes.COLUMN_NAME_EXTENDED_CHANGE_PERCENT + " TEXT," +
+                    Quotes.COLUMN_NAME_EXTENDED_PRICE_TIME + " TEXT," +
+                    Quotes.COLUMN_NAME_PREVIOUS_CLOSE + " TEXT," +
+                    Quotes.COLUMN_NAME_CHNAGE + " TEXT," +
+                    Quotes.COLUMN_NAME_CHANGE_PERCENT + " TEXT," +
+                    Quotes.COLUMN_NAME_IEX_MARKET_PERCENT + " TEXT," +
+                    Quotes.COLUMN_NAME_IEX_VOLUME + " TEXT," +
+                    Quotes.COLUMN_NAME_AVG_TOTAL_VOLUME + " TEXT," +
+                    Quotes.COLUMN_NAME_IEX_BID_PRICE + " TEXT," +
+                    Quotes.COLUMN_NAME_IEX_BID_SIZE + " TEXT," +
+                    Quotes.COLUMN_NAME_IEX_ASK_PRICE + " TEXT," +
+                    Quotes.COLUMN_NAME_IEX_ASK_SIZE + " TEXT," +
+                    Quotes.COLUMN_NAME_MARKET_CUP + " TEXT," +
+                    Quotes.COLUMN_NAME_PE_RATIO + " TEXT," +
+                    Quotes.COLUMN_NAME_WEEK_52_HIGH + " TEXT," +
+                    Quotes.COLUMN_NAME_WEEK_52_LOW + " TEXT," +
+                    Quotes.COLUMN_NAME_YTD_CHANGE + " TEXT," +
+                    Quotes.COLUMN_NAME_ROW_ID + " TEXT)";
+
+    public static final String SQL_DELETE_QUOTES_TABLE =
+            "DROP TABLE IF EXISTS " + Quotes.TABLE_NAME;
+
+    public static final String SQL_SELECT_QUOTES_TABLE =
+            "SELECT  * FROM " + Quotes.TABLE_NAME + " WHERE "+ Quotes._ID;
+
+    //============ ============ ==============
+
+    //=================  NEWS =================
+    public static class News implements BaseColumns {
+        public static final String URI_SUFFIX = "news";
+        public static final Uri CONTENT_URI = Uri.parse(String.format(Locale.US, CONTENT_BASE, URI_SUFFIX));
+
+        public static final String TABLE_NAME = "news";
+
+        public static final String COLUMN_NAME_DATE_TIME = "datetime";
+        public static final String COLUMN_NAME_HEAD_LINE = "headline";
+        public static final String COLUMN_NAME_SOURCE = "source";
+        public static final String COLUMN_NAME_URL = "url";
+        public static final String COLUMN_NAME_SUMARY = "summary";
+        public static final String COLUMN_NAME_RELATED = "related";
+        public static final String COLUMN_NAME_IMAGE = "image";
+
+
+    }
+
+    public static final String SQL_CREATE_NEWS_TABLE =
+            "CREATE TABLE " + News.TABLE_NAME + " (" +
+                    News._ID + " INTEGER PRIMARY KEY," +
+                    News.COLUMN_NAME_DATE_TIME + " TEXT," +
+                    News.COLUMN_NAME_HEAD_LINE + " TEXT," +
+                    News.COLUMN_NAME_SOURCE + " TEXT," +
+                    News.COLUMN_NAME_URL + " TEXT," +
+                    News.COLUMN_NAME_SUMARY + " TEXT," +
+                    News.COLUMN_NAME_RELATED + " TEXT," +
+                    News.COLUMN_NAME_IMAGE + " TEXT)";
+
+    public static final String SQL_DELETE_NEWS_TABLE =
+            "DROP TABLE IF EXISTS " + News.TABLE_NAME;
+
+    public static final String SQL_SELECT_NEWS_TABLE =
+            "SELECT  * FROM " + News.TABLE_NAME + " WHERE "+ News._ID;
+
 
 }

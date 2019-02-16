@@ -38,6 +38,8 @@ public class DBHelper extends SQLiteOpenHelper {
 
         db.execSQL(DBContract.SQL_CREATE_All_SYMBOLS_TABLE);
         db.execSQL(DBContract.SQL_CREATE_MARKETS_TABLE);
+        db.execSQL(DBContract.SQL_CREATE_QUOTES_TABLE);
+        db.execSQL(DBContract.SQL_CREATE_NEWS_TABLE);
 
     }
 
@@ -45,7 +47,8 @@ public class DBHelper extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL(DBContract.SQL_DELETE_All_SYMBOLS_TABLE);
         db.execSQL(DBContract.SQL_DELETE_MARKETS_TABLE);
-
+        db.execSQL(DBContract.SQL_DELETE_QUOTES_TABLE);
+        db.execSQL(DBContract.SQL_DELETE_NEWS_TABLE);
     }
 
     @Override
@@ -285,6 +288,7 @@ public class DBHelper extends SQLiteOpenHelper {
         }
 
     }
+
     //=================  Markets =================
 
     public void bulkInsertMarketsToMarketsDataTable(ArrayList<Market> marketssListParsed) {
@@ -366,4 +370,5 @@ public class DBHelper extends SQLiteOpenHelper {
         }
     }
 
+    //=================  QUOTES =================
 }
