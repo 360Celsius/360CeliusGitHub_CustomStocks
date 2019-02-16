@@ -2,6 +2,8 @@ package com.celsius.customstocks.iterfaces;
 
 import com.celsius.customstocks.BaseActivity;
 import com.celsius.customstocks.datamodels.Market;
+import com.celsius.customstocks.datamodels.News;
+import com.celsius.customstocks.datamodels.Quote;
 import com.celsius.customstocks.datamodels.Symbol;
 import com.celsius.customstocks.dbhelper.Provider;
 import com.celsius.customstocks.fragments.BaseFragment;
@@ -31,6 +33,8 @@ public interface CustomStocksComponents {
     void inject(BaseFragment presenter);
     void inject(Symbol presenter);
     void inject(Market presenter);
+    void inject(Quote presenter);
+    void inject(News presenter);
     void inject(NetworkHTTPRequests presenter);
     void inject(SearchFragment presenter);
 
