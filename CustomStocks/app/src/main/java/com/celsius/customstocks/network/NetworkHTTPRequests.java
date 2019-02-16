@@ -34,9 +34,16 @@ public class NetworkHTTPRequests {
         return responce;
     }
 
-    public String getStockPrice(String stock){
+    public String getQuote(String stock){
         String responce = null;
         String url = networkHttpAPIurlConst.getPriceBySymbolYRL(stock);
+        responce = networkHTTPConnection.getHttp(url);
+        return responce;
+    }
+
+    public String getNews(String stock){
+        String responce = null;
+        String url = networkHttpAPIurlConst.getNewsBySymbolURL(stock);
         responce = networkHTTPConnection.getHttp(url);
         return responce;
     }

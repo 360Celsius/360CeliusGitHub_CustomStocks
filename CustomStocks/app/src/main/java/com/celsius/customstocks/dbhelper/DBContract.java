@@ -221,6 +221,7 @@ public class DBContract {
         public static final String COLUMN_NAME_SUMARY = "summary";
         public static final String COLUMN_NAME_RELATED = "related";
         public static final String COLUMN_NAME_IMAGE = "image";
+        public static final String COLUMN_NAME_ROW_ID = "rowid";
 
 
     }
@@ -234,6 +235,7 @@ public class DBContract {
                     News.COLUMN_NAME_URL + " TEXT," +
                     News.COLUMN_NAME_SUMARY + " TEXT," +
                     News.COLUMN_NAME_RELATED + " TEXT," +
+                    News.COLUMN_NAME_ROW_ID + " TEXT," +
                     News.COLUMN_NAME_IMAGE + " TEXT)";
 
     public static final String SQL_DELETE_NEWS_TABLE =

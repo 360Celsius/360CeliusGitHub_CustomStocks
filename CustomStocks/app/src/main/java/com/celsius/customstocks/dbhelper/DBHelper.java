@@ -5,9 +5,9 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.util.Log;
 
 import com.celsius.customstocks.datamodels.Market;
+import com.celsius.customstocks.datamodels.News;
 import com.celsius.customstocks.datamodels.Quote;
 import com.celsius.customstocks.datamodels.Symbol;
 
@@ -516,4 +516,85 @@ public class DBHelper extends SQLiteOpenHelper {
             return quotesList;
         }
     }
+
+    //=================  NEWS =================
+
+    public void bulkInsertNewsToNewsDataTable(ArrayList<News> newsListParsed) {
+        deleteNewsTAble();
+        try {
+            ContentValues[] contentsArr = new ContentValues[newsListParsed.size()];
+
+            for (int i = 0; i < newsListParsed.size(); i++) {
+                ContentValues values = new ContentValues();
+                values.put(DBContract.News.COLUMN_NAME_DATE_TIME, newsListParsed.get(i).getDatetime());
+                values.put(DBContract.News.COLUMN_NAME_HEAD_LINE, newsListParsed.get(i).getHeadline());
+                values.put(DBContract.News.COLUMN_NAME_SOURCE, newsListParsed.get(i).getSource());
+                values.put(DBContract.News.COLUMN_NAME_URL, newsListParsed.get(i).getUrl());
+                values.put(DBContract.News.COLUMN_NAME_SUMARY, newsListParsed.get(i).getSummary());
+                values.put(DBContract.News.COLUMN_NAME_RELATED, newsListParsed.get(i).getRelated());
+                values.put(DBContract.News.COLUMN_NAME_IMAGE, newsListParsed.get(i).getImage());
+
+                values.put(DBContract.News.COLUMN_NAME_ROW_ID, String.valueOf(i+1));
+
+                contentsArr[i] = values;
+
+            }
+            context.getContentResolver().bulkInsert(DBContract.News.CONTENT_URI, contentsArr);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void deleteNewsTAble() {
+        SQLiteDatabase db = getWritableDatabase();
+        db.beginTransaction();
+        try {
+            db.delete(DBContract.News.TABLE_NAME, null, null);
+            db.setTransactionSuccessful();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            db.endTransaction();
+        }
+    }
+
+    public ArrayList<News> getNews() {
+
+        ArrayList<News> newsList = new ArrayList<>();
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(DBContract.SQL_SELECT_NEWS_TABLE, null);
+
+        try {
+            if (cursor.moveToFirst()) {
+                do {
+
+                    News news = new News();
+                    news.setDatetime(cursor.getString(cursor.getColumnIndex(DBContract.News.COLUMN_NAME_DATE_TIME)));
+                    news.setHeadline(cursor.getString(cursor.getColumnIndex(DBContract.News.COLUMN_NAME_HEAD_LINE)));
+                    news.setSource(cursor.getString(cursor.getColumnIndex(DBContract.News.COLUMN_NAME_SOURCE)));
+                    news.setUrl(cursor.getString(cursor.getColumnIndex(DBContract.News.COLUMN_NAME_URL)));
+                    news.setSummary(cursor.getString(cursor.getColumnIndex(DBContract.News.COLUMN_NAME_SUMARY)));
+                    news.setRelated(cursor.getString(cursor.getColumnIndex(DBContract.News.COLUMN_NAME_RELATED)));
+                    news.setImage(cursor.getString(cursor.getColumnIndex(DBContract.News.COLUMN_NAME_IMAGE)));
+
+                    news.setId(cursor.getString(cursor.getColumnIndex(DBContract.News.COLUMN_NAME_ROW_ID)));
+
+                    newsList.add(news);
+
+                } while (cursor.moveToNext());
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        } finally {
+            if (cursor != null && !cursor.isClosed()) {
+                cursor.close();
+            }
+
+            return newsList;
+        }
+    }
+
 }

@@ -4,7 +4,6 @@ import android.app.IntentService;
 import android.content.Intent;
 
 import com.celsius.customstocks.application.CustomStockApplication;
-import com.celsius.customstocks.datamodels.Market;
 import com.celsius.customstocks.datamodels.Quote;
 import com.celsius.customstocks.datamodels.Symbol;
 import com.celsius.customstocks.dbhelper.DBHelper;
@@ -55,7 +54,7 @@ public class PullStocksDataFromIEXService extends IntentService {
                 ArrayList<Quote>  listOfSelectedQuotes = new ArrayList<>();
 
                 for(int i=0;i<selectedSymbolList.size();i++) {
-                    listOfSelectedQuotes.add(jsonParser.getQuotesParsed(networkHTTPRequests.getStockPrice(selectedSymbolList.get(i).getSymbol())));
+                    listOfSelectedQuotes.add(jsonParser.getQuotesParsed(networkHTTPRequests.getQuote(selectedSymbolList.get(i).getSymbol())));
                 }
                 helper.bulkInserSelectedQuotestoQuotesDataTable(listOfSelectedQuotes);
 

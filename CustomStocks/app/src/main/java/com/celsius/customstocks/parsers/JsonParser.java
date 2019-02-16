@@ -1,6 +1,7 @@
 package com.celsius.customstocks.parsers;
 
 import com.celsius.customstocks.datamodels.Market;
+import com.celsius.customstocks.datamodels.News;
 import com.celsius.customstocks.datamodels.Quote;
 import com.celsius.customstocks.datamodels.Symbol;
 import org.json.JSONArray;
@@ -123,6 +124,34 @@ public class JsonParser {
 
         }
         return quote;
+    }
+
+
+    public ArrayList<News> getNewsParsed(String getNewsFromIEXResponce) {
+        JSONArray reader = null;
+        ArrayList<News> newsArrayList = new ArrayList<>();
+
+        try {
+            reader = new JSONArray(getNewsFromIEXResponce);
+            for (int i = 0; i < reader.length(); i++) {
+                JSONObject jsonObject = reader.getJSONObject(i);
+                News news = new News();
+
+                news.setDatetime(String.valueOf(jsonObject.get("datetime")));
+                news.setHeadline(String.valueOf(jsonObject.get("headline")));
+                news.setSource(String.valueOf(jsonObject.get("source")));
+                news.setUrl(String.valueOf(jsonObject.get("url")));
+                news.setSummary(String.valueOf(jsonObject.get("summary")));
+                news.setRelated(String.valueOf(jsonObject.get("related")));
+                news.setImage(String.valueOf(jsonObject.get("image")));
+
+                newsArrayList.add(news);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+
+        }
+        return newsArrayList;
     }
 
 }
