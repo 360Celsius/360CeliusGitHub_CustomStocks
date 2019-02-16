@@ -31,7 +31,7 @@
         <service android:name=".services.PullMarketsDataFromIEXService"
             android:enabled="true"/>
 
-        <service android:name=".services.PullSrocksDataFromIEXService"
+        <service android:name=".services.PullStocksDataFromIEXService"
             android:enabled="true"/>
 
         <service android:name=".services.PullNewsDataFromIEXService"

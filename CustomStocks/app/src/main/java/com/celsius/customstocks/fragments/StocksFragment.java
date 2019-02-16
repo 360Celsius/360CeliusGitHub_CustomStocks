@@ -7,8 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.celsius.customstocks.R;
-import com.celsius.customstocks.services.PullMarketsDataFromIEXService;
-import com.celsius.customstocks.services.PullSrocksDataFromIEXService;
+import com.celsius.customstocks.services.PullStocksDataFromIEXService;
 import com.celsius.customstocks.utils.ReciverServiceConsts;
 
 import androidx.annotation.Nullable;
@@ -25,7 +24,7 @@ public class StocksFragment extends BaseFragment {
         view = inflater.inflate(R.layout.fragment_stocks, container, false);
 
 
-        Intent intent = new Intent(getActivity(), PullSrocksDataFromIEXService.class);
+        Intent intent = new Intent(getActivity(), PullStocksDataFromIEXService.class);
         intent.putExtra(ReciverServiceConsts.DATA_TYPE_KEY, ReciverServiceConsts.GET_STOCKS_DATA);
         getActivity().startService(intent);
 

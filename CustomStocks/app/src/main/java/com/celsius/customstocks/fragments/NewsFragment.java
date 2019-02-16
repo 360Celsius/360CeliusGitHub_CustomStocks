@@ -8,7 +8,6 @@ import android.view.ViewGroup;
 
 import com.celsius.customstocks.R;
 import com.celsius.customstocks.services.PullNewsDataFromIEXService;
-import com.celsius.customstocks.services.PullSrocksDataFromIEXService;
 import com.celsius.customstocks.utils.ReciverServiceConsts;
 
 import androidx.annotation.Nullable;

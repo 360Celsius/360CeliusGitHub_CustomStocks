@@ -20,7 +20,7 @@ import androidx.annotation.Nullable;
 import static com.celsius.customstocks.utils.ReciverServiceConsts.GET_QOUTES_DATA;
 
 
-public class PullSrocksDataFromIEXService extends IntentService {
+public class PullStocksDataFromIEXService extends IntentService {
 
     @Inject NetworkHTTPRequests networkHTTPRequests;
 
@@ -28,11 +28,11 @@ public class PullSrocksDataFromIEXService extends IntentService {
 
     @Inject JsonParser jsonParser = null;
 
-    public PullSrocksDataFromIEXService() {
-        super("PullSrocksDataFromIEXService");
+    public PullStocksDataFromIEXService() {
+        super("PullStocksDataFromIEXService");
     }
 
-    public PullSrocksDataFromIEXService(String name) {
+    public PullStocksDataFromIEXService(String name) {
         super(name);
     }
 
