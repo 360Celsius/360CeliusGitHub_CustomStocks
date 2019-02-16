@@ -44,7 +44,7 @@ public class Utils {
             String formattedDate = new SimpleDateFormat("MMM d, yyyy").format(date);
             return formattedDate;
         }catch (NumberFormatException e){
-            return "N/A";
+            return dateInMiliseconds;
         }
     }
 }

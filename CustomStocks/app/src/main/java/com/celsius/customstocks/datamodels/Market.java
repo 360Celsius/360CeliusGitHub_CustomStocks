@@ -134,11 +134,11 @@ public class Market extends BaseObservable {
 
     @Bindable
     public String getLastUpdated() {
-        return lastUpdated;
+        return utils.milisecondsTGoDate(lastUpdated);
     }
 
     public void setLastUpdated(String lastUpdated) {
-        this.lastUpdated = utils.milisecondsTGoDate(lastUpdated);
+        this.lastUpdated = lastUpdated;
         notifyPropertyChanged(BR.lastUpdated);
 
     }
