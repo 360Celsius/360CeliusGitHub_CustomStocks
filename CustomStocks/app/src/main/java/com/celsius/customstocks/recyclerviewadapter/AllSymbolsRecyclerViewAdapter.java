@@ -39,7 +39,7 @@ public class AllSymbolsRecyclerViewAdapter extends RecyclerView.Adapter<AllSymbo
     @Override
     public AllSymbolsViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
 
-        ViewDataBinding binding = DataBindingUtil.inflate(LayoutInflater.from(viewGroup.getContext()), R.layout.all_symbols_row_item, viewGroup, false);
+        ViewDataBinding binding = DataBindingUtil.inflate(LayoutInflater.from(viewGroup.getContext()), R.layout.row_item_all_symbols, viewGroup, false);
         return new AllSymbolsViewHolder(binding);
     }
 

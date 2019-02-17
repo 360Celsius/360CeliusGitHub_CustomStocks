@@ -7,10 +7,8 @@ import android.view.ViewGroup;
 import com.celsius.customstocks.BR;
 import com.celsius.customstocks.R;
 import com.celsius.customstocks.datamodels.News;
-import com.celsius.customstocks.datamodels.Quote;
 import com.celsius.customstocks.utils.Utils;
 import com.celsius.customstocks.viewholders.NewsViewHolder;
-import com.celsius.customstocks.viewholders.QuotesViewHolder;
 
 import java.util.ArrayList;
 
@@ -36,7 +34,7 @@ public class NewsRecyclerViewAdapter extends RecyclerView.Adapter<NewsViewHolder
     @Override
     public NewsViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
 
-        ViewDataBinding binding = DataBindingUtil.inflate(LayoutInflater.from(viewGroup.getContext()), R.layout.news_row_item, viewGroup, false);
+        ViewDataBinding binding = DataBindingUtil.inflate(LayoutInflater.from(viewGroup.getContext()), R.layout.row_item_news, viewGroup, false);
         return new NewsViewHolder(binding);
     }
 

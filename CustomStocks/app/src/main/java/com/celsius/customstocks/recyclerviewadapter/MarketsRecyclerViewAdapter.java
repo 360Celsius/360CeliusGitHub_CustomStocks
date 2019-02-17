@@ -34,7 +34,7 @@ public class MarketsRecyclerViewAdapter extends RecyclerView.Adapter<MarketsView
     @Override
     public MarketsViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
 
-        ViewDataBinding binding = DataBindingUtil.inflate(LayoutInflater.from(viewGroup.getContext()), R.layout.markets_row_item, viewGroup, false);
+        ViewDataBinding binding = DataBindingUtil.inflate(LayoutInflater.from(viewGroup.getContext()), R.layout.row_item_markets, viewGroup, false);
         return new MarketsViewHolder(binding);
     }
 
