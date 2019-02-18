@@ -22,5 +22,9 @@
 
     <string name="volume_header">Volume</string>
 
+    <string name="tape_a_text">Tape A</string>
+    <string name="tape_b_text">Tape B</string>
+    <string name="tape_c_text">Tape C</string>
+
 
 </resources>
