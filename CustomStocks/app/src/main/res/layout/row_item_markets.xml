@@ -115,7 +115,19 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:gravity="right|center_vertical">
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:id="@+id/tape_a_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:padding="0dp"
+                    android:layout_marginLeft="12dp"
+                    android:text="@string/tape_a_text"
+                    android:layout_alignParentLeft="true"
+                    android:textColor="@color/symbol_tyoe_color"
+                    android:textSize="12dp" />
 
                 <TextView
                     android:id="@+id/tape_a"
@@ -124,6 +136,7 @@
                     android:gravity="center_vertical"
                     android:padding="0dp"
                     android:text="@{market.tapeA}"
+                    android:layout_alignParentRight="true"
                     android:textColor="@color/symbol_tyoe_color"
                     android:textSize="12dp" />
 
@@ -162,7 +175,19 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:gravity="right|center_vertical">
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:id="@+id/tape_b_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:padding="0dp"
+                    android:layout_marginLeft="12dp"
+                    android:text="@string/tape_b_text"
+                    android:layout_alignParentLeft="true"
+                    android:textColor="@color/symbol_tyoe_color"
+                    android:textSize="12dp" />
 
                 <TextView
                     android:id="@+id/tape_b"
@@ -171,6 +196,7 @@
                     android:gravity="center_vertical"
                     android:padding="0dp"
                     android:text="@{market.tapeB}"
+                    android:layout_alignParentRight="true"
                     android:textColor="@color/symbol_tyoe_color"
                     android:textSize="12dp" />
 
@@ -211,7 +237,19 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:gravity="right|center_vertical">
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:id="@+id/tape_c_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:padding="0dp"
+                    android:layout_marginLeft="12dp"
+                    android:text="@string/tape_c_text"
+                    android:layout_alignParentLeft="true"
+                    android:textColor="@color/symbol_tyoe_color"
+                    android:textSize="12dp" />
 
                 <TextView
                     android:id="@+id/tape_c"
@@ -220,6 +258,7 @@
                     android:gravity="center_vertical"
                     android:padding="0dp"
                     android:text="@{market.tapeC}"
+                    android:layout_alignParentRight="true"
                     android:textColor="@color/symbol_tyoe_color"
                     android:textSize="12dp" />
 
