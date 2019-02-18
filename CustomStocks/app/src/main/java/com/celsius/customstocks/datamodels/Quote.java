@@ -211,7 +211,7 @@ public class Quote extends BaseObservable {
 
     @Bindable
     public String getLatestUpdate() {
-        return latestUpdate;
+        return utils.milisecondsTGoDate(latestUpdate);
     }
 
     public void setLatestUpdate(String latestUpdate) {
