@@ -49,11 +49,28 @@
                 android:textSize="12dp" />
 
             <View
-                android:id="@+id/market_date_seperator"
                 android:layout_width="1dp"
                 android:layout_height="12dp"
                 android:layout_marginLeft="6dp"
                 android:background="@color/search_field_stroke_color" />
+
+            <TextView
+                android:id="@+id/market_primary_exchange"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="6dp"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="@{quote.primaryExchange}"
+                android:textColor="@color/symbol_tyoe_color"
+                android:textSize="12dp" />
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="12dp"
+                android:layout_marginLeft="6dp"
+                android:background="@color/search_field_stroke_color" />
+
 
             <TextView
                 android:id="@+id/market_last_update"
