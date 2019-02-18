@@ -20,4 +20,9 @@
 
     <color name="symbol_volune_name_color">#808080</color>
 
+    <color name="market_chart_start_color">#c6c6c6</color>
+    <color name="market_chart_center_color">#b9b9b9</color>
+    <color name="market_chart_end_color">#acacac</color>
+
+
 </resources>

@@ -2,9 +2,9 @@
 
 <shape xmlns:android="http://schemas.android.com/apk/res/android">
     <gradient
-        android:endColor="#acacac"
-        android:centerColor="#b9b9b9"
-        android:startColor="#c6c6c6"
+        android:endColor="@color/market_chart_end_color"
+        android:centerColor="@color/market_chart_center_color"
+        android:startColor="@color/market_chart_start_color"
         android:angle="180"/>
     <corners android:radius="5dp" />
 </shape>
