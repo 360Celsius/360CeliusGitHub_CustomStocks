@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android" >
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
     <data>
-        <variable name="market"
-            type="com.celsius.customstocks.datamodels.Market"/>
+
+        <variable
+            name="market"
+            type="com.celsius.customstocks.datamodels.Market" />
 
     </data>
 
@@ -13,31 +16,31 @@
         <TextView
             android:id="@+id/mic"
             android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="12dp"
+            android:layout_marginTop="6dp"
+            android:layout_marginRight="12dp"
             android:ellipsize="end"
             android:maxLines="1"
-            android:layout_height="wrap_content"
-            android:textSize="16dp"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentLeft="true"
-            android:layout_marginLeft="12dp"
-            android:layout_marginRight="12dp"
-            android:layout_marginTop="6dp"
+            android:text="@{market.mic}"
             android:textColor="@color/symbol_name_color"
-            android:text="@{market.mic}"/>
+            android:textSize="16dp" />
 
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_below="@+id/mic"
             android:layout_alignParentLeft="true"
             android:layout_marginLeft="12dp"
-            android:layout_marginRight="24dp"
             android:layout_marginTop="6dp"
+            android:layout_marginRight="24dp"
             android:layout_marginBottom="12dp"
-            android:textColor="@color/symbol_tyoe_color"
-            android:layout_below="@+id/mic"
             android:gravity="center_vertical"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:textColor="@color/symbol_tyoe_color">
 
             <TextView
                 android:id="@+id/volume_name"
@@ -45,59 +48,209 @@
                 android:layout_height="wrap_content"
                 android:ellipsize="end"
                 android:maxLines="1"
-                android:textColor="@color/symbol_tyoe_color"
                 android:text="@{market.venueName}"
-                android:textSize="12dp"/>
+                android:textColor="@color/symbol_tyoe_color"
+                android:textSize="12dp" />
 
             <View
                 android:id="@+id/market_date_seperator"
                 android:layout_width="1dp"
                 android:layout_height="12dp"
                 android:layout_marginLeft="6dp"
-                android:background="@color/search_field_stroke_color"/>
+                android:background="@color/search_field_stroke_color" />
 
             <TextView
                 android:id="@+id/market_last_update"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="6dp"
                 android:ellipsize="end"
                 android:maxLines="1"
-                android:layout_marginLeft="6dp"
-                android:textColor="@color/symbol_tyoe_color"
                 android:text="@{market.lastUpdated}"
-                android:textSize="12dp"/>
+                android:textColor="@color/symbol_tyoe_color"
+                android:textSize="12dp" />
 
         </LinearLayout>
 
         <TextView
             android:id="@+id/volunu_title"
             android:layout_width="wrap_content"
-            android:ellipsize="end"
-            android:maxLines="1"
             android:layout_height="wrap_content"
-            android:textSize="16dp"
-            android:layout_marginLeft="12dp"
-            android:layout_marginRight="12dp"
-            android:layout_marginTop="6dp"
-            android:layout_marginBottom="6dp"
             android:layout_alignParentTop="true"
             android:layout_alignParentRight="true"
+            android:layout_marginLeft="12dp"
+            android:layout_marginTop="6dp"
+            android:layout_marginRight="12dp"
+            android:layout_marginBottom="6dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="@{market.volume}"
             android:textColor="@color/symbol_name_color"
-            android:text="@{market.volume}"/>
+            android:textSize="16dp" />
 
         <TextView
             android:id="@+id/market_percent"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@+id/volunu_title"
+            android:layout_alignParentRight="true"
+            android:layout_marginLeft="6dp"
             android:ellipsize="end"
             android:maxLines="1"
-            android:layout_marginLeft="6dp"
             android:paddingRight="14dp"
-            android:layout_alignParentRight="true"
-            android:layout_below="@+id/volunu_title"
-            android:textColor="@color/symbol_tyoe_color"
             android:text="@{market.marketPercent}"
-            android:textSize="14dp"/>
+            android:textColor="@color/symbol_tyoe_color"
+            android:textSize="14dp" />
+
+
+        <LinearLayout
+            android:id="@+id/tape_a_line"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/market_percent"
+            android:layout_marginTop="6dp"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="right|center_vertical"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tape_a"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:padding="0dp"
+                    android:text="@{market.tapeA}"
+                    android:textColor="@color/symbol_tyoe_color"
+                    android:textSize="12dp" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="6dp"
+                android:layout_weight="1"
+                android:gravity="left|center_vertical"
+                android:orientation="vertical">
+
+                <View
+                    android:id="@+id/tape_a_graf"
+                    android:layout_width="@{market.getTapePercentage(market.volume,market.tapeA) > 50 ? @dimen/dimen_10_dp : @dimen/dimen_80_dp, default=wrap_content}"
+                    android:layout_height="12dp"
+                    android:background="@color/symbol_tyoe_color"
+                    android:gravity="center_vertical"
+                    android:padding="0dp" />
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/tape_b_line"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/tape_a_line"
+            android:layout_marginTop="6dp"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="right|center_vertical"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tape_b"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:padding="0dp"
+                    android:text="@{market.tapeB}"
+                    android:textColor="@color/symbol_tyoe_color"
+                    android:textSize="12dp" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="6dp"
+                android:layout_weight="1"
+                android:gravity="left|center_vertical"
+                android:orientation="vertical">
+
+                <View
+                    android:id="@+id/tape_b_graf"
+                    android:layout_width="@{market.getTapePercentage(market.volume,market.tapeB) > 50 ? @dimen/dimen_10_dp : @dimen/dimen_80_dp, default=wrap_content}"
+                    android:layout_height="12dp"
+                    android:background="@color/symbol_tyoe_color"
+                    android:gravity="center_vertical"
+                    android:padding="0dp" />
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/tape_c_line"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/tape_b_line"
+            android:layout_marginTop="6dp"
+            android:layout_marginBottom="6dp"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="right|center_vertical"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tape_c"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:padding="0dp"
+                    android:text="@{market.tapeC}"
+                    android:textColor="@color/symbol_tyoe_color"
+                    android:textSize="12dp" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="6dp"
+                android:layout_weight="1"
+                android:gravity="left|center_vertical"
+                android:orientation="vertical">
+
+                <View
+                    android:id="@+id/tape_c_graf"
+                    android:layout_width="@{market.getTapePercentage(market.volume,market.tapeC) > 50 ? @dimen/dimen_10_dp : @dimen/dimen_80_dp, default=wrap_content}"
+                    android:layout_height="12dp"
+                    android:background="@color/symbol_tyoe_color"
+                    android:gravity="center_vertical"
+                    android:padding="0dp" />
+
+
+            </LinearLayout>
+
+        </LinearLayout>
 
         <View
             android:id="@+id/buttom_seperator"
@@ -106,7 +259,7 @@
             android:layout_alignParentBottom="true"
             android:layout_marginLeft="12dp"
             android:layout_marginRight="12dp"
-            android:background="@color/search_field_stroke_color"/>
+            android:background="@color/search_field_stroke_color" />
 
 
     </RelativeLayout>

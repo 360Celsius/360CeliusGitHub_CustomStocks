@@ -30,6 +30,16 @@ public class Market extends BaseObservable {
         CustomStockApplication.getMyComponent().inject(this);
     }
 
+    public int getTapePercentage (String volume, String tape){
+        double percentage = 0;
+        double vol = Double.valueOf(volume);
+        double tap = Double.valueOf(tape);
+
+        percentage = (tap/vol)*100;
+
+        return (int) percentage;
+    }
+
     @Bindable
     public String getId() {
         return id;
