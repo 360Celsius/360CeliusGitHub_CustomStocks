@@ -141,7 +141,7 @@
 
                 <View
                     android:id="@+id/tape_a_graf"
-                    android:layout_width="@{market.getTapePercentage(market.volume,market.tapeA) > 50 ? @dimen/dimen_10_dp : @dimen/dimen_80_dp, default=wrap_content}"
+                    android:layout_width="@{market.getTapePercentage(market.volume,market.tapeA) == 10 ? @dimen/dimen_10_dp : market.getTapePercentage(market.volume,market.tapeA) == 20 ? @dimen/dimen_20_dp : market.getTapePercentage(market.volume,market.tapeA) == 30 ? @dimen/dimen_30_dp : market.getTapePercentage(market.volume,market.tapeA) == 40 ? @dimen/dimen_40_dp : market.getTapePercentage(market.volume,market.tapeA) == 50 ? @dimen/dimen_50_dp : market.getTapePercentage(market.volume,market.tapeA) == 60 ? @dimen/dimen_60_dp : market.getTapePercentage(market.volume,market.tapeA) == 70 ? @dimen/dimen_70_dp : market.getTapePercentage(market.volume,market.tapeA) == 80 ? @dimen/dimen_80_dp : market.getTapePercentage(market.volume,market.tapeA) == 90 ? @dimen/dimen_90_dp : @dimen/dimen_100_dp, default=wrap_content}"
                     android:layout_height="12dp"
                     android:background="@color/symbol_tyoe_color"
                     android:gravity="center_vertical"
@@ -190,7 +190,7 @@
 
                 <View
                     android:id="@+id/tape_b_graf"
-                    android:layout_width="@{market.getTapePercentage(market.volume,market.tapeB) > 50 ? @dimen/dimen_10_dp : @dimen/dimen_80_dp, default=wrap_content}"
+                    android:layout_width="@{market.getTapePercentage(market.volume,market.tapeB) == 10 ? @dimen/dimen_10_dp : market.getTapePercentage(market.volume,market.tapeB) == 20 ? @dimen/dimen_20_dp : market.getTapePercentage(market.volume,market.tapeB) == 30 ? @dimen/dimen_30_dp :  market.getTapePercentage(market.volume,market.tapeB) == 40 ? @dimen/dimen_40_dp : market.getTapePercentage(market.volume,market.tapeB) == 50 ? @dimen/dimen_50_dp : market.getTapePercentage(market.volume,market.tapeB) == 60 ? @dimen/dimen_60_dp : market.getTapePercentage(market.volume,market.tapeB) == 70 ? @dimen/dimen_70_dp : market.getTapePercentage(market.volume,market.tapeB) == 80 ? @dimen/dimen_80_dp : market.getTapePercentage(market.volume,market.tapeB) == 90 ? @dimen/dimen_90_dp : @dimen/dimen_100_dp, default=wrap_content}"
                     android:layout_height="12dp"
                     android:background="@color/symbol_tyoe_color"
                     android:gravity="center_vertical"
@@ -241,7 +241,7 @@
 
                 <View
                     android:id="@+id/tape_c_graf"
-                    android:layout_width="@{market.getTapePercentage(market.volume,market.tapeC) > 50 ? @dimen/dimen_10_dp : @dimen/dimen_80_dp, default=wrap_content}"
+                    android:layout_width="@{market.getTapePercentage(market.volume,market.tapeC) == 10 ? @dimen/dimen_10_dp : market.getTapePercentage(market.volume,market.tapeC) == 20 ? @dimen/dimen_20_dp : market.getTapePercentage(market.volume,market.tapeC) == 30 ? @dimen/dimen_30_dp : market.getTapePercentage(market.volume,market.tapeC) == 40 ? @dimen/dimen_40_dp : market.getTapePercentage(market.volume,market.tapeC) == 50 ? @dimen/dimen_50_dp : market.getTapePercentage(market.volume,market.tapeC) == 60 ? @dimen/dimen_60_dp : market.getTapePercentage(market.volume,market.tapeC) == 70 ? @dimen/dimen_70_dp : market.getTapePercentage(market.volume,market.tapeC) == 80 ? @dimen/dimen_80_dp : market.getTapePercentage(market.volume,market.tapeC) == 90 ? @dimen/dimen_90_dp : @dimen/dimen_100_dp, default=wrap_content}"
                     android:layout_height="12dp"
                     android:background="@color/symbol_tyoe_color"
                     android:gravity="center_vertical"
