@@ -26,6 +26,7 @@
             android:textSize="16dp" />
 
         <LinearLayout
+            android:id="@+id/symbol_row_data"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/simbol_name"
@@ -85,7 +86,33 @@
 
         </LinearLayout>
 
+        <LinearLayout
+            android:id="@+id/min_max_value_line"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/symbol_row_data"
+            android:layout_marginTop="6dp"
+            android:orientation="horizontal">
 
+            <View
+                android:id="@+id/low_line"
+                android:layout_width="0dp"
+                android:layout_height="3dp"
+                android:layout_weight=".30"
+                android:gravity="center_vertical"
+                android:background="@color/red_chard_line">
+            </View>
+
+            <View
+                android:id="@+id/high_line"
+                android:layout_width="0dp"
+                android:layout_height="3dp"
+                android:layout_weight=".70"
+                android:gravity="center_vertical"
+                android:background="@color/green_chart_line">
+            </View>
+
+        </LinearLayout>
 
 
         <View

@@ -25,4 +25,8 @@
     <color name="market_chart_end_color">#acacac</color>
 
 
+    <color name="green_chart_line">#00ff00</color>
+    <color name="red_chard_line">#ff0000</color>
+
+
 </resources>
