@@ -491,4 +491,11 @@ public class Quote extends BaseObservable {
         else
             return true;
     }
+
+    public boolean isSourceClose(){
+        if(latestSource.toLowerCase().contains("close"))
+            return true;
+        else
+            return false;
+    }
 }

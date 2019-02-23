@@ -56,12 +56,23 @@
                     android:orientation="horizontal"
                     android:textColor="@color/symbol_tyoe_color">
 
+                    <ImageView
+                        android:layout_width="12dp"
+                        android:layout_height="12dp"
+                        android:src="@{quote.isSourceClose()==true ?@drawable/ic_close :@drawable/ic_open}"/>
+
+                    <View
+                        android:layout_width="1dp"
+                        android:layout_height="12dp"
+                        android:layout_marginLeft="6dp"
+                        android:layout_marginRight="6dp"
+                        android:background="@color/search_field_stroke_color"/>
+
 
                     <TextView
                         android:id="@+id/market_last_update"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="0dp"
                         android:ellipsize="end"
                         android:maxLines="1"
                         android:text="@{quote.latestUpdate}"
