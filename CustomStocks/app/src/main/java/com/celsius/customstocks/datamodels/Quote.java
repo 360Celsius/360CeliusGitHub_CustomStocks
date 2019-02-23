@@ -60,32 +60,6 @@ public class Quote extends BaseObservable {
         CustomStockApplication.getMyComponent().inject(this);
     }
 
-    public double howStrongIsTheHighstPrice (){
-        return 0;
-    }
-
-    public double howStrongIsTheLOwestPrice (String latestPrice, String high, String low){
-
-        double latesttPriceDIVLow = 0;
-        double latesttPriceDIVHigh = 0;
-
-        double latesttPrice = Double.valueOf(latestPrice);
-        double lowPrice = Double.valueOf(high);
-        double highPrice = Double.valueOf(low);
-
-        latesttPriceDIVLow = (latesttPrice - lowPrice);
-        latesttPriceDIVHigh = (latesttPrice - highPrice);
-
-        if(latesttPriceDIVLow<latesttPriceDIVHigh){
-            //latesttPriceDIVLow;
-        }else{
-
-        }
-
-        return 0;
-
-    }
-
     @Bindable
     public String getId() {
         return id;
