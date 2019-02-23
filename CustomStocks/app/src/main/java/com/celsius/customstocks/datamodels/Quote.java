@@ -331,7 +331,11 @@ public class Quote extends BaseObservable {
 
     @Bindable
     public String getChange() {
-        return change;
+        if(change.contains("%"))
+            return change;
+        else
+            return change+ " %";
+
     }
 
     public void setChange(String change) {
@@ -341,7 +345,11 @@ public class Quote extends BaseObservable {
 
     @Bindable
     public String getChangePercent() {
-        return changePercent;
+        if(changePercent.contains("%"))
+            return changePercent;
+        else
+            return changePercent+ " %";
+
     }
 
     public void setChangePercent(String changePercent) {
@@ -467,5 +475,20 @@ public class Quote extends BaseObservable {
     public void setYtdChange(String ytdChange) {
         this.ytdChange = ytdChange;
         notifyPropertyChanged(BR.ytdChange);
+    }
+
+
+    public boolean isChangePositive(){
+        if(change.contains("-"))
+            return false;
+        else
+            return true;
+    }
+
+    public boolean isChangePercentPositive(){
+        if(changePercent.contains("-"))
+            return false;
+        else
+            return true;
     }
 }
