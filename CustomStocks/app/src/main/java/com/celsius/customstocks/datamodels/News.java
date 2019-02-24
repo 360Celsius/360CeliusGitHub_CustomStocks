@@ -107,5 +107,7 @@ public class News extends BaseObservable {
         notifyPropertyChanged(BR.id);
     }
 
-
+    public String getFormatedDateTime(){
+        return datetime.split("T")[0];
+    }
 }
