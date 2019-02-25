@@ -3,6 +3,8 @@ package com.celsius.customstocks.dbhelper;
 import android.net.Uri;
 import android.provider.BaseColumns;
 
+import com.celsius.customstocks.datamodels.Earning;
+
 import java.util.Locale;
 
 public class DBContract {
@@ -245,4 +247,54 @@ public class DBContract {
             "SELECT  * FROM " + News.TABLE_NAME + " WHERE "+ News._ID;
 
 
+    //============ ============ ==============
+
+    //=================  EARNINGS =================
+    public static class Earnings implements BaseColumns {
+        public static final String URI_SUFFIX = "earnings";
+        public static final Uri CONTENT_URI = Uri.parse(String.format(Locale.US, CONTENT_BASE, URI_SUFFIX));
+
+        public static final String TABLE_NAME = "earnings";
+
+        public static final String COLUMN_NAME_SYMBOL = "symbol";
+        public static final String COLUMN_NAME_ACTUAL_ESP = "actualEPS";
+        public static final String COLUMN_NAME_CONSENSUS_ESP = "consensusEPS";
+        public static final String COLUMN_NAME_ESTIMATED_ESP = "estimatedEPS";
+        public static final String COLUMN_NAME_ANNOUNCE_TIME = "announceTime";
+        public static final String COLUMN_NAME_NUMBER_OF_ESTIMATES = "numberOfEstimates";
+        public static final String COLUMN_NAME_EPS_SURPRISE_DOLLAR = "ePSSurpriseDollar";
+        public static final String COLUMN_NAME_EPS_REPORT_DATE = "ePSReportDate";
+        public static final String COLUMN_NAME_FISCA_PERIOD = "fiscalPeriod";
+        public static final String COLUMN_NAME_FISCAL_END_DATE = "fiscalEndDate";
+        public static final String COLUMN_NAME_YEAR_AGO = "yearAgo";
+        public static final String COLUMN_NAME_YEAR_AGO_CHANGE_PERCENT = "yearAgoChangePercent";
+        public static final String COLUMN_NAME_ESTIMATED_CHANGE_PERCENT = "estimatedChangePercent";
+        public static final String COLUMN_NAME_SYMBOL_ID = "symbolId";
+        public static final String COLUMN_NAME_ROW_ID = "rowid";
+    }
+
+    public static final String SQL_CREATE_EARNING_TABLE =
+            "CREATE TABLE " + Earnings.TABLE_NAME + " (" +
+                    Earnings._ID + " INTEGER PRIMARY KEY," +
+                    Earnings.COLUMN_NAME_SYMBOL + " TEXT," +
+                    Earnings.COLUMN_NAME_ACTUAL_ESP + " TEXT," +
+                    Earnings.COLUMN_NAME_CONSENSUS_ESP + " TEXT," +
+                    Earnings.COLUMN_NAME_ESTIMATED_ESP + " TEXT," +
+                    Earnings.COLUMN_NAME_ANNOUNCE_TIME + " TEXT," +
+                    Earnings.COLUMN_NAME_NUMBER_OF_ESTIMATES + " TEXT," +
+                    Earnings.COLUMN_NAME_EPS_SURPRISE_DOLLAR + " TEXT," +
+                    Earnings.COLUMN_NAME_EPS_REPORT_DATE + " TEXT," +
+                    Earnings.COLUMN_NAME_FISCA_PERIOD + " TEXT," +
+                    Earnings.COLUMN_NAME_FISCAL_END_DATE + " TEXT," +
+                    Earnings.COLUMN_NAME_YEAR_AGO + " TEXT," +
+                    Earnings.COLUMN_NAME_YEAR_AGO_CHANGE_PERCENT + " TEXT," +
+                    Earnings.COLUMN_NAME_ESTIMATED_CHANGE_PERCENT + " TEXT," +
+                    Earnings.COLUMN_NAME_SYMBOL_ID + " TEXT," +
+                    Earnings.COLUMN_NAME_ROW_ID + " TEXT)";
+
+    public static final String SQL_DELETE_EARNINGS_TABLE =
+            "DROP TABLE IF EXISTS " + Earnings.TABLE_NAME;
+
+    public static final String SQL_SELECT_EARNINGS_TABLE =
+            "SELECT  * FROM " + Earnings.TABLE_NAME + " WHERE "+ Earnings._ID;
 }

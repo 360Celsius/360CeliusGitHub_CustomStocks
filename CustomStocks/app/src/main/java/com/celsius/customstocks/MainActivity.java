@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.FrameLayout;
 
+import com.celsius.customstocks.fragments.EarningCalendarFragment;
 import com.celsius.customstocks.fragments.MarketsFragment;
 import com.celsius.customstocks.fragments.MoreFragment;
 import com.celsius.customstocks.fragments.NewsFragment;
@@ -54,7 +55,7 @@ public class MainActivity extends BaseActivity {
                                 transaction.addToBackStack(null);
                                 break;
                             case R.id.action_item5:
-                                transaction.replace(R.id.fragment_view_placeholder, new MoreFragment(),MoreFragment.TAG);
+                                transaction.replace(R.id.fragment_view_placeholder, new EarningCalendarFragment(),EarningCalendarFragment.TAG);
                                 transaction.addToBackStack(null);
                                 break;
                         }

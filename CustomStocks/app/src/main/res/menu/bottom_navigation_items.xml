@@ -20,6 +20,6 @@
         android:title="@string/tab_markets"/>
     <item
         android:id="@+id/action_item5"
-        android:icon="@drawable/ic_more"
-        android:title="@string/tab_more"/>
+        android:icon="@drawable/ic_calendar_today"
+        android:title="@string/tab_earning_calendar"/>
 </menu>

@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import com.celsius.customstocks.datamodels.Earning;
 import com.celsius.customstocks.datamodels.Market;
 import com.celsius.customstocks.datamodels.News;
 import com.celsius.customstocks.datamodels.Quote;
@@ -24,7 +25,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
     // Database Info
     private static final String DATABASE_NAME = "CustomStocksDatabase";
-    private static final int DATABASE_VERSION = 2;
+    private static final int DATABASE_VERSION = 3;
     private Context context;
 
     @Inject
@@ -41,7 +42,7 @@ public class DBHelper extends SQLiteOpenHelper {
         db.execSQL(DBContract.SQL_CREATE_MARKETS_TABLE);
         db.execSQL(DBContract.SQL_CREATE_QUOTES_TABLE);
         db.execSQL(DBContract.SQL_CREATE_NEWS_TABLE);
-
+        db.execSQL(DBContract.SQL_CREATE_EARNING_TABLE);
     }
 
     @Override
@@ -50,6 +51,7 @@ public class DBHelper extends SQLiteOpenHelper {
         db.execSQL(DBContract.SQL_DELETE_MARKETS_TABLE);
         db.execSQL(DBContract.SQL_DELETE_QUOTES_TABLE);
         db.execSQL(DBContract.SQL_DELETE_NEWS_TABLE);
+        db.execSQL(DBContract.SQL_DELETE_EARNINGS_TABLE);
     }
 
     @Override
@@ -597,4 +599,93 @@ public class DBHelper extends SQLiteOpenHelper {
         }
     }
 
+    //=================  EARNINGS =================
+    public void bulkInsertEarningsToEarningsDataTable(ArrayList<Earning> earningsParsed) {
+        deleteEarningsTAble();
+        try {
+            ContentValues[] contentsArr = new ContentValues[earningsParsed.size()];
+
+            for (int i = 0; i < earningsParsed.size(); i++) {
+                ContentValues values = new ContentValues();
+                values.put(DBContract.Earnings.COLUMN_NAME_SYMBOL, earningsParsed.get(i).getSymbol());
+                values.put(DBContract.Earnings.COLUMN_NAME_ACTUAL_ESP, earningsParsed.get(i).getActualEPS());
+                values.put(DBContract.Earnings.COLUMN_NAME_CONSENSUS_ESP, earningsParsed.get(i).getConsensusEPS());
+                values.put(DBContract.Earnings.COLUMN_NAME_ESTIMATED_ESP, earningsParsed.get(i).getEstimatedEPS());
+                values.put(DBContract.Earnings.COLUMN_NAME_ANNOUNCE_TIME, earningsParsed.get(i).getAnnounceTime());
+                values.put(DBContract.Earnings.COLUMN_NAME_NUMBER_OF_ESTIMATES, earningsParsed.get(i).getNumberOfEstimates());
+                values.put(DBContract.Earnings.COLUMN_NAME_EPS_SURPRISE_DOLLAR, earningsParsed.get(i).getePSSurpriseDollar());
+                values.put(DBContract.Earnings.COLUMN_NAME_EPS_REPORT_DATE, earningsParsed.get(i).getePSReportDate());
+                values.put(DBContract.Earnings.COLUMN_NAME_FISCA_PERIOD, earningsParsed.get(i).getFiscalPeriod());
+                values.put(DBContract.Earnings.COLUMN_NAME_FISCAL_END_DATE, earningsParsed.get(i).getFiscalEndDate());
+                values.put(DBContract.Earnings.COLUMN_NAME_YEAR_AGO, earningsParsed.get(i).getYearAgo());
+                values.put(DBContract.Earnings.COLUMN_NAME_YEAR_AGO_CHANGE_PERCENT, earningsParsed.get(i).getYearAgoChangePercent());
+                values.put(DBContract.Earnings.COLUMN_NAME_ESTIMATED_CHANGE_PERCENT, earningsParsed.get(i).getEstimatedChangePercent());
+                values.put(DBContract.Earnings.COLUMN_NAME_SYMBOL_ID, earningsParsed.get(i).getSymbolId());
+                values.put(DBContract.Earnings.COLUMN_NAME_ROW_ID, String.valueOf(i+1));
+                contentsArr[i] = values;
+
+            }
+            context.getContentResolver().bulkInsert(DBContract.Earnings.CONTENT_URI, contentsArr);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void deleteEarningsTAble() {
+        SQLiteDatabase db = getWritableDatabase();
+        db.beginTransaction();
+        try {
+            db.delete(DBContract.Earnings.TABLE_NAME, null, null);
+            db.setTransactionSuccessful();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            db.endTransaction();
+        }
+    }
+
+    public ArrayList<Earning> getEarnings() {
+
+        ArrayList<Earning> earningList = new ArrayList<>();
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(DBContract.SQL_SELECT_EARNINGS_TABLE, null);
+
+        try {
+            if (cursor.moveToFirst()) {
+                do {
+
+                    Earning earning = new Earning();
+                    earning.setSymbol(cursor.getString(cursor.getColumnIndex(DBContract.Earnings.COLUMN_NAME_SYMBOL)));
+                    earning.setActualEPS(cursor.getString(cursor.getColumnIndex(DBContract.Earnings.COLUMN_NAME_ACTUAL_ESP)));
+                    earning.setConsensusEPS(cursor.getString(cursor.getColumnIndex(DBContract.Earnings.COLUMN_NAME_CONSENSUS_ESP)));
+                    earning.setEstimatedEPS(cursor.getString(cursor.getColumnIndex(DBContract.Earnings.COLUMN_NAME_ESTIMATED_ESP)));
+                    earning.setAnnounceTime(cursor.getString(cursor.getColumnIndex(DBContract.Earnings.COLUMN_NAME_ANNOUNCE_TIME)));
+                    earning.setNumberOfEstimates(cursor.getString(cursor.getColumnIndex(DBContract.Earnings.COLUMN_NAME_NUMBER_OF_ESTIMATES)));
+                    earning.setePSSurpriseDollar(cursor.getString(cursor.getColumnIndex(DBContract.Earnings.COLUMN_NAME_EPS_SURPRISE_DOLLAR)));
+                    earning.setePSReportDate(cursor.getString(cursor.getColumnIndex(DBContract.Earnings.COLUMN_NAME_EPS_REPORT_DATE)));
+                    earning.setFiscalPeriod(cursor.getString(cursor.getColumnIndex(DBContract.Earnings.COLUMN_NAME_FISCA_PERIOD)));
+                    earning.setFiscalEndDate(cursor.getString(cursor.getColumnIndex(DBContract.Earnings.COLUMN_NAME_FISCAL_END_DATE)));
+                    earning.setYearAgo(cursor.getString(cursor.getColumnIndex(DBContract.Earnings.COLUMN_NAME_YEAR_AGO)));
+                    earning.setYearAgoChangePercent(cursor.getString(cursor.getColumnIndex(DBContract.Earnings.COLUMN_NAME_YEAR_AGO_CHANGE_PERCENT)));
+                    earning.setEstimatedChangePercent(cursor.getString(cursor.getColumnIndex(DBContract.Earnings.COLUMN_NAME_ESTIMATED_CHANGE_PERCENT)));
+                    earning.setSymbolId(cursor.getString(cursor.getColumnIndex(DBContract.Earnings.COLUMN_NAME_SYMBOL_ID)));
+                    earning.setId(cursor.getString(cursor.getColumnIndex(DBContract.Earnings.COLUMN_NAME_ROW_ID)));
+
+                    earningList.add(earning);
+
+                } while (cursor.moveToNext());
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        } finally {
+            if (cursor != null && !cursor.isClosed()) {
+                cursor.close();
+            }
+
+            return earningList;
+        }
+    }
 }

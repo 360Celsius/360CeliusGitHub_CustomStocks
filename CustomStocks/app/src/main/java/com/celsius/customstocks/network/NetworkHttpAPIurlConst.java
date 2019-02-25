@@ -26,6 +26,9 @@ public class NetworkHttpAPIurlConst {
     public String getNewsBySymbolURL(String symbol){
         return BASIC_API_URL+"/stock/"+symbol+"/news/last/5";
     }
+    public String getEarningBySymbolURL(String symbol){
+        return BASIC_API_URL+"/stock/"+symbol+"/earnings";
+    }
 
     public String getPriceBySymbolYRL(String symbol){
         return BASIC_API_URL+"/stock/"+symbol+"/quote";

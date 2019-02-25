@@ -23,6 +23,7 @@ public class Provider extends ContentProvider {
     private static final int MARKETS = 2;
     private static final int QUOTES = 3;
     private static final int NEWS = 4;
+    private static final int EARNING = 5;
 
 
     private static final UriMatcher mMatcher = new UriMatcher(UriMatcher.NO_MATCH);
@@ -32,7 +33,7 @@ public class Provider extends ContentProvider {
         mMatcher.addURI(DBContract.AUTHORITY, DBContract.Markets.URI_SUFFIX, MARKETS);
         mMatcher.addURI(DBContract.AUTHORITY, DBContract.Quotes.URI_SUFFIX, QUOTES);
         mMatcher.addURI(DBContract.AUTHORITY, DBContract.News.URI_SUFFIX, NEWS);
-
+        mMatcher.addURI(DBContract.AUTHORITY, DBContract.Earnings.URI_SUFFIX, EARNING);
     }
 
 
@@ -98,6 +99,9 @@ public class Provider extends ContentProvider {
             case NEWS:
                 tableName = DBContract.News.TABLE_NAME;
                 break;
+            case EARNING:
+                tableName = DBContract.Earnings.TABLE_NAME;
+                break;
 
         }
 
@@ -119,6 +123,9 @@ public class Provider extends ContentProvider {
                 break;
             case NEWS:
                 contentUriName = DBContract.News.CONTENT_URI;
+                break;
+            case EARNING:
+                contentUriName = DBContract.Earnings.CONTENT_URI;
                 break;
 
         }

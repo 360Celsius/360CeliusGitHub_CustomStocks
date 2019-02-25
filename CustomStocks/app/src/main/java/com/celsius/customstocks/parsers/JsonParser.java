@@ -1,5 +1,6 @@
 package com.celsius.customstocks.parsers;
 
+import com.celsius.customstocks.datamodels.Earning;
 import com.celsius.customstocks.datamodels.Market;
 import com.celsius.customstocks.datamodels.News;
 import com.celsius.customstocks.datamodels.Quote;
@@ -153,5 +154,52 @@ public class JsonParser {
         }
         return newsArrayList;
     }
+
+    public ArrayList<Earning> getEarningParsed(String getEarningFromIEXResponce) {
+        JSONObject readerSymbol = null;
+        JSONArray readerEarnings = null;
+
+        ArrayList<Earning> earningArrayList = new ArrayList<>();
+
+
+
+        try {
+
+            readerSymbol = new JSONObject(getEarningFromIEXResponce);
+            readerEarnings = new JSONObject(getEarningFromIEXResponce).getJSONArray("earnings");
+
+
+
+            for (int i = 0; i < readerEarnings.length(); i++) {
+                JSONObject jsonObject = readerEarnings.getJSONObject(i);
+
+                Earning earning = new Earning();
+
+                earning.setSymbol(String.valueOf(readerSymbol.getString("symbol")));
+
+                earning.setActualEPS(String.valueOf(jsonObject.get("actualEPS")));
+                earning.setConsensusEPS(String.valueOf(jsonObject.get("consensusEPS")));
+                earning.setEstimatedEPS(String.valueOf(jsonObject.get("estimatedEPS")));
+                earning.setAnnounceTime(String.valueOf(jsonObject.get("announceTime")));
+                earning.setNumberOfEstimates(String.valueOf(jsonObject.get("numberOfEstimates")));
+                earning.setePSSurpriseDollar(String.valueOf(jsonObject.get("EPSSurpriseDollar")));
+                earning.setePSReportDate(String.valueOf(jsonObject.get("EPSReportDate")));
+
+                earning.setFiscalPeriod(String.valueOf(jsonObject.get("fiscalPeriod")));
+                earning.setFiscalEndDate(String.valueOf(jsonObject.get("fiscalEndDate")));
+                earning.setYearAgo(String.valueOf(jsonObject.get("yearAgo")));
+                earning.setYearAgoChangePercent(String.valueOf(jsonObject.get("yearAgoChangePercent")));
+                earning.setEstimatedChangePercent(String.valueOf(jsonObject.get("estimatedChangePercent")));
+                earning.setSymbolId(String.valueOf(jsonObject.get("symbolId")));
+
+                earningArrayList.add(earning);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+
+        }
+        return earningArrayList;
+    }
+
 
 }

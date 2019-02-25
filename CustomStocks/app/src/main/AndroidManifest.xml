@@ -63,6 +63,9 @@
         <service android:name=".services.PullNewsDataFromIEXService"
             android:enabled="true"/>
 
+        <service android:name=".services.PullEarningsDataFromIEXService"
+            android:enabled="true"/>
+
         <receiver android:name=".recivers.ServiceBroadCastReciver"/>
 
 

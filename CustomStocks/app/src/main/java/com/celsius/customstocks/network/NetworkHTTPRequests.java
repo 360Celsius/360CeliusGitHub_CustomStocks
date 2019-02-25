@@ -47,4 +47,11 @@ public class NetworkHTTPRequests {
         responce = networkHTTPConnection.getHttp(url);
         return responce;
     }
+
+    public String getEarning(String stock){
+        String responce = null;
+        String url = networkHttpAPIurlConst.getEarningBySymbolURL(stock);
+        responce = networkHTTPConnection.getHttp(url);
+        return responce;
+    }
 }

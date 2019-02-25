@@ -17,6 +17,8 @@
     <string name="tab_search">Search</string>
     <string name="tab_markets">Markets</string>
     <string name="tab_more">More</string>
+    <string name="tab_earning_calendar">Calendar</string>
+
 
     <string name="search_field_hint">Search for Symbol</string>
 
