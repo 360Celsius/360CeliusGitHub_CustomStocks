@@ -43,12 +43,12 @@ public class MainActivity extends BaseActivity {
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         content = (LinearLayout) findViewById(R.id.content);
         setActionBarDrawerToggle();
-        ///////////////////////////////////////////////////////////
 
         bottomNavigationView = (BottomNavigationView) findViewById(R.id.navigation);
 
         CoordinatorLayout.LayoutParams layoutParams = (CoordinatorLayout.LayoutParams) bottomNavigationView.getLayoutParams();
         layoutParams.setBehavior(new BottomNavigationViewBehavior());
+        ///////////////////////////////////////////////////////////
 
 
         fragmentViewPlaceholder = (FrameLayout) findViewById(R.id.fragment_view_placeholder);
