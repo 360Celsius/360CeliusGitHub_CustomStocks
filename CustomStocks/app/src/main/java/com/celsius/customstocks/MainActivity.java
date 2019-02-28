@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.FrameLayout;
 
+import com.celsius.customstocks.custombehaviour.BottomNavigationViewBehavior;
 import com.celsius.customstocks.fragments.EarningCalendarFragment;
 import com.celsius.customstocks.fragments.MarketsFragment;
 import com.celsius.customstocks.fragments.MoreFragment;
@@ -14,6 +15,7 @@ import com.celsius.customstocks.fragments.StocksFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.Observer;
 
@@ -29,6 +31,11 @@ public class MainActivity extends BaseActivity {
         setContentView(R.layout.activity_main);
 
         bottomNavigationView = (BottomNavigationView) findViewById(R.id.navigation);
+
+        CoordinatorLayout.LayoutParams layoutParams = (CoordinatorLayout.LayoutParams) bottomNavigationView.getLayoutParams();
+        layoutParams.setBehavior(new BottomNavigationViewBehavior());
+
+
         fragmentViewPlaceholder = (FrameLayout) findViewById(R.id.fragment_view_placeholder);
 
         bottomNavigationView.setOnNavigationItemSelectedListener
