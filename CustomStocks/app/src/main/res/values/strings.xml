@@ -28,5 +28,7 @@
     <string name="tape_b_text">Tape B</string>
     <string name="tape_c_text">Tape C</string>
 
+    <string name="open">open</string>
+    <string name="close">close</string>
 
 </resources>
