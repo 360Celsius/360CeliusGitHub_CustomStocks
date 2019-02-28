@@ -7,11 +7,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
-
 import com.celsius.customstocks.custombehaviour.BottomNavigationViewBehavior;
 import com.celsius.customstocks.fragments.EarningCalendarFragment;
 import com.celsius.customstocks.fragments.MarketsFragment;
-import com.celsius.customstocks.fragments.MoreFragment;
 import com.celsius.customstocks.fragments.NewsFragment;
 import com.celsius.customstocks.fragments.SearchFragment;
 import com.celsius.customstocks.fragments.StocksFragment;
@@ -19,6 +17,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.widget.Toolbar;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.FragmentTransaction;
@@ -34,6 +33,7 @@ public class MainActivity extends BaseActivity {
     private LinearLayout content;
     private ActionBarDrawerToggle actionBarDrawerToggle;
 
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,7 +44,6 @@ public class MainActivity extends BaseActivity {
         content = (LinearLayout) findViewById(R.id.content);
         setActionBarDrawerToggle();
         ///////////////////////////////////////////////////////////
-
 
         bottomNavigationView = (BottomNavigationView) findViewById(R.id.navigation);
 
@@ -116,5 +115,4 @@ public class MainActivity extends BaseActivity {
         drawerLayout.setDrawerElevation(0f);
         drawerLayout.addDrawerListener(actionBarDrawerToggle);
     }
-
 }

@@ -32,9 +32,13 @@
                     android:layout_width="match_parent"
                     android:layout_height="42dp"
                     android:background="@color/splash_activity_bg"
-                    app:contentInsetStart="0dp"
                     app:layout_scrollFlags="scroll|enterAlways"
-                    app:navigationIcon="@drawable/ic_cstock_logo_small"/>
+                    app:contentInsetStartWithNavigation="0dp"
+                    app:contentInsetLeft="0dp"
+                    app:contentInsetStart="0dp"
+                    app:title="C s t X"
+                    app:titleTextColor="#ffffff"
+                    app:navigationIcon="@drawable/ic_menu_white_24dp"/>
             </com.google.android.material.appbar.AppBarLayout>
 
             <!---your RecyclerView/Fragment Container Layout-->
