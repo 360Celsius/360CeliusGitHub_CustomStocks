@@ -52,7 +52,7 @@ public class ServiceBroadCastReciver extends BroadcastReceiver {
                 ((NewsFragment) ((AppCompatActivity) context).getSupportFragmentManager().findFragmentByTag(NewsFragment.TAG)).updateNewsFragmetRecyclerView();
 
         }else if( intent.getStringExtra(ReciverServiceConsts.DATA_TYPE_KEY).equalsIgnoreCase(ReciverServiceConsts.RELOAD_EARNINGS_FRAGMNET) ){
-            if( ((AppCompatActivity) context).getSupportFragmentManager().findFragmentByTag(NewsFragment.TAG) !=null )
+            if( ((AppCompatActivity) context).getSupportFragmentManager().findFragmentByTag(EarningCalendarFragment.TAG) !=null )
                 ((EarningCalendarFragment) ((AppCompatActivity) context).getSupportFragmentManager().findFragmentByTag(EarningCalendarFragment.TAG)).updateEarningCalendarNewsFragmetRecyclerView();
         }
     }
