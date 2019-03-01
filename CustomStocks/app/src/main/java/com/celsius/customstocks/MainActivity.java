@@ -3,11 +3,14 @@ package com.celsius.customstocks;
 
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import com.celsius.customstocks.custombehaviour.BottomNavigationViewBehavior;
+import com.celsius.customstocks.databinding.ActivityMainBinding;
 import com.celsius.customstocks.fragments.EarningCalendarFragment;
 import com.celsius.customstocks.fragments.MarketsFragment;
 import com.celsius.customstocks.fragments.NewsFragment;
@@ -17,14 +20,14 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBarDrawerToggle;
-import androidx.appcompat.widget.Toolbar;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
+import androidx.core.view.GravityCompat;
+import androidx.databinding.DataBindingUtil;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.lifecycle.Observer;
 
 
-public class MainActivity extends BaseActivity {
+public class MainActivity extends BaseActivity implements View.OnClickListener {
 
     private BottomNavigationView bottomNavigationView;
     private FrameLayout fragmentViewPlaceholder;
@@ -33,11 +36,15 @@ public class MainActivity extends BaseActivity {
     private LinearLayout content;
     private ActionBarDrawerToggle actionBarDrawerToggle;
 
+    private ActivityMainBinding activityMainBinding;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        //setContentView(R.layout.activity_main);
+
+        activityMainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
+        activityMainBinding.setListener(this);
 
         ///////////   Sliding menu configuration ////////////
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -86,7 +93,6 @@ public class MainActivity extends BaseActivity {
                     }
                 });
 
-
     }
 
     @Override
@@ -109,10 +115,21 @@ public class MainActivity extends BaseActivity {
                 content.setScaleX(1 - (slideOffset / scaleFactor));
                 content.setScaleY(1 - (slideOffset / scaleFactor));
             }
+
         };
 
         drawerLayout.setScrimColor(Color.TRANSPARENT);
         drawerLayout.setDrawerElevation(0f);
         drawerLayout.addDrawerListener(actionBarDrawerToggle);
+    }
+
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.menu_button:
+                drawerLayout.openDrawer(GravityCompat.START);
+            break;
+        }
     }
 }

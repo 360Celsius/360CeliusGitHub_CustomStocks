@@ -1,119 +1,162 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/drawer_layout"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#FFFFFF"
-    android:fitsSystemWindows="true">
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".MainActivity">
 
-    <LinearLayout
-        android:id="@+id/content"
+    <data>
+
+        <import type="android.view.View"/>
+        <import type="android.text.TextUtils"/>
+
+        <variable
+            name="listener"
+            type="android.view.View.OnClickListener"  />
+
+    </data>
+
+    <androidx.drawerlayout.widget.DrawerLayout
+        android:id="@+id/drawer_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center_horizontal"
-        android:orientation="vertical">
+        android:background="#FFFFFF"
+        android:fitsSystemWindows="true">
 
-        <androidx.coordinatorlayout.widget.CoordinatorLayout
-            android:id="@+id/coordinator_layout"
+        <LinearLayout
+            android:id="@+id/content"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
 
-            <com.google.android.material.appbar.AppBarLayout
-                android:id="@+id/myAppBar"
+            <androidx.coordinatorlayout.widget.CoordinatorLayout
+                android:id="@+id/coordinator_layout"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:descendantFocusability="beforeDescendants"
-                android:focusableInTouchMode="true"
-                app:elevation="0dp">
+                android:layout_height="match_parent">
 
-                <androidx.appcompat.widget.Toolbar
-                    android:id="@+id/toolbar"
+                <com.google.android.material.appbar.AppBarLayout
+                    android:id="@+id/myAppBar"
                     android:layout_width="match_parent"
-                    android:layout_height="42dp"
-                    android:background="@color/splash_activity_bg"
-                    app:layout_scrollFlags="scroll|enterAlways"
-                    app:contentInsetStartWithNavigation="0dp"
-                    app:contentInsetLeft="0dp"
-                    app:contentInsetStart="0dp"
-                    app:title="C s t X"
-                    app:titleTextColor="#ffffff"
-                    app:navigationIcon="@drawable/ic_menu_white_24dp"/>
-            </com.google.android.material.appbar.AppBarLayout>
+                    android:layout_height="wrap_content"
+                    android:descendantFocusability="beforeDescendants"
+                    android:focusableInTouchMode="true"
+                    app:elevation="0dp">
 
-            <!---your RecyclerView/Fragment Container Layout-->
-            <FrameLayout
-                android:id="@+id/fragment_view_placeholder"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+                    <androidx.appcompat.widget.Toolbar
+                        android:id="@+id/toolbar"
+                        android:layout_width="match_parent"
+                        android:layout_height="42dp"
+                        android:background="@color/splash_activity_bg"
+                        app:layout_scrollFlags="scroll|enterAlways"
+                        app:contentInsetStartWithNavigation="0dp"
+                        app:contentInsetLeft="0dp"
+                        app:contentInsetStart="0dp">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical">
+
+                            <ImageView
+                                android:id="@+id/menu_button"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="16dp"
+                                android:onClick="@{listener::onClick}"
+                                android:src="@drawable/ic_menu_white_24dp"/>
+
+                            <TextView
+                                android:id="@+id/logo"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="12dp"
+                                android:text="C s t X"
+                                android:textColor="#ffffff"
+                                android:textSize="18dp"/>
+                        </LinearLayout>
 
 
-            <com.google.android.material.bottomnavigation.BottomNavigationView
-                android:id="@+id/navigation"
-                android:layout_width="match_parent"
+                    </androidx.appcompat.widget.Toolbar>
+                </com.google.android.material.appbar.AppBarLayout>
+
+                <!---your RecyclerView/Fragment Container Layout-->
+                <FrameLayout
+                    android:id="@+id/fragment_view_placeholder"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
+
+                <com.google.android.material.bottomnavigation.BottomNavigationView
+                    android:id="@+id/navigation"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:background="#ffffff"
+                    app:itemIconTint="@color/nav_item_state_list"
+                    app:itemTextColor="@color/nav_item_state_list"
+                    app:menu="@menu/bottom_navigation_items" />
+
+            </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+        </LinearLayout>
+
+
+        <!---Sliding menu-->
+
+        <LinearLayout
+            android:id="@+id/drawer"
+            android:layout_width="200dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            android:textColor="@android:color/white"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="bottom"
-                android:background="#ffffff"
-                app:itemIconTint="@color/nav_item_state_list"
-                app:itemTextColor="@color/nav_item_state_list"
-                app:menu="@menu/bottom_navigation_items" />
+                android:layout_marginTop="80dp"
+                android:text="You are in the drawer"
+                android:textColor="@android:color/black" />
 
-        </androidx.coordinatorlayout.widget.CoordinatorLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_marginTop="40dp"
+                android:background="@android:color/black"
+                android:visibility="gone" />
 
-    </LinearLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Option 1"
+                android:textColor="@android:color/black"
+                android:textSize="20sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Option 2"
+                android:textColor="@android:color/black"
+                android:textSize="20sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Option 3"
+                android:textColor="@android:color/black"
+                android:textSize="20sp" />
+
+        </LinearLayout>
+
+        <!---NavigationView-->
+    </androidx.drawerlayout.widget.DrawerLayout>
+
+</layout>
 
 
-    <!---Sliding menu-->
-
-    <LinearLayout
-        android:id="@+id/drawer"
-        android:layout_width="200dp"
-        android:layout_height="match_parent"
-        android:layout_gravity="start"
-        android:textColor="@android:color/white"
-        android:gravity="center_horizontal"
-        android:orientation="vertical">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="80dp"
-            android:text="You are in the drawer"
-            android:textColor="@android:color/black" />
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="2dp"
-            android:layout_marginTop="40dp"
-            android:background="@android:color/black"
-            android:visibility="gone" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="Option 1"
-            android:textColor="@android:color/black"
-            android:textSize="20sp" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="Option 2"
-            android:textColor="@android:color/black"
-            android:textSize="20sp" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="Option 3"
-            android:textColor="@android:color/black"
-            android:textSize="20sp" />
-
-    </LinearLayout>
-
-    <!---NavigationView-->
-</androidx.drawerlayout.widget.DrawerLayout>
