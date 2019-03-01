@@ -8,7 +8,10 @@ import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
+
 import com.celsius.customstocks.custombehaviour.BottomNavigationViewBehavior;
 import com.celsius.customstocks.databinding.ActivityMainBinding;
 import com.celsius.customstocks.fragments.EarningCalendarFragment;
@@ -38,6 +41,9 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
     private ActivityMainBinding activityMainBinding;
 
+    private TextView logo;
+    private ImageView menuIcon;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,6 +51,9 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
         activityMainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
         activityMainBinding.setListener(this);
+
+        logo = (TextView) findViewById(R.id.logo);
+        menuIcon = (ImageView) findViewById(R.id.menu_button);
 
         ///////////   Sliding menu configuration ////////////
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -114,6 +123,14 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 content.setTranslationX(slideX);
                 content.setScaleX(1 - (slideOffset / scaleFactor));
                 content.setScaleY(1 - (slideOffset / scaleFactor));
+
+                if(slideOffset == 0) {
+                    logo.setVisibility(View.VISIBLE);
+                    menuIcon.setImageDrawable(getResources().getDrawable(R.drawable.ic_menu_white_24dp));
+                }else {
+                    logo.setVisibility(View.INVISIBLE);
+                    menuIcon.setImageDrawable(getResources().getDrawable(R.drawable.ic_arrow_back_black_24dp));
+                }
             }
 
         };
