@@ -122,7 +122,7 @@
             <RelativeLayout
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:layout_marginTop="12dp"
+                android:layout_marginTop="24dp"
                 android:layout_gravity="center_horizontal"
                 android:gravity="center"
                 android:background="@drawable/rounded_shape_slide_menu">
@@ -131,7 +131,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="C s t X"
-                    android:textColor="#ffffff"
+                    android:textColor="@color/splash_activity_bg"
                     android:textSize="28dp"/>
 
             </RelativeLayout>
