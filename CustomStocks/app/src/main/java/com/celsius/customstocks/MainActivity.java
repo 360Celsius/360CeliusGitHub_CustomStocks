@@ -140,6 +140,27 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
             case R.id.menu_button:
                 drawerLayout.openDrawer(GravityCompat.START);
             break;
+
+            case R.id.stocks:
+                break;
+
+            case R.id.news:
+                break;
+
+            case R.id.search:
+                break;
+
+            case R.id.markets:
+                break;
+
+            case R.id.calendar:
+                break;
+
+            case R.id.settings:
+                break;
+
+            case R.id.info:
+                break;
         }
     }
 }

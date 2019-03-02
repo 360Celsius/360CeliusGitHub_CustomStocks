@@ -137,10 +137,12 @@
             </RelativeLayout>
 
             <LinearLayout
+                android:id="@+id/stocks"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"
                 android:layout_marginTop="24dp"
+                android:onClick="@{listener::onClick}"
                 android:orientation="horizontal">
 
                 <ImageView
@@ -160,9 +162,11 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/news"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
+                android:onClick="@{listener::onClick}"
                 android:orientation="horizontal">
 
                 <ImageView
@@ -182,9 +186,11 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/search"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
+                android:onClick="@{listener::onClick}"
                 android:orientation="horizontal">
 
                 <ImageView
@@ -203,9 +209,11 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/markets"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
+                android:onClick="@{listener::onClick}"
                 android:orientation="horizontal">
 
                 <ImageView
@@ -224,9 +232,11 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/calendar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
+                android:onClick="@{listener::onClick}"
                 android:orientation="horizontal">
 
                 <ImageView
@@ -246,9 +256,11 @@
 
 
             <LinearLayout
+                android:id="@+id/settings"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
+                android:onClick="@{listener::onClick}"
                 android:orientation="horizontal">
 
                 <ImageView
@@ -267,9 +279,11 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/info"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
+                android:onClick="@{listener::onClick}"
                 android:orientation="horizontal">
 
                 <ImageView
