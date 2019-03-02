@@ -136,10 +136,59 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         switch (v.getId()){
             case R.id.menu_button:
                 drawerLayout.openDrawer(GravityCompat.START);
             break;
+
+            case R.id.stocks:
+                drawerLayout.closeDrawer(GravityCompat.START);
+                bottomNavigationView.setSelectedItemId(R.id.action_item1);
+                transaction.replace(R.id.fragment_view_placeholder, new StocksFragment(), StocksFragment.TAG);
+                transaction.addToBackStack(null);
+                transaction.commit();
+                break;
+
+            case R.id.news:
+                drawerLayout.closeDrawer(GravityCompat.START);
+                bottomNavigationView.setSelectedItemId(R.id.action_item2);
+                transaction.replace(R.id.fragment_view_placeholder, new NewsFragment(),NewsFragment.TAG);
+                transaction.addToBackStack(null);
+                transaction.commit();
+                break;
+
+            case R.id.search:
+                drawerLayout.closeDrawer(GravityCompat.START);
+                bottomNavigationView.setSelectedItemId(R.id.action_item3);
+                transaction.replace(R.id.fragment_view_placeholder, new SearchFragment(),SearchFragment.TAG);
+                transaction.addToBackStack(null);
+                transaction.commit();
+                break;
+
+            case R.id.markets:
+                drawerLayout.closeDrawer(GravityCompat.START);
+                bottomNavigationView.setSelectedItemId(R.id.action_item4);
+                transaction.replace(R.id.fragment_view_placeholder, new MarketsFragment(),MarketsFragment.TAG);
+                transaction.addToBackStack(null);
+                transaction.commit();
+                break;
+
+            case R.id.calendar:
+                drawerLayout.closeDrawer(GravityCompat.START);
+                bottomNavigationView.setSelectedItemId(R.id.action_item5);
+                transaction.replace(R.id.fragment_view_placeholder, new EarningCalendarFragment(),EarningCalendarFragment.TAG);
+                transaction.addToBackStack(null);
+                transaction.commit();
+                break;
+
+            case R.id.settings:
+                drawerLayout.closeDrawer(GravityCompat.START);
+                break;
+
+            case R.id.info:
+                drawerLayout.closeDrawer(GravityCompat.START);
+                break;
         }
     }
 }
