@@ -58,8 +58,32 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         ///////////   Sliding menu configuration ////////////
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         content = (LinearLayout) findViewById(R.id.content);
-        setActionBarDrawerToggle();
 
+        drawerLayout.setScrimColor(Color.TRANSPARENT);
+
+        actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, R.string.open, R.string.close) {
+            private float scaleFactor = 6f;
+
+            @Override
+            public void onDrawerSlide(View drawerView, float slideOffset) {
+                super.onDrawerSlide(drawerView, slideOffset);
+                float slideX = drawerView.getWidth() * slideOffset;
+                content.setTranslationX(slideX);
+                content.setScaleX(1 - (slideOffset / scaleFactor));
+                content.setScaleY(1 - (slideOffset / scaleFactor));
+
+                if(slideOffset == 0) {
+                    drawerState.setIsDrawerOpen(false);
+                }else {
+                    drawerState.setIsDrawerOpen(true);
+                }
+            }
+
+        };
+
+        drawerLayout.setScrimColor(Color.TRANSPARENT);
+        drawerLayout.setDrawerElevation(0f);
+        drawerLayout.addDrawerListener(actionBarDrawerToggle);
         bottomNavigationView = (BottomNavigationView) findViewById(R.id.navigation);
 
         CoordinatorLayout.LayoutParams layoutParams = (CoordinatorLayout.LayoutParams) bottomNavigationView.getLayoutParams();
@@ -109,35 +133,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         super.onResume();
         bottomNavigationView.setSelectedItemId(R.id.action_item3);
     }
-
-    private void setActionBarDrawerToggle(){
-        drawerLayout.setScrimColor(Color.TRANSPARENT);
-
-        actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, R.string.open, R.string.close) {
-            private float scaleFactor = 6f;
-
-            @Override
-            public void onDrawerSlide(View drawerView, float slideOffset) {
-                super.onDrawerSlide(drawerView, slideOffset);
-                float slideX = drawerView.getWidth() * slideOffset;
-                content.setTranslationX(slideX);
-                content.setScaleX(1 - (slideOffset / scaleFactor));
-                content.setScaleY(1 - (slideOffset / scaleFactor));
-
-                if(slideOffset == 0) {
-                    drawerState.setIsDrawerOpen(false);
-                }else {
-                    drawerState.setIsDrawerOpen(true);
-                }
-            }
-
-        };
-
-        drawerLayout.setScrimColor(Color.TRANSPARENT);
-        drawerLayout.setDrawerElevation(0f);
-        drawerLayout.addDrawerListener(actionBarDrawerToggle);
-    }
-
 
     @Override
     public void onClick(View v) {
