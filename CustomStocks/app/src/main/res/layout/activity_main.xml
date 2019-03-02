@@ -141,13 +141,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"
-                android:layout_marginTop="24dp"
+                android:layout_marginTop="48dp"
                 android:onClick="@{listener::onClick}"
                 android:orientation="horizontal">
 
                 <ImageView
-                    android:layout_width="28dp"
-                    android:layout_height="28dp"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
                     android:layout_marginLeft="16dp"
                     android:src="@drawable/ic_stocks_side_menu"/>
 
@@ -157,7 +157,7 @@
                     android:text="Stocks"
                     android:layout_marginLeft="16dp"
                     android:textColor="@color/symbol_tyoe_color"
-                    android:textSize="20dp" />
+                    android:textSize="16dp" />
 
             </LinearLayout>
 
@@ -170,8 +170,8 @@
                 android:orientation="horizontal">
 
                 <ImageView
-                    android:layout_width="28dp"
-                    android:layout_height="28dp"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
                     android:layout_marginLeft="16dp"
                     android:src="@drawable/ic_news_side_menu"/>
 
@@ -181,7 +181,7 @@
                     android:text="News"
                     android:layout_marginLeft="16dp"
                     android:textColor="@color/symbol_tyoe_color"
-                    android:textSize="20dp" />
+                    android:textSize="16dp" />
 
             </LinearLayout>
 
@@ -194,8 +194,8 @@
                 android:orientation="horizontal">
 
                 <ImageView
-                    android:layout_width="28dp"
-                    android:layout_height="28dp"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
                     android:layout_marginLeft="16dp"
                     android:src="@drawable/ic_search_side_menu"/>
 
@@ -205,7 +205,7 @@
                     android:text="Search"
                     android:layout_marginLeft="16dp"
                     android:textColor="@color/symbol_tyoe_color"
-                    android:textSize="20dp" />
+                    android:textSize="16dp" />
             </LinearLayout>
 
             <LinearLayout
@@ -217,8 +217,8 @@
                 android:orientation="horizontal">
 
                 <ImageView
-                    android:layout_width="28dp"
-                    android:layout_height="28dp"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
                     android:layout_marginLeft="16dp"
                     android:src="@drawable/ic_market_side_menu"/>
 
@@ -228,7 +228,7 @@
                     android:text="Markets"
                     android:layout_marginLeft="16dp"
                     android:textColor="@color/symbol_tyoe_color"
-                    android:textSize="20dp" />
+                    android:textSize="16dp" />
             </LinearLayout>
 
             <LinearLayout
@@ -240,8 +240,8 @@
                 android:orientation="horizontal">
 
                 <ImageView
-                    android:layout_width="28dp"
-                    android:layout_height="28dp"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
                     android:layout_marginLeft="16dp"
                     android:src="@drawable/ic_calendar_side_menu"/>
 
@@ -251,7 +251,7 @@
                     android:text="Calendar"
                     android:layout_marginLeft="16dp"
                     android:textColor="@color/symbol_tyoe_color"
-                    android:textSize="20dp" />
+                    android:textSize="16dp" />
             </LinearLayout>
 
 
@@ -264,8 +264,8 @@
                 android:orientation="horizontal">
 
                 <ImageView
-                    android:layout_width="28dp"
-                    android:layout_height="28dp"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
                     android:layout_marginLeft="16dp"
                     android:src="@drawable/ic_settings_side_menu"/>
 
@@ -275,7 +275,7 @@
                     android:text="Settings"
                     android:layout_marginLeft="16dp"
                     android:textColor="@color/symbol_tyoe_color"
-                    android:textSize="20dp" />
+                    android:textSize="16dp" />
             </LinearLayout>
 
             <LinearLayout
@@ -287,8 +287,8 @@
                 android:orientation="horizontal">
 
                 <ImageView
-                    android:layout_width="28dp"
-                    android:layout_height="28dp"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
                     android:layout_marginLeft="16dp"
                     android:src="@drawable/ic_info_side_menu"/>
 
@@ -298,7 +298,7 @@
                     android:text="Info"
                     android:layout_marginLeft="16dp"
                     android:textColor="@color/symbol_tyoe_color"
-                    android:textSize="20dp" />
+                    android:textSize="16dp" />
             </LinearLayout>
 
 
