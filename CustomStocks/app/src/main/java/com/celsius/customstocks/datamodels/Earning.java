@@ -28,11 +28,23 @@ public class Earning extends BaseObservable {
 
     private String id;
 
+    private boolean isToShowDateHeader = false;
+
     @Inject
     Utils utils;
 
     public Earning() {
         CustomStockApplication.getMyComponent().inject(this);
+    }
+
+    @Bindable
+    public boolean getIsToShowDateHeader(){
+        return isToShowDateHeader;
+    }
+
+    public void setIsToShowDateHeader(boolean isToShowDateHeader){
+        this.isToShowDateHeader = isToShowDateHeader;
+        notifyPropertyChanged(BR.isToShowDateHeader);
     }
 
     @Bindable
@@ -183,5 +195,9 @@ public class Earning extends BaseObservable {
     public void setId(String id) {
         this.id = id;
         notifyPropertyChanged(BR.id);
+    }
+
+    public String getFormatedDate(){
+        return epsReportDate.substring(0,epsReportDate.length()-3);
     }
 }

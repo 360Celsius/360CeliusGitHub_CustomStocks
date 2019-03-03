@@ -677,6 +677,20 @@ public class DBHelper extends SQLiteOpenHelper {
 
                 } while (cursor.moveToNext());
             }
+
+
+            for(int i=0;i<earningList.size();i++){
+                if(i==0) {
+                    earningList.get(i).setIsToShowDateHeader(true);
+                }else if( i!=0 && !earningList.get(i-1).getEpsReportDate().substring(0,earningList.get(i-1).getEpsReportDate().length()-3)
+                        .equals(earningList.get(i).getEpsReportDate().substring(0,earningList.get(i).getEpsReportDate().length()-3))){
+                    earningList.get(i).setIsToShowDateHeader(true);
+                }else{
+                    earningList.get(i).setIsToShowDateHeader(false);
+                }
+            }
+
+
         } catch (Exception e) {
             e.printStackTrace();
             return null;

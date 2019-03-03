@@ -3,6 +3,10 @@
 
     <data>
 
+        <import type="android.view.View" />
+
+        <import type="android.text.TextUtils" />
+
         <variable
             name="earnings"
             type="com.celsius.customstocks.datamodels.Earning" />
@@ -15,8 +19,26 @@
         android:layout_marginLeft="12dp"
         android:layout_marginRight="12dp">
 
+        <RelativeLayout
+            android:id="@+id/date_header"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/market_chart_center_color"
+            android:visibility="@{earnings.isToShowDateHeader == false ? View.GONE : View.VISIBLE}">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{earnings.getFormatedDate()}"
+                android:textColor="#ffffff"
+                android:layout_centerHorizontal="true"
+                android:padding="1dp"
+                android:textSize="12dp"/>
+        </RelativeLayout>
+
         <TextView
             android:id="@+id/symbol"
+            android:layout_below="@+id/date_header"
             android:layout_marginTop="6dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
