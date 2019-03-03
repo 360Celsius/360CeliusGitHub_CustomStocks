@@ -296,5 +296,5 @@ public class DBContract {
             "DROP TABLE IF EXISTS " + Earnings.TABLE_NAME;
 
     public static final String SQL_SELECT_EARNINGS_TABLE =
-            "SELECT  * FROM " + Earnings.TABLE_NAME + " WHERE "+ Earnings._ID;
+            "SELECT  * FROM " + Earnings.TABLE_NAME + " WHERE "+ Earnings._ID +" ORDER BY strftime('%Y-%m-%d', "+Earnings.COLUMN_NAME_EPS_REPORT_DATE+") DESC";
 }
