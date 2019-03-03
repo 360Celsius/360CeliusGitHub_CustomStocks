@@ -41,13 +41,17 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentLeft="true"
-                    android:text="test"/>
+                    android:text="Esp Date"
+                    android:textColor="@color/symbol_tyoe_color"
+                    android:textSize="12dp"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
-                    android:text="1"/>
+                    android:text="@{earnings.epsReportDate}"
+                    android:textColor="@color/symbol_name_color"
+                    android:textSize="12dp"/>
 
 
 
@@ -64,13 +68,17 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentLeft="true"
-                    android:text="test"/>
+                    android:text="Actual ESP"
+                    android:textColor="@color/symbol_tyoe_color"
+                    android:textSize="12dp"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
-                    android:text="1"/>
+                    android:text="@{earnings.actualEPS}"
+                    android:textColor="@color/symbol_name_color"
+                    android:textSize="12dp"/>
 
             </RelativeLayout>
 
@@ -94,13 +102,17 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentLeft="true"
-                    android:text="test"/>
+                    android:text="Fiscal Period"
+                    android:textColor="@color/symbol_tyoe_color"
+                    android:textSize="12dp"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
-                    android:text="1"/>
+                    android:text="@{earnings.fiscalPeriod}"
+                    android:textColor="@color/symbol_name_color"
+                    android:textSize="12dp"/>
 
 
 
@@ -117,13 +129,17 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentLeft="true"
-                    android:text="test"/>
+                    android:text="Consensus EPS"
+                    android:textColor="@color/symbol_tyoe_color"
+                    android:textSize="12dp"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
-                    android:text="1"/>
+                    android:text="@{earnings.consensusEPS}"
+                    android:textColor="@color/symbol_name_color"
+                    android:textSize="12dp"/>
 
             </RelativeLayout>
 
@@ -141,19 +157,24 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:visibility="invisible"
                 android:gravity="center_vertical">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentLeft="true"
-                    android:text="test"/>
+                    android:text="test"
+                    android:textColor="@color/symbol_tyoe_color"
+                    android:textSize="12dp"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
-                    android:text="1"/>
+                    android:text="1"
+                    android:textColor="@color/symbol_name_color"
+                    android:textSize="12dp"/>
 
 
 
@@ -170,13 +191,17 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentLeft="true"
-                    android:text="test"/>
+                    android:text="Estimated EPS"
+                    android:textColor="@color/symbol_tyoe_color"
+                    android:textSize="12dp"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
-                    android:text="1"/>
+                    android:text="@{earnings.estimatedEPS}"
+                    android:textColor="@color/symbol_name_color"
+                    android:textSize="12dp"/>
 
             </RelativeLayout>
 
@@ -195,19 +220,24 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:visibility="invisible"
                 android:gravity="center_vertical">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentLeft="true"
-                    android:text="test"/>
+                    android:text="test"
+                    android:textColor="@color/symbol_tyoe_color"
+                    android:textSize="12dp"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
-                    android:text="1"/>
+                    android:text="1"
+                    android:textColor="@color/symbol_name_color"
+                    android:textSize="12dp"/>
 
 
 
@@ -224,13 +254,17 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentLeft="true"
-                    android:text="test"/>
+                    android:text="Estimates"
+                    android:textColor="@color/symbol_tyoe_color"
+                    android:textSize="12dp"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
-                    android:text="1"/>
+                    android:text="@{earnings.numberOfEstimates}"
+                    android:textColor="@color/symbol_name_color"
+                    android:textSize="12dp"/>
 
             </RelativeLayout>
 
