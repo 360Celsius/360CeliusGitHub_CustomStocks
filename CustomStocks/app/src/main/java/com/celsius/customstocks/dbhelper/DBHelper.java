@@ -613,8 +613,8 @@ public class DBHelper extends SQLiteOpenHelper {
                 values.put(DBContract.Earnings.COLUMN_NAME_ESTIMATED_ESP, earningsParsed.get(i).getEstimatedEPS());
                 values.put(DBContract.Earnings.COLUMN_NAME_ANNOUNCE_TIME, earningsParsed.get(i).getAnnounceTime());
                 values.put(DBContract.Earnings.COLUMN_NAME_NUMBER_OF_ESTIMATES, earningsParsed.get(i).getNumberOfEstimates());
-                values.put(DBContract.Earnings.COLUMN_NAME_EPS_SURPRISE_DOLLAR, earningsParsed.get(i).getePSSurpriseDollar());
-                values.put(DBContract.Earnings.COLUMN_NAME_EPS_REPORT_DATE, earningsParsed.get(i).getePSReportDate());
+                values.put(DBContract.Earnings.COLUMN_NAME_EPS_SURPRISE_DOLLAR, earningsParsed.get(i).getEpsSurpriseDollar());
+                values.put(DBContract.Earnings.COLUMN_NAME_EPS_REPORT_DATE, earningsParsed.get(i).getEpsReportDate());
                 values.put(DBContract.Earnings.COLUMN_NAME_FISCA_PERIOD, earningsParsed.get(i).getFiscalPeriod());
                 values.put(DBContract.Earnings.COLUMN_NAME_FISCAL_END_DATE, earningsParsed.get(i).getFiscalEndDate());
                 values.put(DBContract.Earnings.COLUMN_NAME_YEAR_AGO, earningsParsed.get(i).getYearAgo());
@@ -663,8 +663,8 @@ public class DBHelper extends SQLiteOpenHelper {
                     earning.setEstimatedEPS(cursor.getString(cursor.getColumnIndex(DBContract.Earnings.COLUMN_NAME_ESTIMATED_ESP)));
                     earning.setAnnounceTime(cursor.getString(cursor.getColumnIndex(DBContract.Earnings.COLUMN_NAME_ANNOUNCE_TIME)));
                     earning.setNumberOfEstimates(cursor.getString(cursor.getColumnIndex(DBContract.Earnings.COLUMN_NAME_NUMBER_OF_ESTIMATES)));
-                    earning.setePSSurpriseDollar(cursor.getString(cursor.getColumnIndex(DBContract.Earnings.COLUMN_NAME_EPS_SURPRISE_DOLLAR)));
-                    earning.setePSReportDate(cursor.getString(cursor.getColumnIndex(DBContract.Earnings.COLUMN_NAME_EPS_REPORT_DATE)));
+                    earning.setEpsSurpriseDollar(cursor.getString(cursor.getColumnIndex(DBContract.Earnings.COLUMN_NAME_EPS_SURPRISE_DOLLAR)));
+                    earning.setEpsReportDate(cursor.getString(cursor.getColumnIndex(DBContract.Earnings.COLUMN_NAME_EPS_REPORT_DATE)));
                     earning.setFiscalPeriod(cursor.getString(cursor.getColumnIndex(DBContract.Earnings.COLUMN_NAME_FISCA_PERIOD)));
                     earning.setFiscalEndDate(cursor.getString(cursor.getColumnIndex(DBContract.Earnings.COLUMN_NAME_FISCAL_END_DATE)));
                     earning.setYearAgo(cursor.getString(cursor.getColumnIndex(DBContract.Earnings.COLUMN_NAME_YEAR_AGO)));

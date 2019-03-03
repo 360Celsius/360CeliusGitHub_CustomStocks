@@ -182,8 +182,8 @@ public class JsonParser {
                 earning.setEstimatedEPS(String.valueOf(jsonObject.get("estimatedEPS")));
                 earning.setAnnounceTime(String.valueOf(jsonObject.get("announceTime")));
                 earning.setNumberOfEstimates(String.valueOf(jsonObject.get("numberOfEstimates")));
-                earning.setePSSurpriseDollar(String.valueOf(jsonObject.get("EPSSurpriseDollar")));
-                earning.setePSReportDate(String.valueOf(jsonObject.get("EPSReportDate")));
+                earning.setEpsSurpriseDollar(String.valueOf(jsonObject.get("EPSSurpriseDollar")));
+                earning.setEpsReportDate(String.valueOf(jsonObject.get("EPSReportDate")));
 
                 earning.setFiscalPeriod(String.valueOf(jsonObject.get("fiscalPeriod")));
                 earning.setFiscalEndDate(String.valueOf(jsonObject.get("fiscalEndDate")));

@@ -17,8 +17,8 @@ public class Earning extends BaseObservable {
     private String estimatedEPS;
     private String announceTime;
     private String numberOfEstimates;
-    private String ePSSurpriseDollar;
-    private String ePSReportDate;
+    private String epsSurpriseDollar;
+    private String epsReportDate;
     private String fiscalPeriod;
     private String fiscalEndDate;
     private String yearAgo;
@@ -96,23 +96,23 @@ public class Earning extends BaseObservable {
     }
 
     @Bindable
-    public String getePSSurpriseDollar() {
-        return ePSSurpriseDollar;
+    public String getEpsSurpriseDollar() {
+        return epsSurpriseDollar;
     }
 
-    public void setePSSurpriseDollar(String ePSSurpriseDollar) {
-        this.ePSSurpriseDollar = ePSSurpriseDollar;
-        notifyPropertyChanged(BR.ePSSurpriseDollar);
+    public void setEpsSurpriseDollar(String epsSurpriseDollar) {
+        this.epsSurpriseDollar = epsSurpriseDollar;
+        notifyPropertyChanged(BR.epsSurpriseDollar);
     }
 
     @Bindable
-    public String getePSReportDate() {
-        return ePSReportDate;
+    public String getEpsReportDate() {
+        return epsReportDate;
     }
 
-    public void setePSReportDate(String ePSReportDate) {
-        this.ePSReportDate = ePSReportDate;
-        notifyPropertyChanged(BR.ePSReportDate);
+    public void setEpsReportDate(String epsReportDate) {
+        this.epsReportDate = epsReportDate;
+        notifyPropertyChanged(BR.epsReportDate);
     }
 
     @Bindable
