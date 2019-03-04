@@ -99,7 +99,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:text="@{earnings.actualEPS}"
-                    android:textColor="@color/symbol_name_color"
+                    android:textColor="@{earnings.isActualEspDown() == true ? @color/down : @color/up}"
                     android:textSize="12dp"/>
 
             </RelativeLayout>

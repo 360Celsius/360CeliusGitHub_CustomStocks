@@ -246,4 +246,11 @@ public class Earning extends BaseObservable {
         return formatedDate;
     }
 
+    public boolean isActualEspDown(){
+        if (actualEPS.contains("-"))
+            return true;
+        else
+            return false;
+    }
+
 }
