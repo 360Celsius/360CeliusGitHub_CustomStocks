@@ -198,6 +198,52 @@ public class Earning extends BaseObservable {
     }
 
     public String getFormatedDate(){
-        return epsReportDate.substring(0,epsReportDate.length()-3);
+        String formatedDate = null;
+        String month = epsReportDate.substring(0,epsReportDate.length()-3).split("-")[1];
+        String year = epsReportDate.substring(0,epsReportDate.length()-3).split("-")[0];
+
+        switch (month){
+            case "01":
+                formatedDate = "January "+year;
+                break;
+            case "02":
+                formatedDate = "February "+year;
+                break;
+            case "03":
+                formatedDate = "March "+year;
+                break;
+            case "04":
+                formatedDate = "April "+year;
+                break;
+            case "05":
+                formatedDate = "May "+year;
+                break;
+            case "06":
+                formatedDate = "June "+year;
+                break;
+            case "07":
+                formatedDate = "July "+year;
+                break;
+            case "08":
+                formatedDate = "August "+year;
+                break;
+            case "09":
+                formatedDate = "September "+year;
+                break;
+            case "10":
+                formatedDate = "October "+year;
+                break;
+            case "11":
+                formatedDate = "November "+year;
+                break;
+            case "12":
+                formatedDate = "December "+year;
+                break;
+
+            default:
+                formatedDate = month + "/" +year;
+        }
+        return formatedDate;
     }
+
 }

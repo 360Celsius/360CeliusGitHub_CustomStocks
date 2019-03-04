@@ -20,7 +20,7 @@
             android:layout_above="@+id/loading_window"
             android:layout_below="@+id/upper_view"
             android:layout_marginLeft="6dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="0dp"
             android:layout_marginRight="6dp"
             android:layout_marginBottom="0dp">
 
