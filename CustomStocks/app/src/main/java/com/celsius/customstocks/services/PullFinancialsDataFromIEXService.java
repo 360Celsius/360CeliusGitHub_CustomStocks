@@ -4,7 +4,6 @@ import android.app.IntentService;
 import android.content.Intent;
 
 import com.celsius.customstocks.application.CustomStockApplication;
-import com.celsius.customstocks.datamodels.Earning;
 import com.celsius.customstocks.datamodels.Financial;
 import com.celsius.customstocks.datamodels.Symbol;
 import com.celsius.customstocks.dbhelper.DBHelper;
@@ -62,7 +61,7 @@ public class PullFinancialsDataFromIEXService extends IntentService {
                     }
                 }
 
-                helper.bulkInsertFinancialsToEarningsDataTable(listOfFinancialsFromSelectedQuotes);
+                helper.bulkInsertFinancialsToFinancialsDataTable(listOfFinancialsFromSelectedQuotes);
 
                 broadcastIntent.setAction(GET_QOUTES_DATA);
                 broadcastIntent.putExtra(ReciverServiceConsts.DATA_TYPE_KEY, ReciverServiceConsts.RELOAD_FINANCIALS_FRAGMNET);

@@ -713,7 +713,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
     //=================  FINANCIALS =================
 
-    public void bulkInsertFinancialsToEarningsDataTable(ArrayList<Financial> financialsParsed) {
+    public void bulkInsertFinancialsToFinancialsDataTable(ArrayList<Financial> financialsParsed) {
         deleteFinancialsTAble();
         try {
             ContentValues[] contentsArr = new ContentValues[financialsParsed.size()];
