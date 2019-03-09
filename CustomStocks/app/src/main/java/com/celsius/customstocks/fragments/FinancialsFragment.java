@@ -25,7 +25,7 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 public class FinancialsFragment extends BaseFragment {
 
 
-    public final static String TAG = "EarningCalendarFragment";
+    public final static String TAG = "FinancialsFragment";
     private SwipeRefreshLayout swipeRefreshLayout;
     private RecyclerView recyclerView;
     private FragmentFinancialsBinding binding;
