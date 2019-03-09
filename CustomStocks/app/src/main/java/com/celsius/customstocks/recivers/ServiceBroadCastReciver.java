@@ -52,11 +52,11 @@ public class ServiceBroadCastReciver extends BroadcastReceiver {
             if( ((AppCompatActivity) context).getSupportFragmentManager().findFragmentByTag(VolumeByVenueFragment.TAG) !=null )
                 ((VolumeByVenueFragment) ((AppCompatActivity) context).getSupportFragmentManager().findFragmentByTag(VolumeByVenueFragment.TAG)).updateVolumeByVenueFragmetRecyclerView();
 
-        }else if( intent.getStringExtra(ReciverServiceConsts.DATA_TYPE_KEY).equalsIgnoreCase(ReciverServiceConsts.RELOAD_FINANCIALS_FRAGMNET) ){
+        }else if( intent.getStringExtra(ReciverServiceConsts.DATA_TYPE_KEY).equalsIgnoreCase(ReciverServiceConsts.RELOAD_EARNINGS_FRAGMNET) ){
             if( ((AppCompatActivity) context).getSupportFragmentManager().findFragmentByTag(EarningCalendarFragment.TAG) !=null )
                 ((EarningCalendarFragment) ((AppCompatActivity) context).getSupportFragmentManager().findFragmentByTag(EarningCalendarFragment.TAG)).updateEarningFragmetRecyclerView();
 
-        }else if( intent.getStringExtra(ReciverServiceConsts.DATA_TYPE_KEY).equalsIgnoreCase(ReciverServiceConsts.RELOAD_EARNINGS_FRAGMNET) ){
+        }else if( intent.getStringExtra(ReciverServiceConsts.DATA_TYPE_KEY).equalsIgnoreCase(ReciverServiceConsts.RELOAD_FINANCIALS_FRAGMNET) ){
             if( ((AppCompatActivity) context).getSupportFragmentManager().findFragmentByTag(FinancialsFragment.TAG) !=null )
                 ((FinancialsFragment) ((AppCompatActivity) context).getSupportFragmentManager().findFragmentByTag(FinancialsFragment.TAG)).updateFinancialsFragmetRecyclerView();
         }

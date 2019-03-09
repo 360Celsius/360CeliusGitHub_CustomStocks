@@ -26,7 +26,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
     // Database Info
     private static final String DATABASE_NAME = "CustomStocksDatabase";
-    private static final int DATABASE_VERSION = 3;
+    private static final int DATABASE_VERSION = 4;
     private Context context;
 
     @Inject
@@ -49,12 +49,24 @@ public class DBHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        db.execSQL(DBContract.SQL_DELETE_All_SYMBOLS_TABLE);
-        db.execSQL(DBContract.SQL_DELETE_MARKETS_TABLE);
-        db.execSQL(DBContract.SQL_DELETE_QUOTES_TABLE);
-        db.execSQL(DBContract.SQL_DELETE_VALUE_BY_VENUE_TABLE);
-        db.execSQL(DBContract.SQL_DELETE_EARNINGS_TABLE);
-        db.execSQL(DBContract.SQL_DELETE_FINANACIALS_TABLE);
+
+        if(newVersion > oldVersion){
+            db.execSQL(DBContract.SQL_DELETE_All_SYMBOLS_TABLE);
+            db.execSQL(DBContract.SQL_DELETE_MARKETS_TABLE);
+            db.execSQL(DBContract.SQL_DELETE_QUOTES_TABLE);
+            db.execSQL(DBContract.SQL_DELETE_VALUE_BY_VENUE_TABLE);
+            db.execSQL(DBContract.SQL_DELETE_EARNINGS_TABLE);
+            db.execSQL(DBContract.SQL_DELETE_FINANACIALS_TABLE);
+
+            db.execSQL(DBContract.SQL_CREATE_All_SYMBOLS_TABLE);
+            db.execSQL(DBContract.SQL_CREATE_MARKETS_TABLE);
+            db.execSQL(DBContract.SQL_CREATE_QUOTES_TABLE);
+            db.execSQL(DBContract.SQL_CREATE_VALUE_BY_VENUE_TABLE);
+            db.execSQL(DBContract.SQL_CREATE_EARNING_TABLE);
+            db.execSQL(DBContract.SQL_CREATE_FINANACIALS_TABLE);
+        }
+
+
     }
 
     @Override
