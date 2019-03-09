@@ -24,11 +24,15 @@ public class ReciverServiceConsts {
 
     public static final String RELOAD_EARNINGS_FRAGMNET = "RELOAD_EARNINGS_FRAGMNET";
 
+    public static final String RELOAD_FINANCIALS_FRAGMNET = "RELOAD_FINANCIALS_FRAGMNET";
+
     public static final String GET_STOCKS_DATA = "GET_STOCKS_DATA";
 
     public static final String GET_VOLUME_BE_VENUE_DATA = "GET_VOLUME_BE_VENUE_DATA";
 
     public static final String GET_EARNINGS_DATA = "GET_EARNINGS_DATA";
+
+    public static final String GET_FINANCIALS_DATA = "GET_FINANCIALS_DATA";
 
     public static final String OPEN_SIDE_MENU_ACTIVITY_WITH_MARKETS = "OPEN_SIDE_MENU_ACTIVITY_WITH_MARKETS";
 

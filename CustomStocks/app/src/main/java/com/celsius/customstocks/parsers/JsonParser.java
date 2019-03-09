@@ -1,6 +1,7 @@
 package com.celsius.customstocks.parsers;
 
 import com.celsius.customstocks.datamodels.Earning;
+import com.celsius.customstocks.datamodels.Financial;
 import com.celsius.customstocks.datamodels.Market;
 import com.celsius.customstocks.datamodels.VolumeByVenue;
 import com.celsius.customstocks.datamodels.Quote;
@@ -205,5 +206,58 @@ public class JsonParser {
         return earningArrayList;
     }
 
+    public ArrayList<Financial> getFinancialsParsed(String getEarningFromIEXResponce, String symbolName) {
+        JSONObject readerSymbol = null;
+        JSONArray readerFinancials = null;
 
+        ArrayList<Financial> financialArrayList = new ArrayList<>();
+
+
+
+        try {
+
+            readerSymbol = new JSONObject(getEarningFromIEXResponce);
+            readerFinancials = new JSONObject(getEarningFromIEXResponce).getJSONArray("financials");
+
+
+
+            for (int i = 0; i < readerFinancials.length(); i++) {
+                JSONObject jsonObject = readerFinancials.getJSONObject(i);
+
+                Financial financial = new Financial();
+
+                financial.setSymbolName(symbolName);
+
+                financial.setSymbolName(symbolName);
+                financial.setSymbol(String.valueOf(readerSymbol.getString("symbol")));
+
+                financial.setReportDate(String.valueOf(jsonObject.get("reportDate")));
+                financial.setGrossProfit(String.valueOf(jsonObject.get("grossProfit")));
+                financial.setCostOfRevenue(String.valueOf(jsonObject.get("costOfRevenue")));
+                financial.setOperatingRevenue(String.valueOf(jsonObject.get("operatingRevenue")));
+                financial.setTotalRevenue(String.valueOf(jsonObject.get("totalRevenue")));
+                financial.setOperatingIncome(String.valueOf(jsonObject.get("operatingIncome")));
+                financial.setNetIncome(String.valueOf(jsonObject.get("netIncome")));
+                financial.setResearchAndDevelopment(String.valueOf(jsonObject.get("researchAndDevelopment")));
+                financial.setOperatingExpense(String.valueOf(jsonObject.get("operatingExpense")));
+                financial.setCurrentAssets(String.valueOf(jsonObject.get("currentAssets")));
+                financial.setTotalAssets(String.valueOf(jsonObject.get("totalAssets")));
+                financial.setTotalLiabilities(String.valueOf(jsonObject.get("totalLiabilities")));
+                financial.setCurrentCash(String.valueOf(jsonObject.get("currentCash")));
+                financial.setCurrentDebt(String.valueOf(jsonObject.get("currentDebt")));
+                financial.setTotalCash(String.valueOf(jsonObject.get("totalCash")));
+                financial.setTotalDebt(String.valueOf(jsonObject.get("totalDebt")));
+                financial.setShareholderEquity(String.valueOf(jsonObject.get("shareholderEquity")));
+                financial.setCashChange(String.valueOf(jsonObject.get("cashChange")));
+                financial.setCashFlow(String.valueOf(jsonObject.get("cashFlow")));
+                financial.setOperatingGainsLosses(String.valueOf(jsonObject.get("operatingGainsLosses")));
+
+                financialArrayList.add(financial);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+
+        }
+        return financialArrayList;
+    }
 }

@@ -30,6 +30,10 @@ public class NetworkHttpAPIurlConst {
         return BASIC_API_URL+"/stock/"+symbol+"/earnings";
     }
 
+    public String getFinancialsBySymbolURL(String symbol){
+        return BASIC_API_URL+"/stock/"+symbol+"/financials";
+    }
+
     public String getPriceBySymbolYRL(String symbol){
         return BASIC_API_URL+"/stock/"+symbol+"/quote";
     }

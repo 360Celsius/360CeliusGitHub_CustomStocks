@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import com.celsius.customstocks.datamodels.Earning;
+import com.celsius.customstocks.datamodels.Financial;
 import com.celsius.customstocks.datamodels.Market;
 import com.celsius.customstocks.datamodels.VolumeByVenue;
 import com.celsius.customstocks.datamodels.Quote;
@@ -711,4 +712,113 @@ public class DBHelper extends SQLiteOpenHelper {
 
 
     //=================  FINANCIALS =================
+
+    public void bulkInsertFinancialsToEarningsDataTable(ArrayList<Financial> financialsParsed) {
+        deleteFinancialsTAble();
+        try {
+            ContentValues[] contentsArr = new ContentValues[financialsParsed.size()];
+
+            for (int i = 0; i < financialsParsed.size(); i++) {
+                ContentValues values = new ContentValues();
+
+                values.put(DBContract.Financials.COLUMN_NAME_REPORT_DATE, financialsParsed.get(i).getReportDate());
+                values.put(DBContract.Financials.COLUMN_NAME_GROSS_PROFIT, financialsParsed.get(i).getGrossProfit());
+                values.put(DBContract.Financials.COLUMN_NAME_COST_OF_REVENUE, financialsParsed.get(i).getCostOfRevenue());
+                values.put(DBContract.Financials.COLUMN_NAME_OPERATING_REVENUE, financialsParsed.get(i).getOperatingRevenue());
+                values.put(DBContract.Financials.COLUMN_NAME_TOTAL_REVENUE, financialsParsed.get(i).getTotalRevenue());
+                values.put(DBContract.Financials.COLUMN_NAME_OPERATING_INCOME, financialsParsed.get(i).getOperatingIncome());
+                values.put(DBContract.Financials.COLUMN_NAME_NET_INCOME, financialsParsed.get(i).getNetIncome());
+                values.put(DBContract.Financials.COLUMN_NAME_RESEARCH_AND_DEVELOPMENT, financialsParsed.get(i).getResearchAndDevelopment());
+                values.put(DBContract.Financials.COLUMN_NAME_OPERATING_EXPENCE, financialsParsed.get(i).getOperatingExpense());
+                values.put(DBContract.Financials.COLUMN_NAME_CURRENT_ASSETS, financialsParsed.get(i).getCurrentAssets());
+                values.put(DBContract.Financials.COLUMN_NAME_TOTAL_ASSETS, financialsParsed.get(i).getTotalAssets());
+                values.put(DBContract.Financials.COLUMN_NAME_TOTAL_LIABILITIES, financialsParsed.get(i).getTotalLiabilities());
+                values.put(DBContract.Financials.COLUMN_NAME_CURRENT_CASH, financialsParsed.get(i).getCurrentCash());
+                values.put(DBContract.Financials.COLUMN_NAME_CURRENT_DEPT, financialsParsed.get(i).getCurrentDebt());
+                values.put(DBContract.Financials.COLUMN_NAME_TOTAL_CASH, financialsParsed.get(i).getTotalCash());
+                values.put(DBContract.Financials.COLUMN_NAME_TOTAL_DEBT, financialsParsed.get(i).getTotalDebt());
+                values.put(DBContract.Financials.COLUMN_NAME_SHAREHOLDER_EQUITY, financialsParsed.get(i).getShareholderEquity());
+                values.put(DBContract.Financials.COLUMN_NAME_CASH_CHANGE, financialsParsed.get(i).getCashChange());
+                values.put(DBContract.Financials.COLUMN_NAME_CASH_FLOW, financialsParsed.get(i).getCashFlow());
+                values.put(DBContract.Financials.COLUMN_NAME_OPERATING_GAINS_LOSSES, financialsParsed.get(i).getOperatingGainsLosses());
+                values.put(DBContract.Financials.COLUMN_NAME_SYMBOL, financialsParsed.get(i).getSymbol());
+                values.put(DBContract.Financials.COLUMN_NAME_SYMBOL_NAME, financialsParsed.get(i).getSymbolName());
+                values.put(DBContract.Financials.COLUMN_NAME_ROW_ID, String.valueOf(i+1));
+                contentsArr[i] = values;
+
+            }
+            context.getContentResolver().bulkInsert(DBContract.Financials.CONTENT_URI, contentsArr);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void deleteFinancialsTAble() {
+        SQLiteDatabase db = getWritableDatabase();
+        db.beginTransaction();
+        try {
+            db.delete(DBContract.Financials.TABLE_NAME, null, null);
+            db.setTransactionSuccessful();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            db.endTransaction();
+        }
+    }
+
+    public ArrayList<Financial> getFinancials() {
+
+        ArrayList<Financial> earningList = new ArrayList<>();
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(DBContract.SQL_SELECT_FINANACIALS_TABLE, null);
+
+        try {
+            if (cursor.moveToFirst()) {
+                do {
+
+                    Financial financial = new Financial();
+                    financial.setReportDate(cursor.getString(cursor.getColumnIndex(DBContract.Financials.COLUMN_NAME_REPORT_DATE)));
+                    financial.setGrossProfit(cursor.getString(cursor.getColumnIndex(DBContract.Financials.COLUMN_NAME_GROSS_PROFIT)));
+                    financial.setCostOfRevenue(cursor.getString(cursor.getColumnIndex(DBContract.Financials.COLUMN_NAME_COST_OF_REVENUE)));
+                    financial.setOperatingRevenue(cursor.getString(cursor.getColumnIndex(DBContract.Financials.COLUMN_NAME_OPERATING_REVENUE)));
+                    financial.setTotalRevenue(cursor.getString(cursor.getColumnIndex(DBContract.Financials.COLUMN_NAME_TOTAL_REVENUE)));
+                    financial.setOperatingIncome(cursor.getString(cursor.getColumnIndex(DBContract.Financials.COLUMN_NAME_OPERATING_INCOME)));
+                    financial.setNetIncome(cursor.getString(cursor.getColumnIndex(DBContract.Financials.COLUMN_NAME_NET_INCOME)));
+                    financial.setResearchAndDevelopment(cursor.getString(cursor.getColumnIndex(DBContract.Financials.COLUMN_NAME_RESEARCH_AND_DEVELOPMENT)));
+                    financial.setOperatingExpense(cursor.getString(cursor.getColumnIndex(DBContract.Financials.COLUMN_NAME_OPERATING_EXPENCE)));
+                    financial.setCurrentAssets(cursor.getString(cursor.getColumnIndex(DBContract.Financials.COLUMN_NAME_CURRENT_ASSETS)));
+                    financial.setTotalAssets(cursor.getString(cursor.getColumnIndex(DBContract.Financials.COLUMN_NAME_TOTAL_ASSETS)));
+                    financial.setTotalLiabilities(cursor.getString(cursor.getColumnIndex(DBContract.Financials.COLUMN_NAME_TOTAL_LIABILITIES)));
+                    financial.setCurrentCash(cursor.getString(cursor.getColumnIndex(DBContract.Financials.COLUMN_NAME_CURRENT_CASH)));
+                    financial.setCurrentDebt(cursor.getString(cursor.getColumnIndex(DBContract.Financials.COLUMN_NAME_CURRENT_DEPT)));
+                    financial.setTotalCash(cursor.getString(cursor.getColumnIndex(DBContract.Financials.COLUMN_NAME_TOTAL_CASH)));
+                    financial.setTotalDebt(cursor.getString(cursor.getColumnIndex(DBContract.Financials.COLUMN_NAME_TOTAL_DEBT)));
+                    financial.setShareholderEquity(cursor.getString(cursor.getColumnIndex(DBContract.Financials.COLUMN_NAME_SHAREHOLDER_EQUITY)));
+                    financial.setCashChange(cursor.getString(cursor.getColumnIndex(DBContract.Financials.COLUMN_NAME_CASH_CHANGE)));
+                    financial.setCashFlow(cursor.getString(cursor.getColumnIndex(DBContract.Financials.COLUMN_NAME_CASH_FLOW)));
+                    financial.setOperatingGainsLosses(cursor.getString(cursor.getColumnIndex(DBContract.Financials.COLUMN_NAME_OPERATING_GAINS_LOSSES)));
+                    financial.setId(cursor.getString(cursor.getColumnIndex(DBContract.Financials.COLUMN_NAME_ROW_ID)));
+                    financial.setSymbol(cursor.getString(cursor.getColumnIndex(DBContract.Financials.COLUMN_NAME_SYMBOL)));
+                    financial.setSymbolName(cursor.getString(cursor.getColumnIndex(DBContract.Financials.COLUMN_NAME_SYMBOL_NAME)));
+
+                    earningList.add(financial);
+
+                } while (cursor.moveToNext());
+            }
+
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        } finally {
+            if (cursor != null && !cursor.isClosed()) {
+                cursor.close();
+            }
+
+            return earningList;
+        }
+    }
 }

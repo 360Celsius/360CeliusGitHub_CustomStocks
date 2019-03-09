@@ -6,6 +6,7 @@ import android.content.Intent;
 
 import com.celsius.customstocks.MainActivity;
 import com.celsius.customstocks.fragments.EarningCalendarFragment;
+import com.celsius.customstocks.fragments.FinancialsFragment;
 import com.celsius.customstocks.fragments.MarketsFragment;
 import com.celsius.customstocks.fragments.VolumeByVenueFragment;
 import com.celsius.customstocks.fragments.SearchFragment;
@@ -54,6 +55,10 @@ public class ServiceBroadCastReciver extends BroadcastReceiver {
         }else if( intent.getStringExtra(ReciverServiceConsts.DATA_TYPE_KEY).equalsIgnoreCase(ReciverServiceConsts.RELOAD_EARNINGS_FRAGMNET) ){
             if( ((AppCompatActivity) context).getSupportFragmentManager().findFragmentByTag(EarningCalendarFragment.TAG) !=null )
                 ((EarningCalendarFragment) ((AppCompatActivity) context).getSupportFragmentManager().findFragmentByTag(EarningCalendarFragment.TAG)).updateEarningFragmetRecyclerView();
+
+        }else if( intent.getStringExtra(ReciverServiceConsts.DATA_TYPE_KEY).equalsIgnoreCase(ReciverServiceConsts.RELOAD_EARNINGS_FRAGMNET) ){
+            if( ((AppCompatActivity) context).getSupportFragmentManager().findFragmentByTag(FinancialsFragment.TAG) !=null )
+                ((FinancialsFragment) ((AppCompatActivity) context).getSupportFragmentManager().findFragmentByTag(FinancialsFragment.TAG)).updateFinancialsFragmetRecyclerView();
         }
     }
 }

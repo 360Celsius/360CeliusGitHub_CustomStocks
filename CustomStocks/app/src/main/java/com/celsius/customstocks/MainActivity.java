@@ -13,6 +13,7 @@ import com.celsius.customstocks.custombehaviour.BottomNavigationViewBehavior;
 import com.celsius.customstocks.databinding.ActivityMainBinding;
 import com.celsius.customstocks.datamodels.DrawerState;
 import com.celsius.customstocks.fragments.EarningCalendarFragment;
+import com.celsius.customstocks.fragments.FinancialsFragment;
 import com.celsius.customstocks.fragments.MarketsFragment;
 import com.celsius.customstocks.fragments.VolumeByVenueFragment;
 import com.celsius.customstocks.fragments.SearchFragment;
@@ -119,7 +120,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                                 transaction.addToBackStack(null);
                                 break;
                             case R.id.action_item5:
-                                transaction.replace(R.id.fragment_view_placeholder, new EarningCalendarFragment(),EarningCalendarFragment.TAG);
+                                transaction.replace(R.id.fragment_view_placeholder, new FinancialsFragment(),FinancialsFragment.TAG);
                                 transaction.addToBackStack(null);
                                 break;
                         }
