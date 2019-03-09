@@ -8,11 +8,8 @@ import android.view.ViewGroup;
 
 import com.celsius.customstocks.R;
 import com.celsius.customstocks.databinding.FragmentEarningCalendarBinding;
-import com.celsius.customstocks.databinding.FragmentNewsBinding;
 import com.celsius.customstocks.recyclerviewadapter.EarningCalendarRecyclerViewAdapter;
-import com.celsius.customstocks.recyclerviewadapter.NewsRecyclerViewAdapter;
 import com.celsius.customstocks.services.PullEarningsDataFromIEXService;
-import com.celsius.customstocks.services.PullNewsDataFromIEXService;
 import com.celsius.customstocks.utils.ReciverServiceConsts;
 
 import androidx.annotation.Nullable;
@@ -57,7 +54,7 @@ public class EarningCalendarFragment extends BaseFragment {
         return view;
     }
 
-    public void updateEarningCalendarNewsFragmetRecyclerView(){
+    public void updateEarningFragmetRecyclerView(){
         recyclerViewAdapter = new EarningCalendarRecyclerViewAdapter(helper.getEarnings(),utils,getContext());
         recyclerView.swapAdapter(recyclerViewAdapter,false);
     }

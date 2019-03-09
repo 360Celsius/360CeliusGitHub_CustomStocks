@@ -162,7 +162,7 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/news"
+                android:id="@+id/volumeByVenue"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
@@ -173,12 +173,12 @@
                     android:layout_width="24dp"
                     android:layout_height="24dp"
                     android:layout_marginLeft="16dp"
-                    android:src="@drawable/ic_news_side_menu"/>
+                    android:src="@drawable/ic_vanue_side_menu"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="News"
+                    android:text="Volume By Venue"
                     android:layout_marginLeft="16dp"
                     android:textColor="@color/symbol_tyoe_color"
                     android:textSize="16dp" />
@@ -296,6 +296,52 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Info"
+                    android:layout_marginLeft="16dp"
+                    android:textColor="@color/symbol_tyoe_color"
+                    android:textSize="16dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/credits"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:onClick="@{listener::onClick}"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_marginLeft="16dp"
+                    android:src="@drawable/ic_info_side_menu"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Credits"
+                    android:layout_marginLeft="16dp"
+                    android:textColor="@color/symbol_tyoe_color"
+                    android:textSize="16dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/version"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:onClick="@{listener::onClick}"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_marginLeft="16dp"
+                    android:src="@drawable/ic_info_side_menu"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Version"
                     android:layout_marginLeft="16dp"
                     android:textColor="@color/symbol_tyoe_color"
                     android:textSize="16dp" />

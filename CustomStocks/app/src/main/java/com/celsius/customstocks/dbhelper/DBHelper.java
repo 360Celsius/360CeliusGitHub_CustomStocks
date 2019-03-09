@@ -8,7 +8,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import com.celsius.customstocks.datamodels.Earning;
 import com.celsius.customstocks.datamodels.Market;
-import com.celsius.customstocks.datamodels.News;
+import com.celsius.customstocks.datamodels.VolumeByVenue;
 import com.celsius.customstocks.datamodels.Quote;
 import com.celsius.customstocks.datamodels.Symbol;
 
@@ -41,7 +41,7 @@ public class DBHelper extends SQLiteOpenHelper {
         db.execSQL(DBContract.SQL_CREATE_All_SYMBOLS_TABLE);
         db.execSQL(DBContract.SQL_CREATE_MARKETS_TABLE);
         db.execSQL(DBContract.SQL_CREATE_QUOTES_TABLE);
-        db.execSQL(DBContract.SQL_CREATE_NEWS_TABLE);
+        db.execSQL(DBContract.SQL_CREATE_VALUE_BY_VENUE_TABLE);
         db.execSQL(DBContract.SQL_CREATE_EARNING_TABLE);
     }
 
@@ -50,7 +50,7 @@ public class DBHelper extends SQLiteOpenHelper {
         db.execSQL(DBContract.SQL_DELETE_All_SYMBOLS_TABLE);
         db.execSQL(DBContract.SQL_DELETE_MARKETS_TABLE);
         db.execSQL(DBContract.SQL_DELETE_QUOTES_TABLE);
-        db.execSQL(DBContract.SQL_DELETE_NEWS_TABLE);
+        db.execSQL(DBContract.SQL_DELETE_VALUE_BY_VENUE_TABLE);
         db.execSQL(DBContract.SQL_DELETE_EARNINGS_TABLE);
     }
 
@@ -519,40 +519,41 @@ public class DBHelper extends SQLiteOpenHelper {
         }
     }
 
-    //=================  NEWS =================
+    //=================  VALUE BY VENUE =================
 
-    public void bulkInsertNewsToNewsDataTable(ArrayList<News> newsListParsed) {
-        deleteNewsTAble();
+    public void bulkInsertValueByVenueToVolumeByVenueDataTable(ArrayList<VolumeByVenue> volumeByVenueListParsed) {
+        deleteValueByVenueTable();
         try {
-            ContentValues[] contentsArr = new ContentValues[newsListParsed.size()];
+            ContentValues[] contentsArr = new ContentValues[volumeByVenueListParsed.size()];
 
-            for (int i = 0; i < newsListParsed.size(); i++) {
+            for (int i = 0; i < volumeByVenueListParsed.size(); i++) {
                 ContentValues values = new ContentValues();
-                values.put(DBContract.News.COLUMN_NAME_DATE_TIME, newsListParsed.get(i).getDatetime());
-                values.put(DBContract.News.COLUMN_NAME_HEAD_LINE, newsListParsed.get(i).getHeadline());
-                values.put(DBContract.News.COLUMN_NAME_SOURCE, newsListParsed.get(i).getSource());
-                values.put(DBContract.News.COLUMN_NAME_URL, newsListParsed.get(i).getUrl());
-                values.put(DBContract.News.COLUMN_NAME_SUMARY, newsListParsed.get(i).getSummary());
-                values.put(DBContract.News.COLUMN_NAME_RELATED, newsListParsed.get(i).getRelated());
-                values.put(DBContract.News.COLUMN_NAME_IMAGE, newsListParsed.get(i).getImage());
 
-                values.put(DBContract.News.COLUMN_NAME_ROW_ID, String.valueOf(i+1));
+                values.put(DBContract.ValueByVenue.COLUMN_NAME_SYMBOL, volumeByVenueListParsed.get(i).getSymbol());
+                values.put(DBContract.ValueByVenue.COLUMN_NAME_VOLEUME, volumeByVenueListParsed.get(i).getVolume());
+                values.put(DBContract.ValueByVenue.COLUMN_NAME_VENUE, volumeByVenueListParsed.get(i).getVenue());
+                values.put(DBContract.ValueByVenue.COLUMN_NAME_VENUE_NAME, volumeByVenueListParsed.get(i).getVenueName());
+                values.put(DBContract.ValueByVenue.COLUMN_NAME_MARKET_PERCENT, volumeByVenueListParsed.get(i).getMarketPercent());
+                values.put(DBContract.ValueByVenue.COLUMN_NAME_AVG_MARKET_PERCENT, volumeByVenueListParsed.get(i).getAvgMarketPercent());
+                values.put(DBContract.ValueByVenue.COLUMN_NAME_DATE, volumeByVenueListParsed.get(i).getDate());
+
+                values.put(DBContract.ValueByVenue.COLUMN_NAME_ROW_ID, String.valueOf(i+1));
 
                 contentsArr[i] = values;
 
             }
-            context.getContentResolver().bulkInsert(DBContract.News.CONTENT_URI, contentsArr);
+            context.getContentResolver().bulkInsert(DBContract.ValueByVenue.CONTENT_URI, contentsArr);
 
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    private void deleteNewsTAble() {
+    private void deleteValueByVenueTable() {
         SQLiteDatabase db = getWritableDatabase();
         db.beginTransaction();
         try {
-            db.delete(DBContract.News.TABLE_NAME, null, null);
+            db.delete(DBContract.ValueByVenue.TABLE_NAME, null, null);
             db.setTransactionSuccessful();
         } catch (Exception e) {
             e.printStackTrace();
@@ -561,29 +562,30 @@ public class DBHelper extends SQLiteOpenHelper {
         }
     }
 
-    public ArrayList<News> getNews() {
+    public ArrayList<VolumeByVenue> getValueByVenue() {
 
-        ArrayList<News> newsList = new ArrayList<>();
+        ArrayList<VolumeByVenue> volumeByVenueList = new ArrayList<>();
 
         SQLiteDatabase db = this.getWritableDatabase();
-        Cursor cursor = db.rawQuery(DBContract.SQL_SELECT_NEWS_TABLE, null);
+        Cursor cursor = db.rawQuery(DBContract.SQL_SELECT_VALUE_BY_VENUE_TABLE, null);
 
         try {
             if (cursor.moveToFirst()) {
                 do {
 
-                    News news = new News();
-                    news.setDatetime(cursor.getString(cursor.getColumnIndex(DBContract.News.COLUMN_NAME_DATE_TIME)));
-                    news.setHeadline(cursor.getString(cursor.getColumnIndex(DBContract.News.COLUMN_NAME_HEAD_LINE)));
-                    news.setSource(cursor.getString(cursor.getColumnIndex(DBContract.News.COLUMN_NAME_SOURCE)));
-                    news.setUrl(cursor.getString(cursor.getColumnIndex(DBContract.News.COLUMN_NAME_URL)));
-                    news.setSummary(cursor.getString(cursor.getColumnIndex(DBContract.News.COLUMN_NAME_SUMARY)));
-                    news.setRelated(cursor.getString(cursor.getColumnIndex(DBContract.News.COLUMN_NAME_RELATED)));
-                    news.setImage(cursor.getString(cursor.getColumnIndex(DBContract.News.COLUMN_NAME_IMAGE)));
+                    VolumeByVenue volumeByVenue = new VolumeByVenue();
 
-                    news.setId(cursor.getString(cursor.getColumnIndex(DBContract.News.COLUMN_NAME_ROW_ID)));
+                    volumeByVenue.setSymbol(cursor.getString(cursor.getColumnIndex(DBContract.ValueByVenue.COLUMN_NAME_SYMBOL)));
+                    volumeByVenue.setVolume(cursor.getString(cursor.getColumnIndex(DBContract.ValueByVenue.COLUMN_NAME_VOLEUME)));
+                    volumeByVenue.setVenue(cursor.getString(cursor.getColumnIndex(DBContract.ValueByVenue.COLUMN_NAME_VENUE)));
+                    volumeByVenue.setVenueName(cursor.getString(cursor.getColumnIndex(DBContract.ValueByVenue.COLUMN_NAME_VENUE_NAME)));
+                    volumeByVenue.setMarketPercent(cursor.getString(cursor.getColumnIndex(DBContract.ValueByVenue.COLUMN_NAME_MARKET_PERCENT)));
+                    volumeByVenue.setAvgMarketPercent(cursor.getString(cursor.getColumnIndex(DBContract.ValueByVenue.COLUMN_NAME_AVG_MARKET_PERCENT)));
+                    volumeByVenue.setDate(cursor.getString(cursor.getColumnIndex(DBContract.ValueByVenue.COLUMN_NAME_DATE)));
 
-                    newsList.add(news);
+                    volumeByVenue.setId(cursor.getString(cursor.getColumnIndex(DBContract.ValueByVenue.COLUMN_NAME_ROW_ID)));
+
+                    volumeByVenueList.add(volumeByVenue);
 
                 } while (cursor.moveToNext());
             }
@@ -595,7 +597,7 @@ public class DBHelper extends SQLiteOpenHelper {
                 cursor.close();
             }
 
-            return newsList;
+            return volumeByVenueList;
         }
     }
 
@@ -607,6 +609,8 @@ public class DBHelper extends SQLiteOpenHelper {
 
             for (int i = 0; i < earningsParsed.size(); i++) {
                 ContentValues values = new ContentValues();
+                values.put(DBContract.Earnings.COLUMN_NAME_SYMBOL_NAME, earningsParsed.get(i).getSymbolName());
+
                 values.put(DBContract.Earnings.COLUMN_NAME_SYMBOL, earningsParsed.get(i).getSymbol());
                 values.put(DBContract.Earnings.COLUMN_NAME_ACTUAL_ESP, earningsParsed.get(i).getActualEPS());
                 values.put(DBContract.Earnings.COLUMN_NAME_CONSENSUS_ESP, earningsParsed.get(i).getConsensusEPS());

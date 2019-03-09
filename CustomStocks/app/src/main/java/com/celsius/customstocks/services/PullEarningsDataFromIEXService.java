@@ -5,7 +5,6 @@ import android.content.Intent;
 
 import com.celsius.customstocks.application.CustomStockApplication;
 import com.celsius.customstocks.datamodels.Earning;
-import com.celsius.customstocks.datamodels.News;
 import com.celsius.customstocks.datamodels.Symbol;
 import com.celsius.customstocks.dbhelper.DBHelper;
 import com.celsius.customstocks.network.NetworkHTTPRequests;
@@ -55,7 +54,7 @@ public class PullEarningsDataFromIEXService extends IntentService {
 
                 for(int i=0;i<selectedSymbolList.size();i++) {
                     ArrayList<Earning>  listOfEarningsFromSelectedQuotesTemp = new ArrayList<>();
-                    listOfEarningsFromSelectedQuotesTemp = jsonParser.getEarningParsed(networkHTTPRequests.getEarning(selectedSymbolList.get(i).getSymbol()));
+                    listOfEarningsFromSelectedQuotesTemp = jsonParser.getEarningParsed(networkHTTPRequests.getEarning(selectedSymbolList.get(i).getSymbol()) , selectedSymbolList.get(i).getName());
 
                     for(int j=0;j<listOfEarningsFromSelectedQuotesTemp.size();j++){
                         listOfEarningFromSelectedQuotes.add(listOfEarningsFromSelectedQuotesTemp.get(j));

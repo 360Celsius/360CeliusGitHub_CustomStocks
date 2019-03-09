@@ -7,8 +7,8 @@
 
     <item
         android:id="@+id/action_item2"
-        android:icon="@drawable/ic_news"
-        android:title="@string/tab_nes"/>
+        android:icon="@drawable/ic_vanue"
+        android:title="@string/tab_volume_by_venue"/>
 
     <item
         android:id="@+id/action_item3"

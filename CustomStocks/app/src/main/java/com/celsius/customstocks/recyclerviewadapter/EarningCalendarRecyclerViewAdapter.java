@@ -7,10 +7,8 @@ import android.view.ViewGroup;
 import com.celsius.customstocks.BR;
 import com.celsius.customstocks.R;
 import com.celsius.customstocks.datamodels.Earning;
-import com.celsius.customstocks.datamodels.News;
 import com.celsius.customstocks.utils.Utils;
 import com.celsius.customstocks.viewholders.EarningViewHolder;
-import com.celsius.customstocks.viewholders.NewsViewHolder;
 
 import java.util.ArrayList;
 

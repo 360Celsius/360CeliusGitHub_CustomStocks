@@ -41,9 +41,9 @@ public class NetworkHTTPRequests {
         return responce;
     }
 
-    public String getNews(String stock){
+    public String getVoleumeByVenue(String stock){
         String responce = null;
-        String url = networkHttpAPIurlConst.getNewsBySymbolURL(stock);
+        String url = networkHttpAPIurlConst.getVoluemeByVenueBySymbolURL(stock);
         responce = networkHTTPConnection.getHttp(url);
         return responce;
     }

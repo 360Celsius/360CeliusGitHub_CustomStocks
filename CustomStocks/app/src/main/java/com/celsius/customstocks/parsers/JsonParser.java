@@ -2,9 +2,10 @@ package com.celsius.customstocks.parsers;
 
 import com.celsius.customstocks.datamodels.Earning;
 import com.celsius.customstocks.datamodels.Market;
-import com.celsius.customstocks.datamodels.News;
+import com.celsius.customstocks.datamodels.VolumeByVenue;
 import com.celsius.customstocks.datamodels.Quote;
 import com.celsius.customstocks.datamodels.Symbol;
+
 import org.json.JSONArray;
 import org.json.JSONObject;
 import java.util.ArrayList;
@@ -128,34 +129,34 @@ public class JsonParser {
     }
 
 
-    public ArrayList<News> getNewsParsed(String getNewsFromIEXResponce) {
+    public ArrayList<VolumeByVenue> getVoluemeByVenueParsed(String getVolumeByVenueFromIEXResponce, String symbol) {
         JSONArray reader = null;
-        ArrayList<News> newsArrayList = new ArrayList<>();
+        ArrayList<VolumeByVenue> volumeByVenueArrayList = new ArrayList<>();
 
         try {
-            reader = new JSONArray(getNewsFromIEXResponce);
+            reader = new JSONArray(getVolumeByVenueFromIEXResponce);
             for (int i = 0; i < reader.length(); i++) {
                 JSONObject jsonObject = reader.getJSONObject(i);
-                News news = new News();
+                VolumeByVenue volumeByVenue = new VolumeByVenue();
 
-                news.setDatetime(String.valueOf(jsonObject.get("datetime")));
-                news.setHeadline(String.valueOf(jsonObject.get("headline")));
-                news.setSource(String.valueOf(jsonObject.get("source")));
-                news.setUrl(String.valueOf(jsonObject.get("url")));
-                news.setSummary(String.valueOf(jsonObject.get("summary")));
-                news.setRelated(String.valueOf(jsonObject.get("related")));
-                news.setImage(String.valueOf(jsonObject.get("image")));
+                volumeByVenue.setSymbol(symbol);
+                volumeByVenue.setVolume(String.valueOf(jsonObject.get("volume")));
+                volumeByVenue.setVenue(String.valueOf(jsonObject.get("venue")));
+                volumeByVenue.setVenueName(String.valueOf(jsonObject.get("venueName")));
+                volumeByVenue.setMarketPercent(String.valueOf(jsonObject.get("marketPercent")));
+                volumeByVenue.setAvgMarketPercent(String.valueOf(jsonObject.get("avgMarketPercent")));
+                volumeByVenue.setDate(String.valueOf(jsonObject.get("date")));
 
-                newsArrayList.add(news);
+                volumeByVenueArrayList.add(volumeByVenue);
             }
         } catch (Exception e) {
             e.printStackTrace();
 
         }
-        return newsArrayList;
+        return volumeByVenueArrayList;
     }
 
-    public ArrayList<Earning> getEarningParsed(String getEarningFromIEXResponce) {
+    public ArrayList<Earning> getEarningParsed(String getEarningFromIEXResponce,  String symbolName) {
         JSONObject readerSymbol = null;
         JSONArray readerEarnings = null;
 
@@ -174,6 +175,9 @@ public class JsonParser {
                 JSONObject jsonObject = readerEarnings.getJSONObject(i);
 
                 Earning earning = new Earning();
+
+                earning.setSymbolName(symbolName);
+
 
                 earning.setSymbol(String.valueOf(readerSymbol.getString("symbol")));
 

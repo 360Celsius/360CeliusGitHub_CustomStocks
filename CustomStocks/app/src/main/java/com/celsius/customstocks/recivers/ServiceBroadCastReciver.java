@@ -7,7 +7,7 @@ import android.content.Intent;
 import com.celsius.customstocks.MainActivity;
 import com.celsius.customstocks.fragments.EarningCalendarFragment;
 import com.celsius.customstocks.fragments.MarketsFragment;
-import com.celsius.customstocks.fragments.NewsFragment;
+import com.celsius.customstocks.fragments.VolumeByVenueFragment;
 import com.celsius.customstocks.fragments.SearchFragment;
 import com.celsius.customstocks.fragments.StocksFragment;
 import com.celsius.customstocks.utils.ReciverServiceConsts;
@@ -47,13 +47,13 @@ public class ServiceBroadCastReciver extends BroadcastReceiver {
             if( ((AppCompatActivity) context).getSupportFragmentManager().findFragmentByTag(StocksFragment.TAG) !=null )
                 ((StocksFragment) ((AppCompatActivity) context).getSupportFragmentManager().findFragmentByTag(StocksFragment.TAG)).updateStocksFragmetRecyclerView();
 
-        }else if( intent.getStringExtra(ReciverServiceConsts.DATA_TYPE_KEY).equalsIgnoreCase(ReciverServiceConsts.RELOAD_NEWS_FRAGMNET) ){
-            if( ((AppCompatActivity) context).getSupportFragmentManager().findFragmentByTag(NewsFragment.TAG) !=null )
-                ((NewsFragment) ((AppCompatActivity) context).getSupportFragmentManager().findFragmentByTag(NewsFragment.TAG)).updateNewsFragmetRecyclerView();
+        }else if( intent.getStringExtra(ReciverServiceConsts.DATA_TYPE_KEY).equalsIgnoreCase(ReciverServiceConsts.RELOAD_VOLUEM_BY_VENUE_FRAGMNET) ){
+            if( ((AppCompatActivity) context).getSupportFragmentManager().findFragmentByTag(VolumeByVenueFragment.TAG) !=null )
+                ((VolumeByVenueFragment) ((AppCompatActivity) context).getSupportFragmentManager().findFragmentByTag(VolumeByVenueFragment.TAG)).updateVolumeByVenueFragmetRecyclerView();
 
         }else if( intent.getStringExtra(ReciverServiceConsts.DATA_TYPE_KEY).equalsIgnoreCase(ReciverServiceConsts.RELOAD_EARNINGS_FRAGMNET) ){
             if( ((AppCompatActivity) context).getSupportFragmentManager().findFragmentByTag(EarningCalendarFragment.TAG) !=null )
-                ((EarningCalendarFragment) ((AppCompatActivity) context).getSupportFragmentManager().findFragmentByTag(EarningCalendarFragment.TAG)).updateEarningCalendarNewsFragmetRecyclerView();
+                ((EarningCalendarFragment) ((AppCompatActivity) context).getSupportFragmentManager().findFragmentByTag(EarningCalendarFragment.TAG)).updateEarningFragmetRecyclerView();
         }
     }
 }

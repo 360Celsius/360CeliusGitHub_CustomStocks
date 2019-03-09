@@ -12,6 +12,8 @@ import androidx.databinding.Bindable;
 public class Earning extends BaseObservable {
 
     private String symbol;
+    private String symbolName;
+
     private String actualEPS;
     private String consensusEPS;
     private String estimatedEPS;
@@ -35,6 +37,17 @@ public class Earning extends BaseObservable {
 
     public Earning() {
         CustomStockApplication.getMyComponent().inject(this);
+    }
+
+    @Bindable
+    public String getSymbolName() {
+        return symbolName;
+    }
+
+    public void setSymbolName(String symbolName) {
+        this.symbolName = symbolName;
+        notifyPropertyChanged(BR.symbolName);
+
     }
 
     @Bindable

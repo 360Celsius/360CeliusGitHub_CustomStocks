@@ -23,8 +23,8 @@ public class NetworkHttpAPIurlConst {
         return BASIC_API_URL+"/market";
     }
 
-    public String getNewsBySymbolURL(String symbol){
-        return BASIC_API_URL+"/stock/"+symbol+"/news/last/5";
+    public String getVoluemeByVenueBySymbolURL(String symbol){
+        return BASIC_API_URL+"/stock/"+symbol+"/volume-by-venue";
     }
     public String getEarningBySymbolURL(String symbol){
         return BASIC_API_URL+"/stock/"+symbol+"/earnings";

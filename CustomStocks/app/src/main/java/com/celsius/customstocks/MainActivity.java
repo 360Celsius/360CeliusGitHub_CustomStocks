@@ -3,21 +3,17 @@ package com.celsius.customstocks;
 
 import android.graphics.Color;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.FrameLayout;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import com.celsius.customstocks.custombehaviour.BottomNavigationViewBehavior;
 import com.celsius.customstocks.databinding.ActivityMainBinding;
 import com.celsius.customstocks.datamodels.DrawerState;
 import com.celsius.customstocks.fragments.EarningCalendarFragment;
 import com.celsius.customstocks.fragments.MarketsFragment;
-import com.celsius.customstocks.fragments.NewsFragment;
+import com.celsius.customstocks.fragments.VolumeByVenueFragment;
 import com.celsius.customstocks.fragments.SearchFragment;
 import com.celsius.customstocks.fragments.StocksFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -105,7 +101,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                                 transaction.addToBackStack(null);
                                 break;
                             case R.id.action_item2:
-                                transaction.replace(R.id.fragment_view_placeholder, new NewsFragment(),NewsFragment.TAG);
+                                transaction.replace(R.id.fragment_view_placeholder, new VolumeByVenueFragment(), VolumeByVenueFragment.TAG);
                                 transaction.addToBackStack(null);
                                 break;
                             case R.id.action_item3:
@@ -150,10 +146,10 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 transaction.commit();
                 break;
 
-            case R.id.news:
+            case R.id.volumeByVenue:
                 drawerLayout.closeDrawer(GravityCompat.START);
                 bottomNavigationView.setSelectedItemId(R.id.action_item2);
-                transaction.replace(R.id.fragment_view_placeholder, new NewsFragment(),NewsFragment.TAG);
+                transaction.replace(R.id.fragment_view_placeholder, new VolumeByVenueFragment(), VolumeByVenueFragment.TAG);
                 transaction.addToBackStack(null);
                 transaction.commit();
                 break;

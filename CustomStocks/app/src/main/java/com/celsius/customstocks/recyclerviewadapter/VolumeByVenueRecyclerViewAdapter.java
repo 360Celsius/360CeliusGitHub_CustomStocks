@@ -6,9 +6,9 @@ import android.view.ViewGroup;
 
 import com.celsius.customstocks.BR;
 import com.celsius.customstocks.R;
-import com.celsius.customstocks.datamodels.News;
+import com.celsius.customstocks.datamodels.VolumeByVenue;
 import com.celsius.customstocks.utils.Utils;
-import com.celsius.customstocks.viewholders.NewsViewHolder;
+import com.celsius.customstocks.viewholders.VolumeByVenueViewHolder;
 
 import java.util.ArrayList;
 
@@ -17,37 +17,37 @@ import androidx.databinding.DataBindingUtil;
 import androidx.databinding.ViewDataBinding;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class NewsRecyclerViewAdapter extends RecyclerView.Adapter<NewsViewHolder> {
+public class VolumeByVenueRecyclerViewAdapter extends RecyclerView.Adapter<VolumeByVenueViewHolder> {
 
-    private ArrayList<News> newsList = new ArrayList<>();
+    private ArrayList<VolumeByVenue> volumeByVenueList = new ArrayList<>();
     private Context context;
     private Utils utils;
 
 
-    public NewsRecyclerViewAdapter(ArrayList<News> newsList, Utils utils, Context context) {
-        this.newsList = newsList;
+    public VolumeByVenueRecyclerViewAdapter(ArrayList<VolumeByVenue> volumeByVenueList, Utils utils, Context context) {
+        this.volumeByVenueList = volumeByVenueList;
         this.context = context;
         this.utils = utils;
         setHasStableIds(true);
     }
     @NonNull
     @Override
-    public NewsViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
+    public VolumeByVenueViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
 
-        ViewDataBinding binding = DataBindingUtil.inflate(LayoutInflater.from(viewGroup.getContext()), R.layout.row_item_news, viewGroup, false);
-        return new NewsViewHolder(binding);
+        ViewDataBinding binding = DataBindingUtil.inflate(LayoutInflater.from(viewGroup.getContext()), R.layout.row_item_volume_by_venue, viewGroup, false);
+        return new VolumeByVenueViewHolder(binding);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull NewsViewHolder marketsViewHolder, int position) {
+    public void onBindViewHolder(@NonNull VolumeByVenueViewHolder marketsViewHolder, int position) {
         ViewDataBinding viewDataBinding = marketsViewHolder.getViewDataBinding();
-        viewDataBinding.setVariable(BR.news, newsList.get(position));
+        viewDataBinding.setVariable(BR.volumeByVenue, volumeByVenueList.get(position));
     }
 
 
     @Override
     public int getItemCount() {
-        return newsList.size();
+        return volumeByVenueList.size();
     }
 
     @Override
@@ -58,7 +58,7 @@ public class NewsRecyclerViewAdapter extends RecyclerView.Adapter<NewsViewHolder
     @Override
     public long getItemId(int position) {
         try {
-            return Long.valueOf(newsList.get(position).getId());
+            return Long.valueOf(volumeByVenueList.get(position).getId());
         }catch (Exception e){
             return position;
         }

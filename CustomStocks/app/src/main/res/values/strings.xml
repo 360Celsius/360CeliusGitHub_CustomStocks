@@ -13,7 +13,7 @@
 
 
     <string name="tab_stocks">Srocks</string>
-    <string name="tab_nes">News</string>
+    <string name="tab_volume_by_venue">Venue</string>
     <string name="tab_search">Search</string>
     <string name="tab_markets">Markets</string>
     <string name="tab_more">More</string>

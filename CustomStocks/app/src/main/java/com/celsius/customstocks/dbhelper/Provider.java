@@ -22,7 +22,7 @@ public class Provider extends ContentProvider {
     private static final int ALL_SYMBOLS = 1;
     private static final int MARKETS = 2;
     private static final int QUOTES = 3;
-    private static final int NEWS = 4;
+    private static final int VALEUBYVENUE = 4;
     private static final int EARNING = 5;
 
 
@@ -32,7 +32,7 @@ public class Provider extends ContentProvider {
         mMatcher.addURI(DBContract.AUTHORITY, DBContract.AllSymbols.URI_SUFFIX, ALL_SYMBOLS);
         mMatcher.addURI(DBContract.AUTHORITY, DBContract.Markets.URI_SUFFIX, MARKETS);
         mMatcher.addURI(DBContract.AUTHORITY, DBContract.Quotes.URI_SUFFIX, QUOTES);
-        mMatcher.addURI(DBContract.AUTHORITY, DBContract.News.URI_SUFFIX, NEWS);
+        mMatcher.addURI(DBContract.AUTHORITY, DBContract.ValueByVenue.URI_SUFFIX, VALEUBYVENUE);
         mMatcher.addURI(DBContract.AUTHORITY, DBContract.Earnings.URI_SUFFIX, EARNING);
     }
 
@@ -96,8 +96,8 @@ public class Provider extends ContentProvider {
             case QUOTES:
                 tableName = DBContract.Quotes.TABLE_NAME;
                 break;
-            case NEWS:
-                tableName = DBContract.News.TABLE_NAME;
+            case VALEUBYVENUE:
+                tableName = DBContract.ValueByVenue.TABLE_NAME;
                 break;
             case EARNING:
                 tableName = DBContract.Earnings.TABLE_NAME;
@@ -121,8 +121,8 @@ public class Provider extends ContentProvider {
             case QUOTES:
                 contentUriName = DBContract.Quotes.CONTENT_URI;
                 break;
-            case NEWS:
-                contentUriName = DBContract.News.CONTENT_URI;
+            case VALEUBYVENUE:
+                contentUriName = DBContract.ValueByVenue.CONTENT_URI;
                 break;
             case EARNING:
                 contentUriName = DBContract.Earnings.CONTENT_URI;

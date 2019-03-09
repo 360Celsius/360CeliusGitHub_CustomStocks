@@ -60,7 +60,7 @@
         <service android:name=".services.PullStocksDataFromIEXService"
             android:enabled="true"/>
 
-        <service android:name=".services.PullNewsDataFromIEXService"
+        <service android:name=".services.PullVoleumeByVenueDataFromIEXService"
             android:enabled="true"/>
 
         <service android:name=".services.PullEarningsDataFromIEXService"

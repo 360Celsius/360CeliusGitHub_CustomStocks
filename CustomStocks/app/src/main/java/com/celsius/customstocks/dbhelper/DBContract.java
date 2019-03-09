@@ -3,8 +3,6 @@ package com.celsius.customstocks.dbhelper;
 import android.net.Uri;
 import android.provider.BaseColumns;
 
-import com.celsius.customstocks.datamodels.Earning;
-
 import java.util.Locale;
 
 public class DBContract {
@@ -209,42 +207,41 @@ public class DBContract {
 
     //============ ============ ==============
 
-    //=================  NEWS =================
-    public static class News implements BaseColumns {
-        public static final String URI_SUFFIX = "news";
+    //=================  VALUE BY VENUE =================
+    public static class ValueByVenue implements BaseColumns {
+        public static final String URI_SUFFIX = "valua_by_venue";
         public static final Uri CONTENT_URI = Uri.parse(String.format(Locale.US, CONTENT_BASE, URI_SUFFIX));
 
-        public static final String TABLE_NAME = "news";
+        public static final String TABLE_NAME = "valua_by_venue";
 
-        public static final String COLUMN_NAME_DATE_TIME = "datetime";
-        public static final String COLUMN_NAME_HEAD_LINE = "headline";
-        public static final String COLUMN_NAME_SOURCE = "source";
-        public static final String COLUMN_NAME_URL = "url";
-        public static final String COLUMN_NAME_SUMARY = "summary";
-        public static final String COLUMN_NAME_RELATED = "related";
-        public static final String COLUMN_NAME_IMAGE = "image";
+        public static final String COLUMN_NAME_SYMBOL = "symbol";
+        public static final String COLUMN_NAME_VOLEUME = "volume";
+        public static final String COLUMN_NAME_VENUE = "venue";
+        public static final String COLUMN_NAME_VENUE_NAME = "venueName";
+        public static final String COLUMN_NAME_MARKET_PERCENT = "marketPercent";
+        public static final String COLUMN_NAME_AVG_MARKET_PERCENT = "avgMarketPercent";
+        public static final String COLUMN_NAME_DATE = "date";
         public static final String COLUMN_NAME_ROW_ID = "rowid";
-
 
     }
 
-    public static final String SQL_CREATE_NEWS_TABLE =
-            "CREATE TABLE " + News.TABLE_NAME + " (" +
-                    News._ID + " INTEGER PRIMARY KEY," +
-                    News.COLUMN_NAME_DATE_TIME + " TEXT," +
-                    News.COLUMN_NAME_HEAD_LINE + " TEXT," +
-                    News.COLUMN_NAME_SOURCE + " TEXT," +
-                    News.COLUMN_NAME_URL + " TEXT," +
-                    News.COLUMN_NAME_SUMARY + " TEXT," +
-                    News.COLUMN_NAME_RELATED + " TEXT," +
-                    News.COLUMN_NAME_ROW_ID + " TEXT," +
-                    News.COLUMN_NAME_IMAGE + " TEXT)";
+    public static final String SQL_CREATE_VALUE_BY_VENUE_TABLE =
+            "CREATE TABLE " + ValueByVenue.TABLE_NAME + " (" +
+                    ValueByVenue._ID + " INTEGER PRIMARY KEY," +
+                    ValueByVenue.COLUMN_NAME_VOLEUME + " TEXT," +
+                    ValueByVenue.COLUMN_NAME_SYMBOL + " TEXT," +
+                    ValueByVenue.COLUMN_NAME_VENUE + " TEXT," +
+                    ValueByVenue.COLUMN_NAME_VENUE_NAME + " TEXT," +
+                    ValueByVenue.COLUMN_NAME_MARKET_PERCENT + " TEXT," +
+                    ValueByVenue.COLUMN_NAME_AVG_MARKET_PERCENT + " TEXT," +
+                    ValueByVenue.COLUMN_NAME_ROW_ID + " TEXT," +
+                    ValueByVenue.COLUMN_NAME_DATE + " TEXT)";
 
-    public static final String SQL_DELETE_NEWS_TABLE =
-            "DROP TABLE IF EXISTS " + News.TABLE_NAME;
+    public static final String SQL_DELETE_VALUE_BY_VENUE_TABLE =
+            "DROP TABLE IF EXISTS " + ValueByVenue.TABLE_NAME;
 
-    public static final String SQL_SELECT_NEWS_TABLE =
-            "SELECT  * FROM " + News.TABLE_NAME + " WHERE "+ News._ID;
+    public static final String SQL_SELECT_VALUE_BY_VENUE_TABLE =
+            "SELECT  * FROM " + ValueByVenue.TABLE_NAME + " WHERE "+ ValueByVenue._ID;
 
 
     //============ ============ ==============
@@ -257,6 +254,8 @@ public class DBContract {
         public static final String TABLE_NAME = "earnings";
 
         public static final String COLUMN_NAME_SYMBOL = "symbol";
+        public static final String COLUMN_NAME_SYMBOL_NAME = "symbolName";
+
         public static final String COLUMN_NAME_ACTUAL_ESP = "actualEPS";
         public static final String COLUMN_NAME_CONSENSUS_ESP = "consensusEPS";
         public static final String COLUMN_NAME_ESTIMATED_ESP = "estimatedEPS";
@@ -290,6 +289,7 @@ public class DBContract {
                     Earnings.COLUMN_NAME_YEAR_AGO_CHANGE_PERCENT + " TEXT," +
                     Earnings.COLUMN_NAME_ESTIMATED_CHANGE_PERCENT + " TEXT," +
                     Earnings.COLUMN_NAME_SYMBOL_ID + " TEXT," +
+                    Earnings.COLUMN_NAME_SYMBOL_NAME + " TEXT," +
                     Earnings.COLUMN_NAME_ROW_ID + " TEXT)";
 
     public static final String SQL_DELETE_EARNINGS_TABLE =

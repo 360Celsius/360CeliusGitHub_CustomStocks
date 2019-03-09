@@ -4,7 +4,7 @@ import android.app.IntentService;
 import android.content.Intent;
 
 import com.celsius.customstocks.application.CustomStockApplication;
-import com.celsius.customstocks.datamodels.News;
+import com.celsius.customstocks.datamodels.VolumeByVenue;
 import com.celsius.customstocks.datamodels.Symbol;
 import com.celsius.customstocks.dbhelper.DBHelper;
 import com.celsius.customstocks.network.NetworkHTTPRequests;
@@ -20,7 +20,7 @@ import androidx.annotation.Nullable;
 import static com.celsius.customstocks.utils.ReciverServiceConsts.GET_QOUTES_DATA;
 
 
-public class PullNewsDataFromIEXService extends IntentService {
+public class PullVoleumeByVenueDataFromIEXService extends IntentService {
 
     @Inject NetworkHTTPRequests networkHTTPRequests;
 
@@ -28,11 +28,11 @@ public class PullNewsDataFromIEXService extends IntentService {
 
     @Inject JsonParser jsonParser = null;
 
-    public PullNewsDataFromIEXService() {
-        super("PullNewsDataFromIEXService");
+    public PullVoleumeByVenueDataFromIEXService() {
+        super("PullVoleumeByVenueDataFromIEXService");
     }
 
-    public PullNewsDataFromIEXService(String name) {
+    public PullVoleumeByVenueDataFromIEXService(String name) {
         super(name);
     }
 
@@ -48,23 +48,23 @@ public class PullNewsDataFromIEXService extends IntentService {
         Intent broadcastIntent = new Intent();
         switch (intent.getStringExtra(ReciverServiceConsts.DATA_TYPE_KEY)) {
 
-            case ReciverServiceConsts.GET_NEWS_DATA:
+            case ReciverServiceConsts.GET_VOLUME_BE_VENUE_DATA:
                 ArrayList<Symbol> selectedSymbolList = helper.getAllSelectedSymbols();
-                ArrayList<News>  listOfNewsFromSelectedQuotes = new ArrayList<>();
+                ArrayList<VolumeByVenue> listOfVolumeByVenueFromSelectedQuotes = new ArrayList<>();
 
                 for(int i=0;i<selectedSymbolList.size();i++) {
-                    ArrayList<News>  listOfNewsFromSelectedQuotesTemp = new ArrayList<>();
-                    listOfNewsFromSelectedQuotesTemp = jsonParser.getNewsParsed(networkHTTPRequests.getNews(selectedSymbolList.get(i).getSymbol()));
+                    ArrayList<VolumeByVenue> listOfVolumeByVenueFromSelectedQuotesTemp = new ArrayList<>();
+                    listOfVolumeByVenueFromSelectedQuotesTemp = jsonParser.getVoluemeByVenueParsed(networkHTTPRequests.getVoleumeByVenue(selectedSymbolList.get(i).getSymbol()) , selectedSymbolList.get(i).getName());
 
-                    for(int j=0;j<listOfNewsFromSelectedQuotesTemp.size();j++){
-                        listOfNewsFromSelectedQuotes.add(listOfNewsFromSelectedQuotesTemp.get(j));
+                    for(int j = 0; j< listOfVolumeByVenueFromSelectedQuotesTemp.size(); j++){
+                        listOfVolumeByVenueFromSelectedQuotes.add(listOfVolumeByVenueFromSelectedQuotesTemp.get(j));
                     }
                 }
 
-                helper.bulkInsertNewsToNewsDataTable(listOfNewsFromSelectedQuotes);
+                helper.bulkInsertValueByVenueToVolumeByVenueDataTable(listOfVolumeByVenueFromSelectedQuotes);
 
                 broadcastIntent.setAction(GET_QOUTES_DATA);
-                broadcastIntent.putExtra(ReciverServiceConsts.DATA_TYPE_KEY, ReciverServiceConsts.RELOAD_NEWS_FRAGMNET);
+                broadcastIntent.putExtra(ReciverServiceConsts.DATA_TYPE_KEY, ReciverServiceConsts.RELOAD_VOLUEM_BY_VENUE_FRAGMNET);
                 sendBroadcast(broadcastIntent);
 
                 break;

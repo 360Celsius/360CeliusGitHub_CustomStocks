@@ -4,11 +4,11 @@ import androidx.annotation.NonNull;
 import androidx.databinding.ViewDataBinding;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class NewsViewHolder extends RecyclerView.ViewHolder{
+public class VolumeByVenueViewHolder extends RecyclerView.ViewHolder{
 
     private ViewDataBinding mViewDataBinding;
 
-    public NewsViewHolder(@NonNull ViewDataBinding viewDataBinding) {
+    public VolumeByVenueViewHolder(@NonNull ViewDataBinding viewDataBinding) {
         super(viewDataBinding.getRoot());
         mViewDataBinding = viewDataBinding;
         mViewDataBinding.executePendingBindings();
