@@ -30,4 +30,7 @@ public class ReciverServiceConsts {
 
     public static final String GET_EARNINGS_DATA = "GET_EARNINGS_DATA";
 
+    public static final String OPEN_SIDE_MENU_ACTIVITY_WITH_MARKETS = "OPEN_SIDE_MENU_ACTIVITY_WITH_MARKETS";
+
+
 }

@@ -43,6 +43,7 @@ public class DBHelper extends SQLiteOpenHelper {
         db.execSQL(DBContract.SQL_CREATE_QUOTES_TABLE);
         db.execSQL(DBContract.SQL_CREATE_VALUE_BY_VENUE_TABLE);
         db.execSQL(DBContract.SQL_CREATE_EARNING_TABLE);
+        db.execSQL(DBContract.SQL_CREATE_FINANACIALS_TABLE);
     }
 
     @Override
@@ -52,6 +53,7 @@ public class DBHelper extends SQLiteOpenHelper {
         db.execSQL(DBContract.SQL_DELETE_QUOTES_TABLE);
         db.execSQL(DBContract.SQL_DELETE_VALUE_BY_VENUE_TABLE);
         db.execSQL(DBContract.SQL_DELETE_EARNINGS_TABLE);
+        db.execSQL(DBContract.SQL_DELETE_FINANACIALS_TABLE);
     }
 
     @Override
@@ -706,4 +708,7 @@ public class DBHelper extends SQLiteOpenHelper {
             return earningList;
         }
     }
+
+
+    //=================  FINANCIALS =================
 }

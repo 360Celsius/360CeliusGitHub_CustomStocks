@@ -1,6 +1,7 @@
 package com.celsius.customstocks;
 
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -16,6 +17,8 @@ import com.celsius.customstocks.fragments.MarketsFragment;
 import com.celsius.customstocks.fragments.VolumeByVenueFragment;
 import com.celsius.customstocks.fragments.SearchFragment;
 import com.celsius.customstocks.fragments.StocksFragment;
+import com.celsius.customstocks.services.PullSymbolsDataFromIEXService;
+import com.celsius.customstocks.utils.ReciverServiceConsts;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -25,6 +28,9 @@ import androidx.core.view.GravityCompat;
 import androidx.databinding.DataBindingUtil;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.FragmentTransaction;
+
+import static com.celsius.customstocks.utils.ReciverServiceConsts.DATA_TYPE_KEY;
+import static com.celsius.customstocks.utils.ReciverServiceConsts.OPEN_SIDE_MENU_ACTIVITY_WITH_MARKETS;
 
 
 public class MainActivity extends BaseActivity implements View.OnClickListener {
@@ -176,6 +182,14 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 transaction.replace(R.id.fragment_view_placeholder, new EarningCalendarFragment(),EarningCalendarFragment.TAG);
                 transaction.addToBackStack(null);
                 transaction.commit();
+                break;
+
+            case R.id.financials:
+                drawerLayout.closeDrawer(GravityCompat.START);
+
+                Intent intent = new Intent(getApplicationContext(), FromSideMenueActivity.class);
+                intent.putExtra(DATA_TYPE_KEY,OPEN_SIDE_MENU_ACTIVITY_WITH_MARKETS);
+                startActivity(intent);
                 break;
 
             case R.id.settings:

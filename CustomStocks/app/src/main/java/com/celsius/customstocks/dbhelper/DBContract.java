@@ -297,4 +297,79 @@ public class DBContract {
 
     public static final String SQL_SELECT_EARNINGS_TABLE =
             "SELECT  * FROM " + Earnings.TABLE_NAME + " WHERE "+ Earnings._ID +" ORDER BY strftime('%Y-%m-%d', "+Earnings.COLUMN_NAME_EPS_REPORT_DATE+") DESC";
+
+
+
+    //============ ============ ==============
+
+    //=================  FINANCIALS =================
+    public static class Financials implements BaseColumns {
+        public static final String URI_SUFFIX = "financials";
+        public static final Uri CONTENT_URI = Uri.parse(String.format(Locale.US, CONTENT_BASE, URI_SUFFIX));
+
+        public static final String TABLE_NAME = "financials";
+
+        public static final String COLUMN_NAME_REPORT_DATE = "reportDate";
+        public static final String COLUMN_NAME_GROSS_PROFIT = "grossProfit";
+
+        public static final String COLUMN_NAME_COST_OF_REVENUE = "costOfRevenue";
+        public static final String COLUMN_NAME_OPERATING_REVENUE = "operatingRevenue";
+        public static final String COLUMN_NAME_TOTAL_REVENUE = "totalRevenue";
+        public static final String COLUMN_NAME_OPERATING_INCOME = "operatingIncome";
+        public static final String COLUMN_NAME_NET_INCOME = "netIncome";
+        public static final String COLUMN_NAME_RESEARCH_AND_DEVELOPMENT = "researchAndDevelopment";
+        public static final String COLUMN_NAME_OPERATING_EXPENCE = "operatingExpense";
+        public static final String COLUMN_NAME_CURRENT_ASSETS = "currentAssets";
+        public static final String COLUMN_NAME_TOTAL_ASSETS = "totalAssets";
+        public static final String COLUMN_NAME_TOTAL_LIABILITIES = "totalLiabilities";
+        public static final String COLUMN_NAME_CURRENT_CASH = "currentCash";
+        public static final String COLUMN_NAME_CURRENT_DEPT = "currentDebt";
+        public static final String COLUMN_NAME_TOTAL_CASH = "totalCash";
+        public static final String COLUMN_NAME_TOTAL_DEBT = "totalDebt";
+        public static final String COLUMN_NAME_SHAREHOLDER_EQUITY = "shareholderEquity";
+        public static final String COLUMN_NAME_CASH_CHANGE = "cashChange";
+        public static final String COLUMN_NAME_CASH_FLOW = "cashFlow";
+        public static final String COLUMN_NAME_OPERATING_GAINS_LOSSES = "operatingGainsLosses";
+
+        public static final String COLUMN_NAME_SYMBOL = "symbol";
+        public static final String COLUMN_NAME_SYMBOL_NAME = "symbolName";
+
+
+        public static final String COLUMN_NAME_ROW_ID = "rowid";
+    }
+    public static final String SQL_CREATE_FINANACIALS_TABLE =
+            "CREATE TABLE " + Financials.TABLE_NAME + " (" +
+                    Financials._ID + " INTEGER PRIMARY KEY," +
+
+                    Financials.COLUMN_NAME_REPORT_DATE + " TEXT," +
+                    Financials.COLUMN_NAME_GROSS_PROFIT + " TEXT," +
+                    Financials.COLUMN_NAME_COST_OF_REVENUE + " TEXT," +
+                    Financials.COLUMN_NAME_OPERATING_REVENUE + " TEXT," +
+                    Financials.COLUMN_NAME_TOTAL_REVENUE + " TEXT," +
+                    Financials.COLUMN_NAME_OPERATING_INCOME + " TEXT," +
+                    Financials.COLUMN_NAME_NET_INCOME + " TEXT," +
+                    Financials.COLUMN_NAME_RESEARCH_AND_DEVELOPMENT + " TEXT," +
+                    Financials.COLUMN_NAME_OPERATING_EXPENCE + " TEXT," +
+                    Financials.COLUMN_NAME_CURRENT_ASSETS + " TEXT," +
+                    Financials.COLUMN_NAME_TOTAL_ASSETS + " TEXT," +
+                    Financials.COLUMN_NAME_TOTAL_LIABILITIES + " TEXT," +
+                    Financials.COLUMN_NAME_CURRENT_CASH + " TEXT," +
+                    Financials.COLUMN_NAME_CURRENT_DEPT + " TEXT," +
+                    Financials.COLUMN_NAME_TOTAL_CASH + " TEXT," +
+                    Financials.COLUMN_NAME_TOTAL_DEBT + " TEXT," +
+                    Financials.COLUMN_NAME_SHAREHOLDER_EQUITY + " TEXT," +
+                    Financials.COLUMN_NAME_CASH_CHANGE + " TEXT," +
+                    Financials.COLUMN_NAME_CASH_FLOW + " TEXT," +
+                    Financials.COLUMN_NAME_OPERATING_GAINS_LOSSES + " TEXT," +
+
+                    Financials.COLUMN_NAME_ROW_ID + " TEXT," +
+                    Financials.COLUMN_NAME_SYMBOL + " TEXT," +
+                    Financials.COLUMN_NAME_SYMBOL_NAME + " TEXT)";
+
+    public static final String SQL_DELETE_FINANACIALS_TABLE =
+            "DROP TABLE IF EXISTS " + Financials.TABLE_NAME;
+
+    public static final String SQL_SELECT_FINANACIALS_TABLE =
+            "SELECT  * FROM " + Financials.TABLE_NAME + " WHERE "+ Financials._ID;
+
 }
