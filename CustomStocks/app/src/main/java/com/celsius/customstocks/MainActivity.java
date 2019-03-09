@@ -116,11 +116,11 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                                 transaction.addToBackStack(null);
                                 break;
                             case R.id.action_item4:
-                                transaction.replace(R.id.fragment_view_placeholder, new MarketsFragment(),MarketsFragment.TAG);
+                                transaction.replace(R.id.fragment_view_placeholder, new FinancialsFragment(),FinancialsFragment.TAG);
                                 transaction.addToBackStack(null);
                                 break;
                             case R.id.action_item5:
-                                transaction.replace(R.id.fragment_view_placeholder, new FinancialsFragment(),FinancialsFragment.TAG);
+                                transaction.replace(R.id.fragment_view_placeholder, new EarningCalendarFragment(),EarningCalendarFragment.TAG);
                                 transaction.addToBackStack(null);
                                 break;
                         }
@@ -170,11 +170,10 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 break;
 
             case R.id.markets:
-                drawerLayout.closeDrawer(GravityCompat.START);
-                bottomNavigationView.setSelectedItemId(R.id.action_item4);
-                transaction.replace(R.id.fragment_view_placeholder, new MarketsFragment(),MarketsFragment.TAG);
-                transaction.addToBackStack(null);
-                transaction.commit();
+
+                Intent intent = new Intent(getApplicationContext(), FromSideMenueActivity.class);
+                intent.putExtra(DATA_TYPE_KEY,OPEN_SIDE_MENU_ACTIVITY_WITH_MARKETS);
+                startActivity(intent);
                 break;
 
             case R.id.calendar:
@@ -188,9 +187,11 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
             case R.id.financials:
                 drawerLayout.closeDrawer(GravityCompat.START);
 
-                Intent intent = new Intent(getApplicationContext(), FromSideMenueActivity.class);
-                intent.putExtra(DATA_TYPE_KEY,OPEN_SIDE_MENU_ACTIVITY_WITH_MARKETS);
-                startActivity(intent);
+                drawerLayout.closeDrawer(GravityCompat.START);
+                bottomNavigationView.setSelectedItemId(R.id.action_item4);
+                transaction.replace(R.id.fragment_view_placeholder, new FinancialsFragment(),FinancialsFragment.TAG);
+                transaction.addToBackStack(null);
+                transaction.commit();
                 break;
 
             case R.id.settings:

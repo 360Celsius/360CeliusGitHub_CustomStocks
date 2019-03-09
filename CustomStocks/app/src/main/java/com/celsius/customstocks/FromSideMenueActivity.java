@@ -7,6 +7,7 @@ import android.view.View;
 import com.celsius.customstocks.databinding.ActivityFromSideMenuBinding;
 import com.celsius.customstocks.databinding.ActivityMainBinding;
 import com.celsius.customstocks.fragments.EarningCalendarFragment;
+import com.celsius.customstocks.fragments.MarketsFragment;
 import com.celsius.customstocks.fragments.StocksFragment;
 
 import androidx.annotation.Nullable;
@@ -32,7 +33,7 @@ public class FromSideMenueActivity extends BaseActivity implements View.OnClickL
 
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         if(intent.getStringExtra(DATA_TYPE_KEY).equals(OPEN_SIDE_MENU_ACTIVITY_WITH_MARKETS)) {
-            transaction.replace(R.id.fragment_view_placeholder, new EarningCalendarFragment(), EarningCalendarFragment.TAG);
+            transaction.replace(R.id.fragment_view_placeholder, new MarketsFragment(), MarketsFragment.TAG);
             transaction.addToBackStack(null);
         }
         transaction.commit();

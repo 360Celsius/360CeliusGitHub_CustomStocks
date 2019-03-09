@@ -16,8 +16,8 @@
         android:title="@string/tab_search"/>
     <item
         android:id="@+id/action_item4"
-        android:icon="@drawable/ic_markets"
-        android:title="@string/tab_markets"/>
+        android:icon="@drawable/ic_financial"
+        android:title="@string/tab_financials"/>
     <item
         android:id="@+id/action_item5"
         android:icon="@drawable/ic_calendar"

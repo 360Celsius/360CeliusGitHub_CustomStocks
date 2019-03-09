@@ -209,7 +209,7 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/markets"
+                android:id="@+id/financials"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
@@ -220,12 +220,12 @@
                     android:layout_width="24dp"
                     android:layout_height="24dp"
                     android:layout_marginLeft="16dp"
-                    android:src="@drawable/ic_market_side_menu"/>
+                    android:src="@drawable/ic_financial_side_menu"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Markets"
+                    android:text="Financials"
                     android:layout_marginLeft="16dp"
                     android:textColor="@color/symbol_tyoe_color"
                     android:textSize="16dp" />
@@ -255,7 +255,7 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/financials"
+                android:id="@+id/markets"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
@@ -266,13 +266,12 @@
                     android:layout_width="24dp"
                     android:layout_height="24dp"
                     android:layout_marginLeft="16dp"
-                    android:visibility="invisible"
-                    android:src="@drawable/ic_calendar_side_menu"/>
+                    android:src="@drawable/ic_markets_side_menu"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Financials"
+                    android:text="Markets"
                     android:layout_marginLeft="16dp"
                     android:textColor="@color/symbol_tyoe_color"
                     android:textSize="16dp" />
