@@ -170,7 +170,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 break;
 
             case R.id.markets:
-
+                drawerLayout.closeDrawer(GravityCompat.START);
                 Intent intent = new Intent(getApplicationContext(), FromSideMenueActivity.class);
                 intent.putExtra(DATA_TYPE_KEY,OPEN_SIDE_MENU_ACTIVITY_WITH_MARKETS);
                 startActivity(intent);
@@ -185,8 +185,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 break;
 
             case R.id.financials:
-                drawerLayout.closeDrawer(GravityCompat.START);
-
                 drawerLayout.closeDrawer(GravityCompat.START);
                 bottomNavigationView.setSelectedItemId(R.id.action_item4);
                 transaction.replace(R.id.fragment_view_placeholder, new FinancialsFragment(),FinancialsFragment.TAG);
