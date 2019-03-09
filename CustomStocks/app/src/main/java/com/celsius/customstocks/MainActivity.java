@@ -32,8 +32,12 @@ import androidx.fragment.app.FragmentTransaction;
 
 import static com.celsius.customstocks.utils.ReciverServiceConsts.DATA_TYPE_KEY;
 import static com.celsius.customstocks.utils.ReciverServiceConsts.FRAGMENT_NAME;
+import static com.celsius.customstocks.utils.ReciverServiceConsts.FRAGMENT_NAME_INFO;
 import static com.celsius.customstocks.utils.ReciverServiceConsts.FRAGMENT_NAME_MARKETS;
+import static com.celsius.customstocks.utils.ReciverServiceConsts.FRAGMENT_NAME_SETTINGS;
+import static com.celsius.customstocks.utils.ReciverServiceConsts.OPEN_SIDE_MENU_ACTIVITY_WITH_INFO;
 import static com.celsius.customstocks.utils.ReciverServiceConsts.OPEN_SIDE_MENU_ACTIVITY_WITH_MARKETS;
+import static com.celsius.customstocks.utils.ReciverServiceConsts.OPEN_SIDE_MENU_ACTIVITY_WITH_SETTINGS;
 
 
 public class MainActivity extends BaseActivity implements View.OnClickListener {
@@ -48,6 +52,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     private ActivityMainBinding activityMainBinding;
 
     private DrawerState drawerState;
+
+    private Intent intent;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -197,10 +203,18 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
             case R.id.settings:
                 drawerLayout.closeDrawer(GravityCompat.START);
+                intent = new Intent(getApplicationContext(), FromSideMenueActivity.class);
+                intent.putExtra(DATA_TYPE_KEY,OPEN_SIDE_MENU_ACTIVITY_WITH_SETTINGS);
+                intent.putExtra(FRAGMENT_NAME,FRAGMENT_NAME_SETTINGS);
+                startActivity(intent);
                 break;
 
             case R.id.info:
                 drawerLayout.closeDrawer(GravityCompat.START);
+                intent = new Intent(getApplicationContext(), FromSideMenueActivity.class);
+                intent.putExtra(DATA_TYPE_KEY,OPEN_SIDE_MENU_ACTIVITY_WITH_INFO);
+                intent.putExtra(FRAGMENT_NAME,FRAGMENT_NAME_INFO);
+                startActivity(intent);
                 break;
         }
     }
