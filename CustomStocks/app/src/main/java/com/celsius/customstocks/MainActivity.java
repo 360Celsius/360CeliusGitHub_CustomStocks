@@ -31,6 +31,8 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.FragmentTransaction;
 
 import static com.celsius.customstocks.utils.ReciverServiceConsts.DATA_TYPE_KEY;
+import static com.celsius.customstocks.utils.ReciverServiceConsts.FRAGMENT_NAME;
+import static com.celsius.customstocks.utils.ReciverServiceConsts.FRAGMENT_NAME_MARKETS;
 import static com.celsius.customstocks.utils.ReciverServiceConsts.OPEN_SIDE_MENU_ACTIVITY_WITH_MARKETS;
 
 
@@ -173,6 +175,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 drawerLayout.closeDrawer(GravityCompat.START);
                 Intent intent = new Intent(getApplicationContext(), FromSideMenueActivity.class);
                 intent.putExtra(DATA_TYPE_KEY,OPEN_SIDE_MENU_ACTIVITY_WITH_MARKETS);
+                intent.putExtra(FRAGMENT_NAME,FRAGMENT_NAME_MARKETS);
                 startActivity(intent);
                 break;
 
