@@ -42,7 +42,7 @@ public class Utils implements Serializable {
         try {
             Date date = new Date();
             date.setTime(Long.valueOf(dateInMiliseconds));
-            String formattedDate = new SimpleDateFormat("MMM d, yyyy").format(date);
+            String formattedDate = new SimpleDateFormat("MM.dd'/'HH:mm:ss z").format(date);
             return formattedDate;
         }catch (NumberFormatException e){
             return dateInMiliseconds;
