@@ -2,13 +2,18 @@ package com.celsius.customstocks.fragments;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.celsius.customstocks.FromSideMenueActivity;
+import com.celsius.customstocks.QuoteActivity;
 import com.celsius.customstocks.R;
 import com.celsius.customstocks.databinding.FragmentMarketsBinding;
 import com.celsius.customstocks.databinding.FragmentStocksBinding;
+import com.celsius.customstocks.datamodels.Quote;
+import com.celsius.customstocks.iterfaces.EnterQuoteCallbackInterface;
 import com.celsius.customstocks.recyclerviewadapter.MarketsRecyclerViewAdapter;
 import com.celsius.customstocks.recyclerviewadapter.StocksRecyclerViewAdapter;
 import com.celsius.customstocks.services.PullStocksDataFromIEXService;
@@ -30,6 +35,8 @@ public class StocksFragment extends BaseFragment {
     private View view;
     private StocksRecyclerViewAdapter recyclerViewAdapter;
 
+    EnterQuoteCallbackInterface enterQuoteCallbackInterface;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
@@ -42,13 +49,21 @@ public class StocksFragment extends BaseFragment {
 
         recyclerView = (RecyclerView) view.findViewById(R.id.recycler_view);
 
+        enterQuoteCallbackInterface = new EnterQuoteCallbackInterface() {
+            @Override
+            public void onClick(Quote quote) {
+                Log.e("TEST",String.valueOf(quote.getSymbol()));
+                Intent intent = new Intent(getContext(), QuoteActivity.class);
+                startActivity(intent);
+            }
+        };
 
         Intent intent = new Intent(getActivity(), PullStocksDataFromIEXService.class);
         intent.putExtra(ReciverServiceConsts.DATA_TYPE_KEY, ReciverServiceConsts.GET_STOCKS_DATA);
         getActivity().startService(intent);
 
 
-        recyclerViewAdapter = new StocksRecyclerViewAdapter(helper.getQuotes(),utils,getContext());
+        recyclerViewAdapter = new StocksRecyclerViewAdapter(helper.getQuotes(),utils,getContext(),enterQuoteCallbackInterface);
         recyclerView.setAdapter(recyclerViewAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
@@ -56,7 +71,7 @@ public class StocksFragment extends BaseFragment {
     }
 
     public void updateStocksFragmetRecyclerView(){
-        recyclerViewAdapter = new StocksRecyclerViewAdapter(helper.getQuotes(),utils,getContext());
+        recyclerViewAdapter = new StocksRecyclerViewAdapter(helper.getQuotes(),utils,getContext(),enterQuoteCallbackInterface);
         recyclerView.swapAdapter(recyclerViewAdapter,false);
     }
 }

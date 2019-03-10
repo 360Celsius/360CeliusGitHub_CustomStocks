@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import com.celsius.customstocks.BR;
 import com.celsius.customstocks.R;
 import com.celsius.customstocks.datamodels.Quote;
+import com.celsius.customstocks.iterfaces.EnterQuoteCallbackInterface;
 import com.celsius.customstocks.utils.Utils;
 import com.celsius.customstocks.viewholders.QuotesViewHolder;
 
@@ -23,11 +24,13 @@ public class StocksRecyclerViewAdapter extends RecyclerView.Adapter<QuotesViewHo
     private Context context;
     private Utils utils;
 
+    private EnterQuoteCallbackInterface enterQuoteCallbackInterface;
 
-    public StocksRecyclerViewAdapter(ArrayList<Quote> quoteList, Utils utils, Context context) {
+    public StocksRecyclerViewAdapter(ArrayList<Quote> quoteList, Utils utils, Context context, EnterQuoteCallbackInterface enterQuoteCallbackInterface) {
         this.quoteList = quoteList;
         this.context = context;
         this.utils = utils;
+        this.enterQuoteCallbackInterface = enterQuoteCallbackInterface;
         setHasStableIds(true);
     }
     @NonNull
@@ -42,6 +45,7 @@ public class StocksRecyclerViewAdapter extends RecyclerView.Adapter<QuotesViewHo
     public void onBindViewHolder(@NonNull QuotesViewHolder marketsViewHolder, int position) {
         ViewDataBinding viewDataBinding = marketsViewHolder.getViewDataBinding();
         viewDataBinding.setVariable(BR.quote, quoteList.get(position));
+        viewDataBinding.setVariable(BR.clickOnQuote, enterQuoteCallbackInterface);
     }
 
 

@@ -4,14 +4,18 @@
         <variable name="quote"
             type="com.celsius.customstocks.datamodels.Quote"/>
 
+        <variable name="clickOnQuote"
+            type="com.celsius.customstocks.iterfaces.EnterQuoteCallbackInterface"/>
     </data>
 
 
 
 
     <RelativeLayout
+        android:id="@+id/quote_row"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:onClick="@{() -> clickOnQuote.onClick(quote)}">
 
         <LinearLayout
             android:id="@+id/tape_a_line"
