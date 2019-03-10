@@ -42,7 +42,13 @@ public class QuoteActivity extends BaseActivity implements View.OnClickListener{
         }
 
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.fragment_quote_view_placeholder, new QuoteFragment(), QuoteFragment.TAG);
+
+        QuoteFragment quoteFragment  = new QuoteFragment();
+        Bundle arguments = new Bundle();
+        arguments.putSerializable( QUOTE_DATA , quote);
+        quoteFragment.setArguments(arguments);
+
+        transaction.replace(R.id.fragment_quote_view_placeholder, quoteFragment, QuoteFragment.TAG);
         transaction.addToBackStack(null);
         transaction.commit();
     }
