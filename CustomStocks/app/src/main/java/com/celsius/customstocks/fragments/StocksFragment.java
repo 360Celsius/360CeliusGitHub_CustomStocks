@@ -25,6 +25,13 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import static com.celsius.customstocks.utils.ReciverServiceConsts.DATA_TYPE_KEY;
+import static com.celsius.customstocks.utils.ReciverServiceConsts.FRAGMENT_NAME;
+import static com.celsius.customstocks.utils.ReciverServiceConsts.FRAGMENT_NAME_MARKETS;
+import static com.celsius.customstocks.utils.ReciverServiceConsts.OPEN_SIDE_MENU_ACTIVITY_WITH_MARKETS;
+import static com.celsius.customstocks.utils.ReciverServiceConsts.OPEN_SIDE_QUOTE_ACTIVITY;
+import static com.celsius.customstocks.utils.ReciverServiceConsts.QUOTE_DATA;
+
 
 public class StocksFragment extends BaseFragment {
 
@@ -54,6 +61,8 @@ public class StocksFragment extends BaseFragment {
             public void onClick(Quote quote) {
                 Log.e("TEST",String.valueOf(quote.getSymbol()));
                 Intent intent = new Intent(getContext(), QuoteActivity.class);
+                intent.putExtra(DATA_TYPE_KEY,OPEN_SIDE_QUOTE_ACTIVITY);
+                intent.putExtra(QUOTE_DATA,quote);
                 startActivity(intent);
             }
         };

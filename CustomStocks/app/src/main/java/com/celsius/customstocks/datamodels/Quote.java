@@ -4,12 +4,14 @@ import com.celsius.customstocks.BR;
 import com.celsius.customstocks.application.CustomStockApplication;
 import com.celsius.customstocks.utils.Utils;
 
+import java.io.Serializable;
+
 import javax.inject.Inject;
 
 import androidx.databinding.BaseObservable;
 import androidx.databinding.Bindable;
 
-public class Quote extends BaseObservable {
+public class Quote extends BaseObservable implements Serializable {
 
     private String symbol;
     private String companyName;

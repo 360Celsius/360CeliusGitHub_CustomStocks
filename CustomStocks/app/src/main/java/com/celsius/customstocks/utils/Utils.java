@@ -1,5 +1,6 @@
 package com.celsius.customstocks.utils;
 
+import java.io.Serializable;
 import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -9,7 +10,7 @@ import javax.inject.Inject;
 import javax.inject.Singleton;
 
 @Singleton
-public class Utils {
+public class Utils implements Serializable {
 
     @Inject
     public Utils() {

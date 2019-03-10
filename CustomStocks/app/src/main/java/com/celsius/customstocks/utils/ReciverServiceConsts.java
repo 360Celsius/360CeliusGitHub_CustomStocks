@@ -8,6 +8,8 @@ public class ReciverServiceConsts {
 
     public static final String FRAGMENT_NAME = "FRAGMENT_NAME";
 
+    public static final String QUOTE_DATA = "QUOTE_DATA";
+
     public static final String FRAGMENT_NAME_MARKETS = "Markets";
 
     public static final String FRAGMENT_NAME_SETTINGS = "Settings";
@@ -43,6 +45,8 @@ public class ReciverServiceConsts {
     public static final String GET_FINANCIALS_DATA = "GET_FINANCIALS_DATA";
 
     public static final String OPEN_SIDE_MENU_ACTIVITY_WITH_MARKETS = "OPEN_SIDE_MENU_ACTIVITY_WITH_MARKETS";
+
+    public static final String OPEN_SIDE_QUOTE_ACTIVITY = "OPEN_SIDE_QUOTE_ACTIVITY";
 
     public static final String OPEN_SIDE_MENU_ACTIVITY_WITH_SETTINGS = "OPEN_SIDE_MENU_ACTIVITY_WITH_SETTINGS";
 
