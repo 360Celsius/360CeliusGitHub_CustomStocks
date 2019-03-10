@@ -354,6 +354,10 @@ public class Quote extends BaseObservable implements Serializable {
 
     }
 
+    public String getDecoratedChangePercent(){
+        return " ("+getChangePercent()+")";
+    }
+
     public void setChangePercent(String changePercent) {
         this.changePercent = changePercent;
         notifyPropertyChanged(BR.changePercent);

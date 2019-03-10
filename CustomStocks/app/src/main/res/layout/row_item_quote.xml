@@ -130,13 +130,6 @@
                         android:textColor="@{quote.isChangePositive()==true ? @color/up :  @color/down}"
                         android:textSize="12dp" />
 
-                    <View
-                        android:layout_width="1dp"
-                        android:layout_height="12dp"
-                        android:layout_marginLeft="6dp"
-                        android:layout_marginRight="6dp"
-                        android:background="@color/search_field_stroke_color"/>
-
                     <TextView
                         android:id="@+id/change_percent"
                         android:layout_width="wrap_content"
@@ -144,7 +137,7 @@
                         android:layout_marginRight="0dp"
                         android:ellipsize="end"
                         android:maxLines="1"
-                        android:text="@{quote.changePercent}"
+                        android:text="@{quote.getDecoratedChangePercent()}"
                         android:textColor="@{quote.isChangePercentPositive()==true ? @color/up :  @color/down }"
                         android:textSize="12dp" />
 
