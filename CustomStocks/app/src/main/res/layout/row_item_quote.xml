@@ -8,9 +8,6 @@
             type="com.celsius.customstocks.iterfaces.EnterQuoteCallbackInterface"/>
     </data>
 
-
-
-
     <RelativeLayout
         android:id="@+id/quote_row"
         android:layout_width="match_parent"

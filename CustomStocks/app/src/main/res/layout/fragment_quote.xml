@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
-
     <data>
-
         <import type="android.view.View" />
-
         <import type="android.text.TextUtils" />
 
         <variable
@@ -15,7 +12,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
         <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
             android:id="@+id/swipeRefreshLayout"
@@ -28,17 +25,54 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="match_parent">
 
-                <TextView
-                    android:id="@+id/last_price"
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:id="@+id/latest_price_pc_pcp_rpw"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@{quote.latestPrice}"
-                    android:textColor="@color/symbol_name_color"
-                    android:textSize="22dp" />
+                    android:gravity="center_vertical"
+                    android:layout_alignParentTop="true">
+
+                    <TextView
+                        android:id="@+id/last_price"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{quote.latestPrice}"
+                        android:layout_marginRight="16dp"
+                        android:textColor="@color/symbol_name_color"
+                        android:textSize="32dp" />
+
+                    <TextView
+                        android:id="@+id/change"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="end"
+                        android:maxLines="1"
+                        android:text="@{quote.change}"
+                        android:textColor="@{quote.isChangePositive()==true ? @color/up :  @color/down}"
+                        android:textSize="22dp" />
+
+                    <View
+                        android:layout_width="1dp"
+                        android:layout_height="22dp"
+                        android:layout_marginLeft="6dp"
+                        android:layout_marginRight="6dp"
+                        android:background="@color/search_field_stroke_color" />
+
+                    <TextView
+                        android:id="@+id/change_percent"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="end"
+                        android:maxLines="1"
+                        android:text="@{quote.changePercent}"
+                        android:textColor="@{quote.isChangePercentPositive()==true ? @color/up :  @color/down }"
+                        android:textSize="22dp" />
+                </LinearLayout>
 
             </RelativeLayout>
+
 
         </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
     </RelativeLayout>
