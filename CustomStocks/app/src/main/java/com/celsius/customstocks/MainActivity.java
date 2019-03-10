@@ -4,6 +4,7 @@ package com.celsius.customstocks;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.PersistableBundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.FrameLayout;
@@ -54,6 +55,11 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     private DrawerState drawerState;
 
     private Intent intent;
+
+    private int saveState = -1;
+
+
+    private Bundle savedInstanceState;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -108,7 +114,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 (new BottomNavigationView.OnNavigationItemSelectedListener() {
                     @Override
                     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-
                         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
                         switch (item.getItemId()) {
                             case R.id.action_item1:
@@ -137,12 +142,24 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                     }
                 });
 
+      this.savedInstanceState = savedInstanceState;
+
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        bottomNavigationView.setSelectedItemId(R.id.action_item3);
+        if(saveState == -1){
+            bottomNavigationView.setSelectedItemId(R.id.action_item3);
+        }else{
+            bottomNavigationView.setSelectedItemId(saveState);
+        }
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        saveState = bottomNavigationView.getSelectedItemId();
     }
 
     @Override
