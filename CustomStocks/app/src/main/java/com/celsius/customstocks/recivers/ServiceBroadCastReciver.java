@@ -11,6 +11,7 @@ import com.celsius.customstocks.fragments.MarketsFragment;
 import com.celsius.customstocks.fragments.VolumeByVenueFragment;
 import com.celsius.customstocks.fragments.SearchFragment;
 import com.celsius.customstocks.fragments.StocksFragment;
+import com.celsius.customstocks.fragments.VolumeByVenuePagedFragment;
 import com.celsius.customstocks.utils.ReciverServiceConsts;
 
 import javax.inject.Inject;
@@ -49,8 +50,8 @@ public class ServiceBroadCastReciver extends BroadcastReceiver {
                 ((StocksFragment) ((AppCompatActivity) context).getSupportFragmentManager().findFragmentByTag(StocksFragment.TAG)).updateStocksFragmetRecyclerView();
 
         }else if( intent.getStringExtra(ReciverServiceConsts.DATA_TYPE_KEY).equalsIgnoreCase(ReciverServiceConsts.RELOAD_VOLUEM_BY_VENUE_FRAGMNET) ){
-            if( ((AppCompatActivity) context).getSupportFragmentManager().findFragmentByTag(VolumeByVenueFragment.TAG) !=null )
-                ((VolumeByVenueFragment) ((AppCompatActivity) context).getSupportFragmentManager().findFragmentByTag(VolumeByVenueFragment.TAG)).updateVolumeByVenueFragmetRecyclerView();
+            if( ((AppCompatActivity) context).getSupportFragmentManager().findFragmentByTag(VolumeByVenuePagedFragment.TAG) !=null )
+                ((VolumeByVenuePagedFragment) ((AppCompatActivity) context).getSupportFragmentManager().findFragmentByTag(VolumeByVenuePagedFragment.TAG)).setData();
 
         }else if( intent.getStringExtra(ReciverServiceConsts.DATA_TYPE_KEY).equalsIgnoreCase(ReciverServiceConsts.RELOAD_EARNINGS_FRAGMNET) ){
             if( ((AppCompatActivity) context).getSupportFragmentManager().findFragmentByTag(EarningCalendarFragment.TAG) !=null )

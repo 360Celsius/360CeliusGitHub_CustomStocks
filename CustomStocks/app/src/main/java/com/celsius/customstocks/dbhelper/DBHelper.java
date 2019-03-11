@@ -14,6 +14,7 @@ import com.celsius.customstocks.datamodels.Quote;
 import com.celsius.customstocks.datamodels.Symbol;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -577,7 +578,7 @@ public class DBHelper extends SQLiteOpenHelper {
         }
     }
 
-    public ArrayList<VolumeByVenue> getValueByVenue() {
+    public ArrayList<VolumeByVenue> getValueByVenue(String venue) {
 
         ArrayList<VolumeByVenue> volumeByVenueList = new ArrayList<>();
 
@@ -600,7 +601,8 @@ public class DBHelper extends SQLiteOpenHelper {
 
                     volumeByVenue.setId(cursor.getString(cursor.getColumnIndex(DBContract.ValueByVenue.COLUMN_NAME_ROW_ID)));
 
-                    volumeByVenueList.add(volumeByVenue);
+                    if(venue.equals( cursor.getString(cursor.getColumnIndex(DBContract.ValueByVenue.COLUMN_NAME_VENUE)) ))
+                        volumeByVenueList.add(volumeByVenue);
 
                 } while (cursor.moveToNext());
             }
@@ -616,6 +618,30 @@ public class DBHelper extends SQLiteOpenHelper {
         }
     }
 
+    public List<String> getCategoriesValueByVenue(){
+
+        List<String> listItems = new ArrayList<>();
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(DBContract.SQL_SELECT_VENUE_FROM_VALUE_BY_VENUE_TABLE, null);
+
+        try {
+            if (cursor.moveToFirst()) {
+                do {
+                    listItems.add(cursor.getString(cursor.getColumnIndex(DBContract.ValueByVenue.COLUMN_NAME_VENUE)));
+                } while (cursor.moveToNext());
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+            return null;
+        }finally {
+            if (cursor != null && !cursor.isClosed()) {
+                cursor.close();
+            }
+        }
+
+        return listItems;
+    }
     //=================  EARNINGS =================
     public void bulkInsertEarningsToEarningsDataTable(ArrayList<Earning> earningsParsed) {
         deleteEarningsTAble();

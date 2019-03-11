@@ -19,6 +19,7 @@ import com.celsius.customstocks.fragments.MarketsFragment;
 import com.celsius.customstocks.fragments.VolumeByVenueFragment;
 import com.celsius.customstocks.fragments.SearchFragment;
 import com.celsius.customstocks.fragments.StocksFragment;
+import com.celsius.customstocks.fragments.VolumeByVenuePagedFragment;
 import com.celsius.customstocks.services.PullSymbolsDataFromIEXService;
 import com.celsius.customstocks.utils.ReciverServiceConsts;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -121,7 +122,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                                 transaction.addToBackStack(null);
                                 break;
                             case R.id.action_item2:
-                                transaction.replace(R.id.fragment_view_placeholder, new VolumeByVenueFragment(), VolumeByVenueFragment.TAG);
+                                transaction.replace(R.id.fragment_view_placeholder, new VolumeByVenuePagedFragment(), VolumeByVenuePagedFragment.TAG);
                                 transaction.addToBackStack(null);
                                 break;
                             case R.id.action_item3:
@@ -181,7 +182,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
             case R.id.volumeByVenue:
                 drawerLayout.closeDrawer(GravityCompat.START);
                 bottomNavigationView.setSelectedItemId(R.id.action_item2);
-                transaction.replace(R.id.fragment_view_placeholder, new VolumeByVenueFragment(), VolumeByVenueFragment.TAG);
+                transaction.replace(R.id.fragment_view_placeholder, new VolumeByVenuePagedFragment(), VolumeByVenuePagedFragment.TAG);
                 transaction.addToBackStack(null);
                 transaction.commit();
                 break;

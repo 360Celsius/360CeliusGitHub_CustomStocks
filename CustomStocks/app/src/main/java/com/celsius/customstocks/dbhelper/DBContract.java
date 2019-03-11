@@ -243,7 +243,8 @@ public class DBContract {
     public static final String SQL_SELECT_VALUE_BY_VENUE_TABLE =
             "SELECT  * FROM " + ValueByVenue.TABLE_NAME + " WHERE "+ ValueByVenue._ID +" ORDER BY "+ValueByVenue.COLUMN_NAME_VENUE+" DESC";
 
-
+    public static final String SQL_SELECT_VENUE_FROM_VALUE_BY_VENUE_TABLE =
+            "SELECT DISTINCT venue FROM " + ValueByVenue.TABLE_NAME;
     //============ ============ ==============
 
     //=================  EARNINGS =================

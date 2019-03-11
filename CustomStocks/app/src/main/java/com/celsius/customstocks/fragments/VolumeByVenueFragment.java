@@ -29,6 +29,8 @@ public class VolumeByVenueFragment extends BaseFragment {
     private View view;
     private VolumeByVenueRecyclerViewAdapter recyclerViewAdapter;
 
+    private String venue;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
@@ -41,21 +43,26 @@ public class VolumeByVenueFragment extends BaseFragment {
 
         recyclerView = (RecyclerView) view.findViewById(R.id.recycler_view);
 
+// Not in use because I am using in in the VolumeByVenueFragmentPaged fragment
+//        Intent intent = new Intent(getActivity(), PullVoleumeByVenueDataFromIEXService.class);
+//        intent.putExtra(ReciverServiceConsts.DATA_TYPE_KEY, ReciverServiceConsts.GET_VOLUME_BE_VENUE_DATA);
+//        getActivity().startService(intent);
 
-        Intent intent = new Intent(getActivity(), PullVoleumeByVenueDataFromIEXService.class);
-        intent.putExtra(ReciverServiceConsts.DATA_TYPE_KEY, ReciverServiceConsts.GET_VOLUME_BE_VENUE_DATA);
-        getActivity().startService(intent);
 
-
-        recyclerViewAdapter = new VolumeByVenueRecyclerViewAdapter(helper.getValueByVenue(),utils,getContext());
+        recyclerViewAdapter = new VolumeByVenueRecyclerViewAdapter(helper.getValueByVenue(venue),utils,getContext());
         recyclerView.setAdapter(recyclerViewAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
         return view;
     }
 
-    public void updateVolumeByVenueFragmetRecyclerView(){
-        recyclerViewAdapter = new VolumeByVenueRecyclerViewAdapter(helper.getValueByVenue(),utils,getContext());
-        recyclerView.swapAdapter(recyclerViewAdapter,false);
+// Not in use because I am using setData() from VolumeByVenueFragmentPaged fragment
+//    public void updateVolumeByVenueFragmetRecyclerView(){
+//        recyclerViewAdapter = new VolumeByVenueRecyclerViewAdapter(helper.getValueByVenue(venue),utils,getContext());
+//        recyclerView.swapAdapter(recyclerViewAdapter,false);
+//    }
+
+    public void setVenue(String venue) {
+        this.venue = venue;
     }
 }
