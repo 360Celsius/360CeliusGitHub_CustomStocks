@@ -107,4 +107,12 @@ public class VolumeByVenue extends BaseObservable {
         this.date = date;
         notifyPropertyChanged(BR.date);
     }
+
+    public String getDecoratedDate(){
+        if(date==null || date.isEmpty() || date.equals("null")){
+            return "N/A";
+        }else{
+            return getDate();
+        }
+    }
 }

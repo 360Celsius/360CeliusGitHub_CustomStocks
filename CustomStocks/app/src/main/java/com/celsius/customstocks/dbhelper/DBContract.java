@@ -241,7 +241,7 @@ public class DBContract {
             "DROP TABLE IF EXISTS " + ValueByVenue.TABLE_NAME;
 
     public static final String SQL_SELECT_VALUE_BY_VENUE_TABLE =
-            "SELECT  * FROM " + ValueByVenue.TABLE_NAME + " WHERE "+ ValueByVenue._ID;
+            "SELECT  * FROM " + ValueByVenue.TABLE_NAME + " WHERE "+ ValueByVenue._ID +" ORDER BY "+ValueByVenue.COLUMN_NAME_VENUE+" DESC";
 
 
     //============ ============ ==============
