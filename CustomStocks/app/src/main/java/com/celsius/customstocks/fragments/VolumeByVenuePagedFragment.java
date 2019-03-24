@@ -2,6 +2,7 @@ package com.celsius.customstocks.fragments;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +14,7 @@ import com.celsius.customstocks.databinding.FragmentVolumeByVenuePagedBinding;
 import com.celsius.customstocks.fragments.adapters.VenueByVolumeViewPagerFragmentAdapter;
 import com.celsius.customstocks.services.PullVoleumeByVenueDataFromIEXService;
 import com.celsius.customstocks.utils.ReciverServiceConsts;
+import com.google.android.material.tabs.TabLayout;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,7 +28,9 @@ public class VolumeByVenuePagedFragment extends BaseFragment implements ViewPage
 
     public final static String TAG = "VolumeByVenuePagedFragment";
 
+    private TabLayout tabLayout;
     private ViewPager viewPager;
+
     private List<String> pagerFragments = new ArrayList<>();
     private VenueByVolumeViewPagerFragmentAdapter fragmentAdapter;
     private Context context;
@@ -40,6 +44,7 @@ public class VolumeByVenuePagedFragment extends BaseFragment implements ViewPage
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_volume_by_venue_paged, container, false);
         view = binding.getRoot();
 
+        tabLayout = (TabLayout) view.findViewById(R.id.tab_layout);
         viewPager = (ViewPager) view.findViewById(R.id.viewPager_itemList);
 
         Intent intent = new Intent(getActivity(), PullVoleumeByVenueDataFromIEXService.class);
@@ -80,6 +85,12 @@ public class VolumeByVenuePagedFragment extends BaseFragment implements ViewPage
         viewPager.setAdapter(fragmentAdapter);
         viewPager.setCurrentItem(0);
         viewPager.setOnPageChangeListener(this);
+
+        tabLayout.setupWithViewPager(viewPager);
+        tabLayout.setTabMode(TabLayout.MODE_SCROLLABLE);
+        tabLayout.setSelectedTabIndicatorColor(getResources().getColor(R.color.splash_activity_bg));
+        tabLayout.setHorizontalFadingEdgeEnabled(true);
+        tabLayout.setFadingEdgeLength(150);
 
         setViewPagerNavigator();
 
