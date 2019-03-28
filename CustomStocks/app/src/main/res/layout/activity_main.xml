@@ -208,28 +208,28 @@
                     android:textSize="16dp" />
             </LinearLayout>
 
-            <LinearLayout
-                android:id="@+id/financials"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:onClick="@{listener::onClick}"
-                android:orientation="horizontal">
+            <!--<LinearLayout-->
+                <!--android:id="@+id/financials"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_marginTop="20dp"-->
+                <!--android:onClick="@{listener::onClick}"-->
+                <!--android:orientation="horizontal">-->
 
-                <ImageView
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:layout_marginLeft="16dp"
-                    android:src="@drawable/ic_financial_side_menu"/>
+                <!--<ImageView-->
+                    <!--android:layout_width="24dp"-->
+                    <!--android:layout_height="24dp"-->
+                    <!--android:layout_marginLeft="16dp"-->
+                    <!--android:src="@drawable/ic_financial_side_menu"/>-->
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Financials"
-                    android:layout_marginLeft="16dp"
-                    android:textColor="@color/symbol_tyoe_color"
-                    android:textSize="16dp" />
-            </LinearLayout>
+                <!--<TextView-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="Financials"-->
+                    <!--android:layout_marginLeft="16dp"-->
+                    <!--android:textColor="@color/symbol_tyoe_color"-->
+                    <!--android:textSize="16dp" />-->
+            <!--</LinearLayout>-->
 
             <LinearLayout
                 android:id="@+id/calendar"
