@@ -8,6 +8,7 @@ import com.celsius.customstocks.MainActivity;
 import com.celsius.customstocks.fragments.EarningCalendarFragment;
 import com.celsius.customstocks.fragments.FinancialsFragment;
 import com.celsius.customstocks.fragments.MarketsFragment;
+import com.celsius.customstocks.fragments.QuoteFragment;
 import com.celsius.customstocks.fragments.VolumeByVenueFragment;
 import com.celsius.customstocks.fragments.SearchFragment;
 import com.celsius.customstocks.fragments.StocksFragment;
@@ -60,6 +61,10 @@ public class ServiceBroadCastReciver extends BroadcastReceiver {
         }else if( intent.getStringExtra(ReciverServiceConsts.DATA_TYPE_KEY).equalsIgnoreCase(ReciverServiceConsts.RELOAD_FINANCIALS_FRAGMNET) ){
             if( ((AppCompatActivity) context).getSupportFragmentManager().findFragmentByTag(FinancialsFragment.TAG) !=null )
                 ((FinancialsFragment) ((AppCompatActivity) context).getSupportFragmentManager().findFragmentByTag(FinancialsFragment.TAG)).updateFinancialsFragmetRecyclerView();
+
+        }else if( intent.getStringExtra(ReciverServiceConsts.DATA_TYPE_KEY).equalsIgnoreCase(ReciverServiceConsts.RELOAD_CHART_DATA_IN_CHART_FRAGMNET) ){
+            if( ((AppCompatActivity) context).getSupportFragmentManager().findFragmentByTag(QuoteFragment.TAG) !=null )
+                ((QuoteFragment) ((AppCompatActivity) context).getSupportFragmentManager().findFragmentByTag(QuoteFragment.TAG)).updateChartDataOnChartFragmet();
         }
     }
 }

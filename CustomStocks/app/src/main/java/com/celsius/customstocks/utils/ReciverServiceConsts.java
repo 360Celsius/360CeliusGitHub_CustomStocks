@@ -34,6 +34,8 @@ public class ReciverServiceConsts {
 
     public static final String RELOAD_EARNINGS_FRAGMNET = "RELOAD_EARNINGS_FRAGMNET";
 
+    public static final String RELOAD_CHART_DATA_IN_CHART_FRAGMNET = "RELOAD_CHART_DATA_IN_CHART_FRAGMNET";
+
     public static final String RELOAD_FINANCIALS_FRAGMNET = "RELOAD_FINANCIALS_FRAGMNET";
 
     public static final String GET_STOCKS_DATA = "GET_STOCKS_DATA";

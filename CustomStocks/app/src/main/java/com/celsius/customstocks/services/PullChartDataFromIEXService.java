@@ -57,6 +57,12 @@ public class PullChartDataFromIEXService extends IntentService {
 
                 helper.bulkInsertChartToChartDataTable( jsonParser.getChartParsed (networkHTTPRequests.getChart(quote.getSymbol()) ));
 
+
+                broadcastIntent.setAction(GET_QOUTES_DATA);
+                broadcastIntent.putExtra(ReciverServiceConsts.DATA_TYPE_KEY, ReciverServiceConsts.RELOAD_CHART_DATA_IN_CHART_FRAGMNET);
+                sendBroadcast(broadcastIntent);
+
+
                 break;
         }
     }
