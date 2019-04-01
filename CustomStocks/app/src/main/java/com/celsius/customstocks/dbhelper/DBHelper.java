@@ -868,7 +868,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
     //=================  CHART =================
     public void bulkInsertChartToChartDataTable(ArrayList<Chart> chartParsed) {
-        deleteChartTAble()
+        deleteChartTAble();
         try {
             ContentValues[] contentsArr = new ContentValues[chartParsed.size()];
 
