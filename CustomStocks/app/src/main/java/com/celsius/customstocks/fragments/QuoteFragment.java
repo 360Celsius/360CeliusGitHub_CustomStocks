@@ -47,7 +47,7 @@ public class QuoteFragment extends BaseFragment {
     }
 
     public void updateChartDataOnChartFragmet(){
-        
+
     }
 
 
