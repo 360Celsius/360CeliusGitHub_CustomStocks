@@ -25,6 +25,8 @@
     <color name="market_chart_end_color">#acacac</color>
 
 
+    <color name="quote_chart_color">#D8D8D8</color>
+
     <color name="up">#00b300</color>
     <color name="down">#ff0000</color>
 

@@ -66,6 +66,14 @@
                         android:textSize="16dp" />
                 </LinearLayout>
 
+
+                <com.github.mikephil.charting.charts.LineChart
+                    android:id="@+id/quote_chart"
+                    android:layout_width="match_parent"
+                    android:layout_height="300dp"
+                    android:layout_marginTop="12dp"
+                    android:layout_below="@+id/latest_price_pc_pcp_rpw" />
+
             </RelativeLayout>
 
 
