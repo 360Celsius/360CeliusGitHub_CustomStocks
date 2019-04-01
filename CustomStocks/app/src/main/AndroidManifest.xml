@@ -72,6 +72,9 @@
             android:enabled="true"/>
 
         <service android:name=".services.PullFinancialsDataFromIEXService"
+        android:enabled="true"/>
+
+        <service android:name=".services.PullChartDataFromIEXService"
             android:enabled="true"/>
 
         <receiver android:name=".recivers.ServiceBroadCastReciver"/>

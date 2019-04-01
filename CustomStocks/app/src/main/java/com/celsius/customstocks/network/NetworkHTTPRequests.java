@@ -41,6 +41,13 @@ public class NetworkHTTPRequests {
         return responce;
     }
 
+    public String getChart(String stock){
+        String responce = null;
+        String url = networkHttpAPIurlConst.getSymbolChartRL(stock);
+        responce = networkHTTPConnection.getHttp(url);
+        return responce;
+    }
+
     public String getVoleumeByVenue(String stock){
         String responce = null;
         String url = networkHttpAPIurlConst.getVoluemeByVenueBySymbolURL(stock);

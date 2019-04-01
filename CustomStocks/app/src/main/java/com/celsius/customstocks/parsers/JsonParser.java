@@ -1,5 +1,6 @@
 package com.celsius.customstocks.parsers;
 
+import com.celsius.customstocks.datamodels.Chart;
 import com.celsius.customstocks.datamodels.Earning;
 import com.celsius.customstocks.datamodels.Financial;
 import com.celsius.customstocks.datamodels.Market;
@@ -18,7 +19,8 @@ import javax.inject.Singleton;
 public class JsonParser {
 
     @Inject
-    public JsonParser() {}
+    public JsonParser() {
+    }
 
     public ArrayList<Symbol> getAllSymbolsParsed(String getSymbolsFromIEXResponce) {
         JSONArray reader = null;
@@ -81,11 +83,11 @@ public class JsonParser {
         Quote quote = new Quote();
         try {
             jsonObject = new JSONObject(getQuotesFromIEXResponce);
-            quote.setSymbol(String.valueOf(jsonObject.get("symbol") ));
+            quote.setSymbol(String.valueOf(jsonObject.get("symbol")));
             quote.setCompanyName((String.valueOf(jsonObject.get("companyName"))));
             quote.setPrimaryExchange((String.valueOf(jsonObject.get("primaryExchange"))));
             quote.setSector((String.valueOf(jsonObject.get("sector"))));
-            quote.setCalculationPrice((String.valueOf( jsonObject.get("calculationPrice"))));
+            quote.setCalculationPrice((String.valueOf(jsonObject.get("calculationPrice"))));
             quote.setOpen((String.valueOf(jsonObject.get("open"))));
             quote.setOpenTime((String.valueOf(jsonObject.get("openTime"))));
             quote.setClose((String.valueOf(jsonObject.get("close"))));
@@ -93,7 +95,7 @@ public class JsonParser {
             quote.setHigh((String.valueOf(jsonObject.get("high"))));
             quote.setLow((String.valueOf(jsonObject.get("low"))));
             quote.setLatestPrice((String.valueOf(jsonObject.get("latestPrice"))));
-            quote.setLatestSource((String.valueOf( jsonObject.get("latestSource"))));
+            quote.setLatestSource((String.valueOf(jsonObject.get("latestSource"))));
             quote.setLatestTime((String.valueOf(jsonObject.get("latestTime"))));
             quote.setLatestUpdate((String.valueOf(jsonObject.get("latestUpdate"))));
             quote.setLatestVolume((String.valueOf(jsonObject.get("latestVolume"))));
@@ -110,7 +112,7 @@ public class JsonParser {
             quote.setChange((String.valueOf(jsonObject.get("change"))));
             quote.setChangePercent((String.valueOf(jsonObject.get("changePercent"))));
             quote.setIexMarketPercent((String.valueOf(jsonObject.get("iexMarketPercent"))));
-            quote.setIexVolume((String.valueOf( jsonObject.get("iexVolume"))));
+            quote.setIexVolume((String.valueOf(jsonObject.get("iexVolume"))));
             quote.setAvgTotalVolume((String.valueOf(jsonObject.get("avgTotalVolume"))));
             quote.setIexBidPrice((String.valueOf(jsonObject.get("iexBidPrice"))));
             quote.setIexBidSize((String.valueOf(jsonObject.get("iexBidSize"))));
@@ -157,19 +159,17 @@ public class JsonParser {
         return volumeByVenueArrayList;
     }
 
-    public ArrayList<Earning> getEarningParsed(String getEarningFromIEXResponce,  String symbolName) {
+    public ArrayList<Earning> getEarningParsed(String getEarningFromIEXResponce, String symbolName) {
         JSONObject readerSymbol = null;
         JSONArray readerEarnings = null;
 
         ArrayList<Earning> earningArrayList = new ArrayList<>();
 
 
-
         try {
 
             readerSymbol = new JSONObject(getEarningFromIEXResponce);
             readerEarnings = new JSONObject(getEarningFromIEXResponce).getJSONArray("earnings");
-
 
 
             for (int i = 0; i < readerEarnings.length(); i++) {
@@ -213,12 +213,10 @@ public class JsonParser {
         ArrayList<Financial> financialArrayList = new ArrayList<>();
 
 
-
         try {
 
             readerSymbol = new JSONObject(getEarningFromIEXResponce);
             readerFinancials = new JSONObject(getEarningFromIEXResponce).getJSONArray("financials");
-
 
 
             for (int i = 0; i < readerFinancials.length(); i++) {
@@ -259,5 +257,43 @@ public class JsonParser {
 
         }
         return financialArrayList;
+    }
+
+    public ArrayList<Chart> getChartParsed(String getChartFromIEXResponce) {
+
+        JSONArray reader = null;;
+
+        ArrayList<Chart> chartDataArrayList = new ArrayList<>();
+
+
+        try {
+            reader = new JSONArray(getChartFromIEXResponce);
+            for (int i = 0; i < reader.length(); i++) {
+                JSONObject jsonObject = reader.getJSONObject(i);
+                Chart chart = new Chart();
+
+                chart.setDate(String.valueOf(jsonObject.get("date")));
+                chart.setOpen(String.valueOf(jsonObject.get("open")));
+                chart.setHigh(String.valueOf(jsonObject.get("high")));
+                chart.setLow(String.valueOf(jsonObject.get("low")));
+                chart.setClose(String.valueOf(jsonObject.get("close")));
+                chart.setVolume(String.valueOf(jsonObject.get("volume")));
+                chart.setUnadjustedVolume(String.valueOf(jsonObject.get("unadjustedVolume")));
+                chart.setChange(String.valueOf(jsonObject.get("change")));
+                chart.setChangePercent(String.valueOf(jsonObject.get("changePercent")));
+                chart.setVwap(String.valueOf(jsonObject.get("vwap")));
+                chart.setLabel(String.valueOf(jsonObject.get("label")));
+                chart.setChangeOverTime(String.valueOf(jsonObject.get("changeOverTime")));
+
+                chartDataArrayList.add(chart);
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+
+        }
+
+        return chartDataArrayList;
+
     }
 }

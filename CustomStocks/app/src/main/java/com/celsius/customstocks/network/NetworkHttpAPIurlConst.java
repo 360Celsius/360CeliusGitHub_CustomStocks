@@ -38,4 +38,8 @@ public class NetworkHttpAPIurlConst {
         return BASIC_API_URL+"/stock/"+symbol+"/quote";
     }
 
+    public String getSymbolChartRL(String symbol){
+        return BASIC_API_URL+"/stock/"+symbol+"/chart";
+    }
+
 }

@@ -38,6 +38,8 @@ public class ReciverServiceConsts {
 
     public static final String GET_STOCKS_DATA = "GET_STOCKS_DATA";
 
+    public static final String GET_CHART_DATA = "GET_CHART_DATA";
+
     public static final String GET_VOLUME_BE_VENUE_DATA = "GET_VOLUME_BE_VENUE_DATA";
 
     public static final String GET_EARNINGS_DATA = "GET_EARNINGS_DATA";

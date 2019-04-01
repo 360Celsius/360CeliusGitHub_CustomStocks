@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import com.celsius.customstocks.datamodels.Chart;
 import com.celsius.customstocks.datamodels.Earning;
 import com.celsius.customstocks.datamodels.Financial;
 import com.celsius.customstocks.datamodels.Market;
@@ -46,6 +47,7 @@ public class DBHelper extends SQLiteOpenHelper {
         db.execSQL(DBContract.SQL_CREATE_VALUE_BY_VENUE_TABLE);
         db.execSQL(DBContract.SQL_CREATE_EARNING_TABLE);
         db.execSQL(DBContract.SQL_CREATE_FINANACIALS_TABLE);
+        db.execSQL(DBContract.SQL_CREATE_CHART_TABLE);
     }
 
     @Override
@@ -58,6 +60,7 @@ public class DBHelper extends SQLiteOpenHelper {
             db.execSQL(DBContract.SQL_DELETE_VALUE_BY_VENUE_TABLE);
             db.execSQL(DBContract.SQL_DELETE_EARNINGS_TABLE);
             db.execSQL(DBContract.SQL_DELETE_FINANACIALS_TABLE);
+            db.execSQL(DBContract.SQL_DELETE_CHART_TABLE);
 
             db.execSQL(DBContract.SQL_CREATE_All_SYMBOLS_TABLE);
             db.execSQL(DBContract.SQL_CREATE_MARKETS_TABLE);
@@ -65,6 +68,7 @@ public class DBHelper extends SQLiteOpenHelper {
             db.execSQL(DBContract.SQL_CREATE_VALUE_BY_VENUE_TABLE);
             db.execSQL(DBContract.SQL_CREATE_EARNING_TABLE);
             db.execSQL(DBContract.SQL_CREATE_FINANACIALS_TABLE);
+            db.execSQL(DBContract.SQL_CREATE_CHART_TABLE);
         }
 
 
@@ -642,7 +646,9 @@ public class DBHelper extends SQLiteOpenHelper {
 
         return listItems;
     }
+
     //=================  EARNINGS =================
+
     public void bulkInsertEarningsToEarningsDataTable(ArrayList<Earning> earningsParsed) {
         deleteEarningsTAble();
         try {
@@ -859,4 +865,35 @@ public class DBHelper extends SQLiteOpenHelper {
             return earningList;
         }
     }
+
+    //=================  CHART =================
+    public void bulkInsertChartToChartDataTable(ArrayList<Chart> chartParsed) {
+        try {
+            ContentValues[] contentsArr = new ContentValues[chartParsed.size()];
+
+            for (int i = 0; i < chartParsed.size(); i++) {
+                ContentValues values = new ContentValues();
+
+                values.put(DBContract.Chart.COLUMN_NAME_DATE, chartParsed.get(i).getDate());
+                values.put(DBContract.Chart.COLUMN_NAME_OPEN, chartParsed.get(i).getOpen());
+                values.put(DBContract.Chart.COLUMN_NAME_HIGHE, chartParsed.get(i).getHigh());
+                values.put(DBContract.Chart.COLUMN_NAME_LOW, chartParsed.get(i).getLow());
+                values.put(DBContract.Chart.COLUMN_NAME_CLOSE, chartParsed.get(i).getClose());
+                values.put(DBContract.Chart.COLUMN_NAME_VOLUME, chartParsed.get(i).getVolume());
+                values.put(DBContract.Chart.COLUMN_NAME_UNADJUSTED_VOLUME, chartParsed.get(i).getUnadjustedVolume());
+                values.put(DBContract.Chart.COLUMN_NAME_CHANGE, chartParsed.get(i).getChange());
+                values.put(DBContract.Chart.COLUMN_NAME_CHANGE_PERCENT, chartParsed.get(i).getChangePercent());
+                values.put(DBContract.Chart.COLUMN_NAME_VWAP, chartParsed.get(i).getVwap());
+                values.put(DBContract.Chart.COLUMN_NAME_LABEL, chartParsed.get(i).getLabel());
+                values.put(DBContract.Chart.COLUMN_NAME_CHANGE_OVER_TIME, chartParsed.get(i).getChangeOverTime());
+
+                contentsArr[i] = values;
+            }
+            context.getContentResolver().bulkInsert(DBContract.Chart.CONTENT_URI, contentsArr);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+
 }

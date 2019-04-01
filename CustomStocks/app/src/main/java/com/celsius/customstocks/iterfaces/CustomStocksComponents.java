@@ -14,6 +14,7 @@ import com.celsius.customstocks.modules.ContextModule;
 import com.celsius.customstocks.modules.DBContentObserverModule;
 import com.celsius.customstocks.modules.DatabaseModule;
 import com.celsius.customstocks.network.NetworkHTTPRequests;
+import com.celsius.customstocks.services.PullChartDataFromIEXService;
 import com.celsius.customstocks.services.PullEarningsDataFromIEXService;
 import com.celsius.customstocks.services.PullFinancialsDataFromIEXService;
 import com.celsius.customstocks.services.PullMarketsDataFromIEXService;
@@ -36,6 +37,7 @@ public interface CustomStocksComponents {
     void inject(PullVoleumeByVenueDataFromIEXService presenter);
     void inject(PullEarningsDataFromIEXService presenter);
     void inject(PullFinancialsDataFromIEXService presenter);
+    void inject(PullChartDataFromIEXService presenter);
     void inject(BaseFragment presenter);
     void inject(Symbol presenter);
     void inject(Market presenter);

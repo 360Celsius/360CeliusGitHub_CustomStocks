@@ -373,4 +373,53 @@ public class DBContract {
     public static final String SQL_SELECT_FINANACIALS_TABLE =
             "SELECT  * FROM " + Financials.TABLE_NAME + " WHERE "+ Financials._ID;
 
+    //============ ============ ==============
+
+    //=================  CHART =================
+    public static class Chart implements BaseColumns {
+        public static final String URI_SUFFIX = "chart";
+        public static final Uri CONTENT_URI = Uri.parse(String.format(Locale.US, CONTENT_BASE, URI_SUFFIX));
+
+        public static final String TABLE_NAME = "chart";
+
+        public static final String COLUMN_NAME_DATE = "date";
+        public static final String COLUMN_NAME_OPEN = "open";
+        public static final String COLUMN_NAME_HIGHE = "high";
+        public static final String COLUMN_NAME_LOW = "low";
+        public static final String COLUMN_NAME_CLOSE = "close";
+        public static final String COLUMN_NAME_VOLUME = "volume";
+        public static final String COLUMN_NAME_UNADJUSTED_VOLUME = "unadjustedVolume";
+        public static final String COLUMN_NAME_CHANGE = "change";
+        public static final String COLUMN_NAME_CHANGE_PERCENT = "changePercent";
+        public static final String COLUMN_NAME_VWAP = "vwap";
+        public static final String COLUMN_NAME_LABEL = "label";
+        public static final String COLUMN_NAME_CHANGE_OVER_TIME = "changeOverTime";
+
+    }
+
+
+    public static final String SQL_CREATE_CHART_TABLE =
+            "CREATE TABLE " + Chart.TABLE_NAME + " (" +
+                    Chart._ID + " INTEGER PRIMARY KEY," +
+
+                    Chart.COLUMN_NAME_DATE + " TEXT," +
+                    Chart.COLUMN_NAME_OPEN + " TEXT," +
+                    Chart.COLUMN_NAME_HIGHE + " TEXT," +
+                    Chart.COLUMN_NAME_LOW + " TEXT," +
+                    Chart.COLUMN_NAME_CLOSE + " TEXT," +
+                    Chart.COLUMN_NAME_VOLUME + " TEXT," +
+                    Chart.COLUMN_NAME_UNADJUSTED_VOLUME + " TEXT," +
+                    Chart.COLUMN_NAME_CHANGE + " TEXT," +
+                    Chart.COLUMN_NAME_CHANGE_PERCENT + " TEXT," +
+                    Chart.COLUMN_NAME_VWAP + " TEXT," +
+                    Chart.COLUMN_NAME_LABEL + " TEXT," +
+                    Chart.COLUMN_NAME_CHANGE_OVER_TIME + " TEXT)";
+
+    public static final String SQL_DELETE_CHART_TABLE =
+            "DROP TABLE IF EXISTS " + Chart.TABLE_NAME;
+
+    public static final String SQL_SELECT_CHART_TABLE =
+            "SELECT  * FROM " + Chart.TABLE_NAME + " WHERE "+ Chart._ID;
+
+
 }
