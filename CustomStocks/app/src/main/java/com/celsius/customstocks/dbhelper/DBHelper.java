@@ -868,6 +868,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
     //=================  CHART =================
     public void bulkInsertChartToChartDataTable(ArrayList<Chart> chartParsed) {
+        deleteChartTAble()
         try {
             ContentValues[] contentsArr = new ContentValues[chartParsed.size()];
 
@@ -894,6 +895,64 @@ public class DBHelper extends SQLiteOpenHelper {
             e.printStackTrace();
         }
 
+    }
+
+    private void deleteChartTAble() {
+        SQLiteDatabase db = getWritableDatabase();
+        db.beginTransaction();
+        try {
+            db.delete(DBContract.Chart.TABLE_NAME, null, null);
+            db.setTransactionSuccessful();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            db.endTransaction();
+        }
+    }
+
+    public ArrayList<Chart> getChart() {
+
+        ArrayList<Chart> earningList = new ArrayList<>();
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(DBContract.SQL_SELECT_CHART_TABLE, null);
+
+        try {
+            if (cursor.moveToFirst()) {
+                do {
+
+                    Chart chart = new Chart();
+                    chart.setDate(cursor.getString(cursor.getColumnIndex(DBContract.Chart.COLUMN_NAME_DATE)));
+                    chart.setOpen(cursor.getString(cursor.getColumnIndex(DBContract.Chart.COLUMN_NAME_OPEN)));
+                    chart.setHigh(cursor.getString(cursor.getColumnIndex(DBContract.Chart.COLUMN_NAME_HIGHE)));
+                    chart.setLow(cursor.getString(cursor.getColumnIndex(DBContract.Chart.COLUMN_NAME_LOW)));
+                    chart.setClose(cursor.getString(cursor.getColumnIndex(DBContract.Chart.COLUMN_NAME_CLOSE)));
+                    chart.setVolume(cursor.getString(cursor.getColumnIndex(DBContract.Chart.COLUMN_NAME_VOLUME)));
+                    chart.setUnadjustedVolume(cursor.getString(cursor.getColumnIndex(DBContract.Chart.COLUMN_NAME_UNADJUSTED_VOLUME)));
+                    chart.setChange(cursor.getString(cursor.getColumnIndex(DBContract.Chart.COLUMN_NAME_CHANGE)));
+                    chart.setChangePercent(cursor.getString(cursor.getColumnIndex(DBContract.Chart.COLUMN_NAME_CHANGE_PERCENT)));
+                    chart.setVwap(cursor.getString(cursor.getColumnIndex(DBContract.Chart.COLUMN_NAME_VWAP)));
+                    chart.setLabel(cursor.getString(cursor.getColumnIndex(DBContract.Chart.COLUMN_NAME_LABEL)));
+                    chart.setChangeOverTime(cursor.getString(cursor.getColumnIndex(DBContract.Chart.COLUMN_NAME_CHANGE_OVER_TIME)));
+
+
+                    earningList.add(chart);
+
+                } while (cursor.moveToNext());
+            }
+
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        } finally {
+            if (cursor != null && !cursor.isClosed()) {
+                cursor.close();
+            }
+
+            return earningList;
+        }
     }
 
 }
