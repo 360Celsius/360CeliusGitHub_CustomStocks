@@ -63,10 +63,10 @@ public class QuoteFragment extends BaseFragment {
         chart.getDescription().setEnabled(false);
 
         // enable touch gestures
-        chart.setTouchEnabled(true);
+        chart.setTouchEnabled(false);
 
         // enable scaling and dragging
-        chart.setDragEnabled(true);
+        chart.setDragEnabled(false);
         chart.setScaleEnabled(true);
 
         // if disabled, scaling can be done on x- and y-axis separately
