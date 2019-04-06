@@ -13,16 +13,16 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="50dp">
 
         <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
             android:id="@+id/swipeRefreshLayout"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="12dp"
-            android:layout_marginRight="16dp"
-            android:layout_marginBottom="0dp">
+            android:layout_height="match_parent">
 
             <ScrollView
                 android:layout_width="match_parent"
@@ -79,7 +79,897 @@
                         android:layout_height="300dp"
                         android:layout_marginTop="12dp"
                         android:layout_below="@+id/latest_price_pc_pcp_rpw" />
-                    
+
+
+                    <LinearLayout
+                        android:id="@+id/line_1"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_below="@+id/quote_chart"
+                        android:layout_marginTop="12dp"
+                        android:orientation="horizontal">
+
+                        <RelativeLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center_vertical"
+                                android:padding="0dp"
+                                android:layout_marginLeft="0dp"
+                                android:text="@string/quote_lable_open"
+                                android:layout_alignParentLeft="true"
+                                android:textColor="@color/symbol_tyoe_color"
+                                android:textSize="12dp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center_vertical"
+                                android:padding="0dp"
+                                android:layout_marginLeft="12dp"
+                                android:text="@{quote.open}"
+                                android:layout_alignParentRight="true"
+                                android:textColor="@color/symbol_tyoe_color"
+                                android:textSize="12dp" />
+
+
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="6dp"
+                            android:layout_weight="1"
+                            android:gravity="left|center_vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center_vertical"
+                                android:padding="0dp"
+                                android:layout_marginLeft="12dp"
+                                android:text="@string/quote_lable_close"
+                                android:layout_alignParentLeft="true"
+                                android:textColor="@color/symbol_tyoe_color"
+                                android:textSize="12dp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center_vertical"
+                                android:padding="0dp"
+                                android:layout_marginLeft="12dp"
+                                android:text="@{quote.close}"
+                                android:layout_alignParentRight="true"
+                                android:textColor="@color/symbol_tyoe_color"
+                                android:textSize="12dp" />
+
+
+                        </RelativeLayout>
+
+                    </LinearLayout>
+
+
+
+                    <LinearLayout
+                        android:id="@+id/line_2"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_below="@+id/line_1"
+                        android:layout_marginTop="6dp"
+                        android:orientation="horizontal">
+
+                        <RelativeLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center_vertical"
+                                android:padding="0dp"
+                                android:layout_marginLeft="0dp"
+                                android:text="@string/quote_lable_high"
+                                android:layout_alignParentLeft="true"
+                                android:textColor="@color/symbol_tyoe_color"
+                                android:textSize="12dp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center_vertical"
+                                android:padding="0dp"
+                                android:layout_marginLeft="12dp"
+                                android:text="@{quote.high}"
+                                android:layout_alignParentRight="true"
+                                android:textColor="@color/symbol_tyoe_color"
+                                android:textSize="12dp" />
+
+
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="6dp"
+                            android:layout_weight="1"
+                            android:gravity="left|center_vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center_vertical"
+                                android:padding="0dp"
+                                android:layout_marginLeft="12dp"
+                                android:text="@string/quote_lable_low"
+                                android:layout_alignParentLeft="true"
+                                android:textColor="@color/symbol_tyoe_color"
+                                android:textSize="12dp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center_vertical"
+                                android:padding="0dp"
+                                android:layout_marginLeft="12dp"
+                                android:text="@{quote.low}"
+                                android:layout_alignParentRight="true"
+                                android:textColor="@color/symbol_tyoe_color"
+                                android:textSize="12dp" />
+
+
+                        </RelativeLayout>
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:id="@+id/line_3"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_below="@+id/line_2"
+                        android:layout_marginTop="6dp"
+                        android:orientation="horizontal">
+
+                        <RelativeLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center_vertical"
+                                android:padding="0dp"
+                                android:layout_marginLeft="0dp"
+                                android:text="@string/quote_lable_latest_price"
+                                android:layout_alignParentLeft="true"
+                                android:textColor="@color/symbol_tyoe_color"
+                                android:textSize="12dp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center_vertical"
+                                android:padding="0dp"
+                                android:layout_marginLeft="12dp"
+                                android:text="@{quote.latestPrice}"
+                                android:layout_alignParentRight="true"
+                                android:textColor="@color/symbol_tyoe_color"
+                                android:textSize="12dp" />
+
+
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="6dp"
+                            android:layout_weight="1"
+                            android:gravity="left|center_vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center_vertical"
+                                android:padding="0dp"
+                                android:layout_marginLeft="12dp"
+                                android:text="@string/quote_lable_latest_volume"
+                                android:layout_alignParentLeft="true"
+                                android:textColor="@color/symbol_tyoe_color"
+                                android:textSize="12dp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center_vertical"
+                                android:padding="0dp"
+                                android:layout_marginLeft="12dp"
+                                android:text="@{quote.latestVolume}"
+                                android:layout_alignParentRight="true"
+                                android:textColor="@color/symbol_tyoe_color"
+                                android:textSize="12dp" />
+
+
+                        </RelativeLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/line_4"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_below="@+id/line_3"
+                        android:layout_marginTop="6dp"
+                        android:orientation="horizontal">
+
+                        <RelativeLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center_vertical"
+                                android:padding="0dp"
+                                android:layout_marginLeft="0dp"
+                                android:text="@string/quote_lable_real_time_pricw"
+                                android:layout_alignParentLeft="true"
+                                android:textColor="@color/symbol_tyoe_color"
+                                android:textSize="12dp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center_vertical"
+                                android:padding="0dp"
+                                android:layout_marginLeft="12dp"
+                                android:text="@{quote.iexRealtimePrice}"
+                                android:layout_alignParentRight="true"
+                                android:textColor="@color/symbol_tyoe_color"
+                                android:textSize="12dp" />
+
+
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="6dp"
+                            android:layout_weight="1"
+                            android:gravity="left|center_vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center_vertical"
+                                android:padding="0dp"
+                                android:layout_marginLeft="12dp"
+                                android:text="@string/quote_lable_real_time_size"
+                                android:layout_alignParentLeft="true"
+                                android:textColor="@color/symbol_tyoe_color"
+                                android:textSize="12dp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center_vertical"
+                                android:padding="0dp"
+                                android:layout_marginLeft="12dp"
+                                android:text="@{quote.iexRealtimeSize}"
+                                android:layout_alignParentRight="true"
+                                android:textColor="@color/symbol_tyoe_color"
+                                android:textSize="12dp" />
+
+
+                        </RelativeLayout>
+
+                    </LinearLayout>
+
+
+
+                    <LinearLayout
+                        android:id="@+id/line_5"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_below="@+id/line_4"
+                        android:layout_marginTop="6dp"
+                        android:orientation="horizontal">
+
+                        <RelativeLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center_vertical"
+                                android:padding="0dp"
+                                android:layout_marginLeft="0dp"
+                                android:text="@string/quote_lable_delayed_price"
+                                android:layout_alignParentLeft="true"
+                                android:textColor="@color/symbol_tyoe_color"
+                                android:textSize="12dp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center_vertical"
+                                android:padding="0dp"
+                                android:layout_marginLeft="12dp"
+                                android:text="@{quote.delayedPrice}"
+                                android:layout_alignParentRight="true"
+                                android:textColor="@color/symbol_tyoe_color"
+                                android:textSize="12dp" />
+
+
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="6dp"
+                            android:layout_weight="1"
+                            android:gravity="left|center_vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center_vertical"
+                                android:padding="0dp"
+                                android:layout_marginLeft="12dp"
+                                android:text="@string/quote_lable_extended_price"
+                                android:layout_alignParentLeft="true"
+                                android:textColor="@color/symbol_tyoe_color"
+                                android:textSize="12dp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center_vertical"
+                                android:padding="0dp"
+                                android:layout_marginLeft="12dp"
+                                android:text="@{quote.extendedPrice}"
+                                android:layout_alignParentRight="true"
+                                android:textColor="@color/symbol_tyoe_color"
+                                android:textSize="12dp" />
+
+
+                        </RelativeLayout>
+
+                    </LinearLayout>
+
+
+
+                    <LinearLayout
+                        android:id="@+id/line_6"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_below="@+id/line_5"
+                        android:layout_marginTop="6dp"
+                        android:orientation="horizontal">
+
+                        <RelativeLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center_vertical"
+                                android:padding="0dp"
+                                android:layout_marginLeft="0dp"
+                                android:text="@string/quote_lable_extended_change"
+                                android:layout_alignParentLeft="true"
+                                android:textColor="@color/symbol_tyoe_color"
+                                android:textSize="12dp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center_vertical"
+                                android:padding="0dp"
+                                android:layout_marginLeft="12dp"
+                                android:text="@{quote.extendedChange}"
+                                android:layout_alignParentRight="true"
+                                android:textColor="@color/symbol_tyoe_color"
+                                android:textSize="12dp" />
+
+
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="6dp"
+                            android:layout_weight="1"
+                            android:gravity="left|center_vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center_vertical"
+                                android:padding="0dp"
+                                android:layout_marginLeft="12dp"
+                                android:text="@string/quote_lable_extended_change_percent"
+                                android:layout_alignParentLeft="true"
+                                android:textColor="@color/symbol_tyoe_color"
+                                android:textSize="12dp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center_vertical"
+                                android:padding="0dp"
+                                android:layout_marginLeft="12dp"
+                                android:text="@{quote.changePercent}"
+                                android:layout_alignParentRight="true"
+                                android:textColor="@color/symbol_tyoe_color"
+                                android:textSize="12dp" />
+
+
+                        </RelativeLayout>
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:id="@+id/line_7"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_below="@+id/line_6"
+                        android:layout_marginTop="6dp"
+                        android:orientation="horizontal">
+
+                        <RelativeLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center_vertical"
+                                android:padding="0dp"
+                                android:layout_marginLeft="0dp"
+                                android:text="@string/quote_lable_previuous_close"
+                                android:layout_alignParentLeft="true"
+                                android:textColor="@color/symbol_tyoe_color"
+                                android:textSize="12dp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center_vertical"
+                                android:padding="0dp"
+                                android:layout_marginLeft="12dp"
+                                android:text="@{quote.previousClose}"
+                                android:layout_alignParentRight="true"
+                                android:textColor="@color/symbol_tyoe_color"
+                                android:textSize="12dp" />
+
+
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="6dp"
+                            android:layout_weight="1"
+                            android:gravity="left|center_vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center_vertical"
+                                android:padding="0dp"
+                                android:layout_marginLeft="12dp"
+                                android:text="@string/quote_lable_market_percent"
+                                android:layout_alignParentLeft="true"
+                                android:textColor="@color/symbol_tyoe_color"
+                                android:textSize="12dp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center_vertical"
+                                android:padding="0dp"
+                                android:layout_marginLeft="12dp"
+                                android:text="@{quote.iexMarketPercent}"
+                                android:layout_alignParentRight="true"
+                                android:textColor="@color/symbol_tyoe_color"
+                                android:textSize="12dp" />
+
+
+                        </RelativeLayout>
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:id="@+id/line_8"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_below="@+id/line_7"
+                        android:layout_marginTop="6dp"
+                        android:orientation="horizontal">
+
+                        <RelativeLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center_vertical"
+                                android:padding="0dp"
+                                android:layout_marginLeft="0dp"
+                                android:text="@string/quote_lable_volume"
+                                android:layout_alignParentLeft="true"
+                                android:textColor="@color/symbol_tyoe_color"
+                                android:textSize="12dp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center_vertical"
+                                android:padding="0dp"
+                                android:layout_marginLeft="12dp"
+                                android:text="@{quote.iexVolume}"
+                                android:layout_alignParentRight="true"
+                                android:textColor="@color/symbol_tyoe_color"
+                                android:textSize="12dp" />
+
+
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="6dp"
+                            android:layout_weight="1"
+                            android:gravity="left|center_vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center_vertical"
+                                android:padding="0dp"
+                                android:layout_marginLeft="12dp"
+                                android:text="@string/quote_lable_total_volume"
+                                android:layout_alignParentLeft="true"
+                                android:textColor="@color/symbol_tyoe_color"
+                                android:textSize="12dp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center_vertical"
+                                android:padding="0dp"
+                                android:layout_marginLeft="12dp"
+                                android:text="@{quote.avgTotalVolume}"
+                                android:layout_alignParentRight="true"
+                                android:textColor="@color/symbol_tyoe_color"
+                                android:textSize="12dp" />
+
+
+                        </RelativeLayout>
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:id="@+id/line_9"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_below="@+id/line_8"
+                        android:layout_marginTop="6dp"
+                        android:orientation="horizontal">
+
+                        <RelativeLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center_vertical"
+                                android:padding="0dp"
+                                android:layout_marginLeft="0dp"
+                                android:text="@string/quote_lable_bid_price"
+                                android:layout_alignParentLeft="true"
+                                android:textColor="@color/symbol_tyoe_color"
+                                android:textSize="12dp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center_vertical"
+                                android:padding="0dp"
+                                android:layout_marginLeft="12dp"
+                                android:text="@{quote.iexBidPrice}"
+                                android:layout_alignParentRight="true"
+                                android:textColor="@color/symbol_tyoe_color"
+                                android:textSize="12dp" />
+
+
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="6dp"
+                            android:layout_weight="1"
+                            android:gravity="left|center_vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center_vertical"
+                                android:padding="0dp"
+                                android:layout_marginLeft="12dp"
+                                android:text="@string/quote_lable_bid_size"
+                                android:layout_alignParentLeft="true"
+                                android:textColor="@color/symbol_tyoe_color"
+                                android:textSize="12dp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center_vertical"
+                                android:padding="0dp"
+                                android:layout_marginLeft="12dp"
+                                android:text="@{quote.iexBidSize}"
+                                android:layout_alignParentRight="true"
+                                android:textColor="@color/symbol_tyoe_color"
+                                android:textSize="12dp" />
+
+
+                        </RelativeLayout>
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:id="@+id/line_10"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_below="@+id/line_9"
+                        android:layout_marginTop="6dp"
+                        android:orientation="horizontal">
+
+                        <RelativeLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center_vertical"
+                                android:padding="0dp"
+                                android:layout_marginLeft="0dp"
+                                android:text="@string/quote_lable_ask_price"
+                                android:layout_alignParentLeft="true"
+                                android:textColor="@color/symbol_tyoe_color"
+                                android:textSize="12dp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center_vertical"
+                                android:padding="0dp"
+                                android:layout_marginLeft="12dp"
+                                android:text="@{quote.iexAskPrice}"
+                                android:layout_alignParentRight="true"
+                                android:textColor="@color/symbol_tyoe_color"
+                                android:textSize="12dp" />
+
+
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="6dp"
+                            android:layout_weight="1"
+                            android:gravity="left|center_vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center_vertical"
+                                android:padding="0dp"
+                                android:layout_marginLeft="12dp"
+                                android:text="@string/quote_lable_ask_size"
+                                android:layout_alignParentLeft="true"
+                                android:textColor="@color/symbol_tyoe_color"
+                                android:textSize="12dp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center_vertical"
+                                android:padding="0dp"
+                                android:layout_marginLeft="12dp"
+                                android:text="@{quote.iexAskSize}"
+                                android:layout_alignParentRight="true"
+                                android:textColor="@color/symbol_tyoe_color"
+                                android:textSize="12dp" />
+
+
+                        </RelativeLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/line_11"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_below="@+id/line_10"
+                        android:layout_marginTop="6dp"
+                        android:orientation="horizontal">
+
+                        <RelativeLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center_vertical"
+                                android:padding="0dp"
+                                android:layout_marginLeft="0dp"
+                                android:text="@string/quote_lable_market_cup"
+                                android:layout_alignParentLeft="true"
+                                android:textColor="@color/symbol_tyoe_color"
+                                android:textSize="12dp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center_vertical"
+                                android:padding="0dp"
+                                android:layout_marginLeft="12dp"
+                                android:text="@{quote.marketCap}"
+                                android:layout_alignParentRight="true"
+                                android:textColor="@color/symbol_tyoe_color"
+                                android:textSize="12dp" />
+
+
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="6dp"
+                            android:layout_weight="1"
+                            android:gravity="left|center_vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center_vertical"
+                                android:padding="0dp"
+                                android:layout_marginLeft="12dp"
+                                android:text="@string/quote_lable_week_52_high"
+                                android:layout_alignParentLeft="true"
+                                android:textColor="@color/symbol_tyoe_color"
+                                android:textSize="12dp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center_vertical"
+                                android:padding="0dp"
+                                android:layout_marginLeft="12dp"
+                                android:text="@{quote.week52High}"
+                                android:layout_alignParentRight="true"
+                                android:textColor="@color/symbol_tyoe_color"
+                                android:textSize="12dp" />
+
+
+                        </RelativeLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/line_12"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_below="@+id/line_11"
+                        android:layout_marginTop="6dp"
+                        android:orientation="horizontal">
+
+                        <RelativeLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center_vertical"
+                                android:padding="0dp"
+                                android:layout_marginLeft="0dp"
+                                android:text="@string/quote_lable_week_52_low"
+                                android:layout_alignParentLeft="true"
+                                android:textColor="@color/symbol_tyoe_color"
+                                android:textSize="12dp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center_vertical"
+                                android:padding="0dp"
+                                android:layout_marginLeft="12dp"
+                                android:text="@{quote.week52Low}"
+                                android:layout_alignParentRight="true"
+                                android:textColor="@color/symbol_tyoe_color"
+                                android:textSize="12dp" />
+
+
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="6dp"
+                            android:layout_weight="1"
+                            android:gravity="left|center_vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center_vertical"
+                                android:padding="0dp"
+                                android:layout_marginLeft="12dp"
+                                android:text="@string/quote_lable_ytd_change"
+                                android:layout_alignParentLeft="true"
+                                android:textColor="@color/symbol_tyoe_color"
+                                android:textSize="12dp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center_vertical"
+                                android:padding="0dp"
+                                android:layout_marginLeft="12dp"
+                                android:text="@{quote.ytdChange}"
+                                android:layout_alignParentRight="true"
+                                android:textColor="@color/symbol_tyoe_color"
+                                android:textSize="12dp" />
+
+
+                        </RelativeLayout>
+
+                    </LinearLayout>
+
+
+
                 </RelativeLayout>
 
 

@@ -33,4 +33,34 @@
     <string name="open">open</string>
     <string name="close">close</string>
 
+
+    <string name="quote_lable_open">Open</string>
+    <string name="quote_lable_close">Close</string>
+    <string name="quote_lable_high">High</string>
+    <string name="quote_lable_low">Low</string>
+    <string name="quote_lable_latest_price">Latest price</string>
+    <string name="quote_lable_latest_volume">Latest volume</string>
+    <string name="quote_lable_real_time_pricw">Real time price</string>
+    <string name="quote_lable_real_time_size">Real time size</string>
+    <string name="quote_lable_delayed_price">Delayed price</string>
+    <string name="quote_lable_extended_price">Extended price</string>
+    <string name="quote_lable_extended_change">Extended change</string>
+    <string name="quote_lable_extended_change_percent">Extended change %</string>
+    <string name="quote_lable_previuous_close">Previous close</string>
+    <string name="quote_lable_market_percent">Market %</string>
+    <string name="quote_lable_volume">Volume</string>
+    <string name="quote_lable_total_volume">Total volume</string>
+    <string name="quote_lable_bid_price">Bid price</string>
+    <string name="quote_lable_bid_size">Bid size</string>
+    <string name="quote_lable_ask_price">Ask price</string>
+    <string name="quote_lable_ask_size">Ask size</string>
+    <string name="quote_lable_market_cup">Market cup</string>
+    <string name="quote_lable_week_52_high">52 high</string>
+    <string name="quote_lable_week_52_low">52 low</string>
+    <string name="quote_lable_ytd_change">Ytd change</string>
+
+
+
+
+
 </resources>
