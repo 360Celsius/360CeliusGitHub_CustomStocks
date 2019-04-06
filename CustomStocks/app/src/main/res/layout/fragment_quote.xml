@@ -24,58 +24,67 @@
             android:layout_marginRight="16dp"
             android:layout_marginBottom="0dp">
 
-            <RelativeLayout
+            <ScrollView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:scrollbars="none">
 
-                <LinearLayout
-                    android:id="@+id/latest_price_pc_pcp_rpw"
+                <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="bottom"
-                    android:layout_alignParentTop="true">
+                    android:layout_height="wrap_content">
 
-                    <TextView
-                        android:id="@+id/last_price"
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:id="@+id/latest_price_pc_pcp_rpw"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@{quote.latestPrice}"
-                        android:layout_marginRight="16dp"
-                        android:textColor="@color/symbol_name_color"
-                        android:textSize="24dp" />
-
-                    <TextView
-                        android:id="@+id/change"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:ellipsize="end"
-                        android:maxLines="1"
                         android:gravity="bottom"
-                        android:text="@{quote.change}"
-                        android:textColor="@{quote.isChangePositive()==true ? @color/up :  @color/down}"
-                        android:textSize="16dp" />
+                        android:layout_alignParentTop="true">
 
-                    <TextView
-                        android:id="@+id/change_percent"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:ellipsize="end"
-                        android:maxLines="1"
-                        android:gravity="bottom"
-                        android:text="@{quote.getDecoratedChangePercent()}"
-                        android:textColor="@{quote.isChangePercentPositive()==true ? @color/up :  @color/down }"
-                        android:textSize="16dp" />
-                </LinearLayout>
+                        <TextView
+                            android:id="@+id/last_price"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@{quote.latestPrice}"
+                            android:layout_marginRight="16dp"
+                            android:textColor="@color/symbol_name_color"
+                            android:textSize="24dp" />
+
+                        <TextView
+                            android:id="@+id/change"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:ellipsize="end"
+                            android:maxLines="1"
+                            android:gravity="bottom"
+                            android:text="@{quote.change}"
+                            android:textColor="@{quote.isChangePositive()==true ? @color/up :  @color/down}"
+                            android:textSize="16dp" />
+
+                        <TextView
+                            android:id="@+id/change_percent"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:ellipsize="end"
+                            android:maxLines="1"
+                            android:gravity="bottom"
+                            android:text="@{quote.getDecoratedChangePercent()}"
+                            android:textColor="@{quote.isChangePercentPositive()==true ? @color/up :  @color/down }"
+                            android:textSize="16dp" />
+                    </LinearLayout>
 
 
-                <com.github.mikephil.charting.charts.LineChart
-                    android:id="@+id/quote_chart"
-                    android:layout_width="match_parent"
-                    android:layout_height="300dp"
-                    android:layout_marginTop="12dp"
-                    android:layout_below="@+id/latest_price_pc_pcp_rpw" />
+                    <com.github.mikephil.charting.charts.LineChart
+                        android:id="@+id/quote_chart"
+                        android:layout_width="match_parent"
+                        android:layout_height="300dp"
+                        android:layout_marginTop="12dp"
+                        android:layout_below="@+id/latest_price_pc_pcp_rpw" />
+                    
+                </RelativeLayout>
 
-            </RelativeLayout>
+
+            </ScrollView>
+
 
 
         </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
